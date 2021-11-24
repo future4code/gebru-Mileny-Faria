@@ -19,118 +19,162 @@ function imprimeMensagem() {
 // EXERCÍCIO 01
 function calculaAreaRetangulo() {
   // implemente sua lógica aqui
-  const alt = prompt("Qual a altura do retângulo?")
-  const largura = prompt("Qual a largura do retângulo?")
 
-  const area = alt * largura
-
+  const altura = prompt("Informe a altura da embalagem em cm")
+  const largura  = prompt("Informe a largura da embalagem em cm")
+  const area = altura * largura
   console.log(area)
 
+
 }
+
+calculaAreaRetangulo()
 
 // EXERCÍCIO 02
 function imprimeIdade() {
   // implemente sua lógica aqui
-  const anoAtual = prompt("Qual é o ano atual?")
-  const anoNascimento = prompt("Em que ano você nasceu?")
 
+  const anoAtual = prompt("Informe o ano vigente")
+  const anoNascimento = prompt("Informe o ano de seu nascimento")
   const idade = anoAtual - anoNascimento
-
   console.log(idade)
+  
 
 }
+
+imprimeIdade()
 
 // EXERCÍCIO 03
 function calculaIMC(peso, altura) {
   // implemente sua lógica aqui
-  const peso = 46
-  const altura = 1.55
 
-  const imc = peso / (altura * altura)
-
-  console.log(imc)
+  const peso1 = 46
+  const alt1 = 1.55
+  const imc = peso1 / (alt1 * alt1)
+  return imc
+  
 
 }
+
+console.log(calculaIMC())
 
 // EXERCÍCIO 04
 function imprimeInformacoesUsuario() {
   // implemente sua lógica aqui
   // "Meu nome é NOME, tenho IDADE anos, e o meu email é EMAIL."
-  let nome = prompt("Qual é o seu nome?")
-  idade = prompt("Qual a sua idade?")
-  let email = prompt("Escreva aqui seu email?")
-
-  console.log("Meu nome é " + nome + ", tenho " + idade + " anos, e o meu email é " + email + ".")
 
 
-
+  const nome = prompt("Informe seu nome")
+  const idade2 = prompt("Informe sua idade")
+  const email = prompt("Informe seu email")
+  console.log(`Meu nome é ${nome}, tenho ${idade2} anos, e o meu email é ${email}.`)
 }
+
+imprimeInformacoesUsuario()
 
 // EXERCÍCIO 05
 function imprimeTresCoresFavoritas() {
   // implemente sua lógica aqui
 
-  const corFavorita1 = prompt("Me fale uma cor favorita: ")
-  const corFavorita2 = prompt("Me fale outras cor favorita: ")
-  const corFavorita3 = prompt("Me fale mais uma cor favorita: ")
-  
-  const respostaCores = [corFavorita1, corFavorita2, corFavorita3]
-  console.log(respostaCores)
+
+  const cores = prompt("Quais são suas três cores favoritas?")
+  const array = cores.split(" ")
+  console.log(array)
+
 
 }
+
+imprimeTresCoresFavoritas()
 
 // EXERCÍCIO 06
 function retornaStringEmMaiuscula(string) {
   // implemente sua lógica aqui
-  const string = prompt("Diga: Hello, world")
-  const stringMaiscula = string.toUpperCase()
-  console.log(stringMaiscula)
 
+  string = "oi meu nome é Mileny"
+  const maiscula = string.toUpperCase()
+  return maiscula
 
 }
+
+console.log(retornaStringEmMaiuscula())
 
 // EXERCÍCIO 07
 function calculaIngressosEspetaculo(custo, valorIngresso) {
   // implemente sua lógica aqui
 
-  let custo = 8000
-  let valorIngresso = 200
-  let precisaVender = custo / valorIngresso
 
+  const custo1 = 200
+  const valorIngresso1 = 20
+  const precisaVender = custo1 / valorIngresso1
+  return precisaVender
 
 }
+
+console.log(calculaIngressosEspetaculo())
+
 
 // EXERCÍCIO 08
 function checaStringsMesmoTamanho(string1, string2) {
   // implemente sua lógica aqui
-  string1 = prompt("Qual o nome da sua escola")
-  string2 = prompt("Você está gostando de estuda lá?")
 
-  let booleano = string1 === string2
+
+  string1 = "Hoje é sexta-feira".length
+  string2 = "Eu amo o final de semana".length
+  const mesmoTamanho = string1 === string2
+  return mesmoTamanho
 
 }
+
+console.log(checaStringsMesmoTamanho())
 
 // EXERCÍCIO 09
 function retornaPrimeiroElemento(array) {
   // implemente sua lógica aqui
 
+
+  array = ["vermelho", "preto", "azul", "lilás"]
+  return array[0]
+
 }
+
+console.log(retornaPrimeiroElemento())
+
 
 // EXERCÍCIO 10
 function retornaUltimoElemento(array) {
   // implemente sua lógica aqui
 
+
+  const array2 = [10, 20, 30, 40, 50]
+  return array2[4]
+
 }
+
+console.log(retornaUltimoElemento())
+
 
 // EXERCÍCIO 11
 function trocaPrimeiroEUltimo(array) {
   // implemente sua lógica aqui
 
+
+  const array3 = ["sandalia", "chinelo", "tenis", "scarpin", "tamanco"]
+  const trocaArray = array3.reverse()
+  return trocaArray
+
+
 }
+
+console.log(trocaPrimeiroEUltimo())
+
+
 
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
   // implemente sua lógica aqui
+
+  
+
 
 }
 
