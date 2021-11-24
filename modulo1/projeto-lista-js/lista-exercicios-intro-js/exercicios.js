@@ -63,6 +63,7 @@ function imprimeInformacoesUsuario() {
   // implemente sua lógica aqui
   // "Meu nome é NOME, tenho IDADE anos, e o meu email é EMAIL."
 
+
   const nome = prompt("Informe seu nome")
   const idade2 = prompt("Informe sua idade")
   const email = prompt("Informe seu email")
@@ -74,6 +75,7 @@ imprimeInformacoesUsuario()
 // EXERCÍCIO 05
 function imprimeTresCoresFavoritas() {
   // implemente sua lógica aqui
+
 
   const cores = prompt("Quais são suas três cores favoritas?")
   const array = cores.split(" ")
@@ -92,7 +94,6 @@ function retornaStringEmMaiuscula(string) {
   const maiscula = string.toUpperCase()
   return maiscula
 
-
 }
 
 console.log(retornaStringEmMaiuscula())
@@ -100,6 +101,7 @@ console.log(retornaStringEmMaiuscula())
 // EXERCÍCIO 07
 function calculaIngressosEspetaculo(custo, valorIngresso) {
   // implemente sua lógica aqui
+
 
   const custo1 = 200
   const valorIngresso1 = 20
@@ -110,9 +112,11 @@ function calculaIngressosEspetaculo(custo, valorIngresso) {
 
 console.log(calculaIngressosEspetaculo())
 
+
 // EXERCÍCIO 08
 function checaStringsMesmoTamanho(string1, string2) {
   // implemente sua lógica aqui
+
 
   string1 = "Hoje é sexta-feira".length
   string2 = "Eu amo o final de semana".length
@@ -127,6 +131,7 @@ console.log(checaStringsMesmoTamanho())
 function retornaPrimeiroElemento(array) {
   // implemente sua lógica aqui
 
+
   array = ["vermelho", "preto", "azul", "lilás"]
   return array[0]
 
@@ -134,9 +139,11 @@ function retornaPrimeiroElemento(array) {
 
 console.log(retornaPrimeiroElemento())
 
+
 // EXERCÍCIO 10
 function retornaUltimoElemento(array) {
   // implemente sua lógica aqui
+
 
   const array2 = [10, 20, 30, 40, 50]
   return array2[4]
@@ -145,9 +152,11 @@ function retornaUltimoElemento(array) {
 
 console.log(retornaUltimoElemento())
 
+
 // EXERCÍCIO 11
 function trocaPrimeiroEUltimo(array) {
   // implemente sua lógica aqui
+
 
   const array3 = ["sandalia", "chinelo", "tenis", "scarpin", "tamanco"]
   const trocaArray = array3.reverse()
@@ -159,11 +168,13 @@ function trocaPrimeiroEUltimo(array) {
 console.log(trocaPrimeiroEUltimo())
 
 
+
 // EXERCÍCIO 12
 function checaIgualdadeDesconsiderandoCase(string1, string2) {
   // implemente sua lógica aqui
 
   
+
 
 }
 
