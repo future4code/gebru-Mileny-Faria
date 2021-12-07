@@ -21,16 +21,10 @@
     // 2.
     
     if (confirm("Quer iniciar uma nova rodada?")) {        
-     
-   } else {
-      console.log("O jogo acabou!")
 
-   }
-      //usuario
      let carta1 = comprarCarta()
      let carta2 = comprarCarta()
 
-     //computador
      let carta3 = comprarCarta()
      let carta4 = comprarCarta()
      
@@ -56,12 +50,9 @@
   
      }
 
-   
-   
-   
+     
+   } else {
+      console.log("O jogo acabou!")
 
-
-    // 7.
-    
-   
-    
+   }
+     
