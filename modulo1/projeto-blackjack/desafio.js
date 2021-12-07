@@ -10,6 +10,7 @@
  * 
  * 
  */
+
 // ---- MONTANDO O JOGO ----
 
     
@@ -61,3 +62,4 @@ Deseja comprar mais uma carta?`)
    }
      
    
+
