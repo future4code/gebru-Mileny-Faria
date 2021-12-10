@@ -18,7 +18,7 @@ function retornaArrayOrdenado(array) {
     array.sort(function(a,b) {
         return a - b
     })
-  return array
+    return array
 }
 
 // EXERCÍCIO 04
@@ -29,7 +29,9 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+    const arrayPairsToThe2 = array  .filter(value => value % 2 === 0)
+                                    .map(value => value ** 2)
+    return arrayPairsToThe2
 }
 
 // EXERCÍCIO 06
