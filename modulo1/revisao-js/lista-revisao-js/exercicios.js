@@ -36,7 +36,10 @@ function retornaNumerosParesElevadosADois(array) {
 
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-  
+    const higherNumber = array.reduce(function(a, b) {
+        return Math.max(a, b)
+    })
+    return higherNumber
 }
 
 // EXERCÍCIO 07
