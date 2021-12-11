@@ -82,18 +82,25 @@ function retornaSegundoMaiorESegundoMenor(array) {
     const arrayEmOrdem = array.sort((a, b) => a - b)
     const segundoMaior = arrayEmOrdem[arrayEmOrdem.length -2]
     const segundoMenor = arrayEmOrdem[1]
+  
     return [segundoMaior, segundoMenor]
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
+    
     return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores.join(", ")}.`
     
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+    const anonymous = {
+        ...pessoa,
+        name: "ANÔNIMO"
+    }
+    
+    return anonymous
 }
 
 // EXERCÍCIO 13A
