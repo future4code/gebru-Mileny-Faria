@@ -97,7 +97,7 @@ function retornaChamadaDeFilme(filme) {
 function retornaPessoaAnonimizada(pessoa) {
     const anonymous = {
         ...pessoa,
-        name: "ANÔNIMO"
+        nome: "ANÔNIMO"
     }
     
     return anonymous
