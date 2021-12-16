@@ -1,0 +1,12 @@
+Os sete passos fundamentais para resolver problemas na programação são:
+
+1. Ler o Enunciado com atenção, já se perguntando o que o código tem que fazer
+2. Retirar do enunciado todas as informações que serão uteis, como palavras chaves para serem usadas em variaveis,
+    ações que vão representar funções e condições
+3. Pensar quais serão as entradas e quais serão as saidas, ou respostas para solucionar o problema
+4. Fazer um esquema visual com exemplos, diagramas e os possiveis cenarios
+5. Colocar no papel todas as soluções pensadas, num codigo feio mesmo, sem se preocupar com estética, ou boas práticas,
+    testanto as ideias até o codigo funcionar
+6. Depois do codigo pronto, mesmo feio, testar pra ver se funcionar
+7. Depois que funcionou, nao descarte o codigo feio... mas refatore, ou seja, tente faze-lo ficar mais funcional, 
+    menor, verificar se os nomes estão bons, nem indentado
