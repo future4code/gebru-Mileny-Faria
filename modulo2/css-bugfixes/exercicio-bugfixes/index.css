@@ -65,11 +65,8 @@ div img {
   *  ESTILOS HOME 
   *
   **/
-#container-de-descricao > p {
-    margin-top: 100px;
-}
 
-#container-de-descricao {
+  #container-de-descricao {
     background-color: #2274a5;
     color: white;
 }
@@ -102,6 +99,7 @@ div:last-child {
 
 table {
     width: 60%;
+    text-align: center;
 }
 
 td button {
