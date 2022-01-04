@@ -93,6 +93,14 @@ div>p:first-child {
   *
   **/
 
+button:active {
+    color: white;
+}
+
+button:hover {
+    background-color: #c44f00 ;
+}
+
 div:nth-child(2),
 div:last-child {
     text-align: center;
