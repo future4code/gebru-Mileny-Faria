@@ -25,6 +25,7 @@ input {
     border-right: 0px;
 }
 
+
 button:focus {
     color: white;
 }
@@ -64,6 +65,13 @@ div>p:first-child {
     width: 15px;
 }
 
+.icone:hover {
+    opacity: 0.6;
+}
+
+.icone:active {
+    opacity: 1;
+}
 
 /** 
   *
