@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 50px 1fr 30px;
+    width: 100vh;
+    height: 100vh;
+}
+
+header {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: mediumvioletred;
+    grid-column: 1 / 3;
+}
+
+header>img {
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;   
+}
+
+header button {
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+header h2 {
+    margin-left: 15px;
+}
+
+nav {
+    background-color: #f2d0e0;
+}
+
+menu {
+    margin-left: 10px;
+}
+
+li {
+    display: flex;
+    padding: 20px
+}
+
+li>img {
+    width: 18px;
+    height: 18px;
+}
+
+.setinha {
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+main {
+    padding: 15px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 15px;
+    column-gap: 15px;
+    justify-self: end;
+}
+
+main div {
+    display: grid;
+    justify-items: center;
+    box-shadow: darkgray 0px 3px 5px;
+}
+
+div>img {
+    width: 150px;
+    height: 150px;
+}
+
+div>p {
+    text-align: center;
+    font-size: 9.5px;
+    margin-left: 1.3px;
+    margin-right: 1.3px;
+}
+
+div>h3 {
+    text-align: center;
+    font-size: 16px;
+}
+
+footer {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: mediumvioletred;
+    align-self: flex-end;
+    grid-column: 1 / 3;
+}
+
