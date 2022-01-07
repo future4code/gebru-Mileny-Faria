@@ -1,86 +1,69 @@
-h1 {
-  display: inline;
-}
-
-header {
-  display: inline;
-  /* height: 100vh;
-    width: 100%; */
-}
-
-img {
-  display: inline;
-  max-width: 200px;
-  max-height: 150px;
-  width: auto;
-  height: auto;
-}
-
-#nome-cabecalho {
-  display: inline;
-  font-family: fantasy;
-  font-style: italic;
+* {
+  margin: 0;
+  padding: 0;
   text-align: center;
-  color: brown;
-  background-position: center;
 }
 
-/* body {
-    background-color: thistle;
-} */
-
-.rodape {
-  margin-bottom: 2px;
-  color: brown;
-  font-family: cursive;
-  display: block;
+/* h1, h2, h3, h4, h5, h6, p {
+  color: orange;
 }
 
-#boas-vindas {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bold;
+.texto-com-background {
+  background-color: yellow;
 }
 
-button {
-  font-family: cursive;
-  font-style: oblique;
-  font-weight: bolder;
+#texto-com-outra-cor {
+  color: green;
 }
 
-p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+button:hover {
+  background-color: red;
+  color: white;
 }
 
-li {
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+button:active {
+  background-color: pink;
+  color: red;
 }
 
-h2 {
-    font-family: sans-serif;
-}
 
 body {
-    background-color:lightcyan;
+  background: #333;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  padding: 20px;
+
 }
 
-table {
-    border-color: black; 
-    background: #fffff0;
-    margin: 50px 50px 50px 50px;
-    padding: 50px 50px 50px;
+div {
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 300px;
+  overflow: hidden; 
+ 
 }
 
-.tabela {
-    border-color: black; 
-    background: #fffff0;
-    margin: 50px 50px 50px 50px;
-    padding: 100px;
+.green {
+  background-color: green;
+ 
 }
 
-th {
-    border-color: black; 
-    background: #fffff0;
-    padding-top: 10px;
-    
+.rosa {
+  background-color: rgb(247, 38, 184);
+
+}
+
+.purple {
+  background-color: purple;
+
+} */ 
+
+
+header {
+  position: fixed;
+  
+}
+
+footer {
+  position: static;
 }
