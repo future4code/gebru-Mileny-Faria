@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main-container {
+    width: 100vw;
+    height: 100vh;
+    font-size: 15px ;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 20% 80%;
+          
+}
+
+.green-background {
+    display: grid;
+    background-color: rgb(61, 202, 61);
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.yellow-background {
+    display: grid;
+    background-color: rgb(231, 200, 22);
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pink-background {
+    display: grid;
+    background-color: rgb(245, 0, 192);
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#content2 {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+
+.blue-background {
+    display: grid;
+    background-color: rgb(55, 55, 243);
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#blank {
+    display: grid;
+}
+
+#extra {
+    display: grid;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.red-background {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(248, 58, 58);
+    width: 350px;
+    height: 100%;
+}
+
+.lightgreen-background {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgreen;
+    width: 350px;
+    height: 100%;
+}
+
+footer {
+    display: grid;
+}
+
+.purple-background {
+    display: grid;
+    background-color: purple;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
+}
