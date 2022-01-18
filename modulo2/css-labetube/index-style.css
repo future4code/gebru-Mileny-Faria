@@ -5,40 +5,42 @@
 
 
 header {
-    height: 60px;
+    height: 10vh;
+    width: 100vw;
     background-color: orange;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: Chalkduster, fantasy;
-    font-size: 30px;
 }
 
 header h2 {
-    margin-left: 20px;
+    margin-left: 2vw;
+    font-size: 4vw;
 }
 
-header div {
-    margin-right: 40px;
-    align-items: center;
+header form {
+    margin-right: 5vw;
 }
 
-header button {
-    padding: 5px;
-    background-color: rgb(240, 201, 128);
+header input {
+    align-self: center;
+    padding: 0.5vw;
+    background-color: rgb(253, 245, 230);
 }
 
 main {
+    width: 100vw;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    row-gap: 20px;
-    margin: 20px 0;
+    row-gap: 1em;
+    margin: 1em 0;
 }
 
 div img {
-    width: 250px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
 }
 
 main div:hover {
@@ -47,25 +49,46 @@ main div:hover {
 }
 
 div p {
-    margin-top: 5px;
+    margin-top: 1em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: cornsilk;
 }
 
 main div {
-    max-width: 260px;
     display: flex;
     flex-direction: column;
+    height: 35vh;
     align-items: center;
-    padding: 8px;
+    justify-items: flex-end;
+    padding: 1em;
     background-color: rgb(2, 2, 2);
     box-shadow: inset 0 0 1em gold, 0 0 1em red;
 }
 
 footer {
-    display: flex;
-    height: 30px;
+    width: 100vw;
+    text-align: center;
     background-color: rgb(255, 218, 151);
-    justify-content: center;
-    align-items: center;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    main {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5vw;   
+    }
+
+    main div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-device-width: 481px) and (max-device-width: 800px) {
+    main div {
+        display: flex;
+        flex-direction: column;
+        height: 15vh;
+    }
 }
