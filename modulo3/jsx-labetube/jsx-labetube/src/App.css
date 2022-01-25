@@ -1,22 +1,20 @@
-body {
-  width: 100%;
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
 }
 
-
 .tela-inteira {
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(8, 8, 8);
 }
 
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 50px;
+  padding: 10px 50px;
   height: 10%;
 }
 
@@ -25,20 +23,52 @@ header h1 {
   font-size: 1em;
 }
 
+header input {
+  width: 30vw;
+  height: 5vh;
+  margin-left: 20vw;
+  background-color: black;
+}
+
+header button img {
+  width: 1.5vw;
+}
+
+header button {
+  width: 3vw;
+  height: 2.3vw;
+  background-color: black;
+}
+
 main {
   min-height: 80%;
   display: flex;
 }
 
 .menu-vertical {
-  flex-basis: 200px;
-  border-right-style: solid;
-  border-right-width: thin;
+  display: flex;
+  width: 5vw;
+  margin-top: 3vw;
+  margin-left: 1vw;
+  justify-content: center;
 }
 
 .botoes-menu-vertical {
   list-style-type: none;
   color: white;
+  font-size: 1vw;
+  margin-bottom: 3vw;
+  text-align: center;
+}
+
+.icones-menu-vertical img {
+  width: 2vw;
+  margin-top: 1vw;
+}
+
+.icones-menu-vertical {
+  text-align: center;
+  list-style-type: none;
 }
 
 .painel-de-videos {
@@ -47,7 +77,7 @@ main {
   flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(4, 24.8% 0.2%);
-  grid-template-rows: repeat(4, 270px 20px);
+  grid-template-rows: repeat(4, 45% 20px);
 }
 
 .media1 {
@@ -104,11 +134,12 @@ main {
 
 footer {
   height: 10%;
-  background-color: grey;
+  background-color: rgb(0, 0, 0);
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .box-pagina-principal > img {
@@ -117,6 +148,7 @@ footer {
 }
 
 h4 {
-  margin-left: 20px;
+  color: white;
+  text-align: center;
 }
 

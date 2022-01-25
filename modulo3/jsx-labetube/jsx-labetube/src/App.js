@@ -1,4 +1,10 @@
 import './App.css';
+import home from "./imgs/home.png"
+import explorar from "./imgs/explorar.png"
+import biblioteca from "./imgs/biblioteca.png"
+import inscricoes from "./imgs/inscricoes.png"
+import lupa from "./imgs/lupa.png"
+
 
 function App() {
   
@@ -12,19 +18,24 @@ function App() {
     <div className="tela-inteira">
         <header>
             <h1>Lab Tube</h1>
-            <input type="text" placeholder="Busca" id="campoDeBusca"/>
+            <input type="text" placeholder="Pesquisar" id="campoDeBusca"/>
+            <button type="button"><img src= {lupa} alt="icone de lupa"/></button>
         </header>
 
         <main>
             <nav className="menu-vertical">
                 <ul>
-                    <li className="botoes-menu-vertical"><img src="/src/imgs/home.png" alt="icone de pagina inicial"/></li>
+                    <li className="icones-menu-vertical"><img src= {home} alt="icone de pagina inicial"/></li>
                     <li className="botoes-menu-vertical">Início</li>
-                    <li className="botoes-menu-vertical">Em alta</li>
+                    
+                    <li className="icones-menu-vertical"><img src= {explorar} alt="icone de explorar"/></li>
+                    <li className="botoes-menu-vertical">Explorar</li>
+
+                    <li className="icones-menu-vertical"><img src= {inscricoes} alt="icone de inscricoes"/></li>
                     <li className="botoes-menu-vertical">Inscrições</li>
-                    <hr/>
-                    <li className="botoes-menu-vertical">Originais</li>
-                    <li className="botoes-menu-vertical">Histórico</li>
+                    
+                    <li className="icones-menu-vertical"><img src= {biblioteca} alt="icone biblioteca"/></li>
+                    <li className="botoes-menu-vertical">Biblioteca</li>
                 </ul>
             </nav>
 
