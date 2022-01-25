@@ -18,12 +18,13 @@ function App() {
         <main>
             <nav className="menu-vertical">
                 <ul>
-                    <li className="botoes-meunu-vertical">Início</li>
-                    <li className="botoes-meunu-vertical">Em alta</li>
-                    <li className="botoes-meunu-vertical">Inscrições</li>
+                    <li className="botoes-menu-vertical"><img src="/src/imgs/home.png" alt="icone de pagina inicial"/></li>
+                    <li className="botoes-menu-vertical">Início</li>
+                    <li className="botoes-menu-vertical">Em alta</li>
+                    <li className="botoes-menu-vertical">Inscrições</li>
                     <hr/>
-                    <li className="botoes-meunu-vertical">Originais</li>
-                    <li className="botoes-meunu-vertical">Histórico</li>
+                    <li className="botoes-menu-vertical">Originais</li>
+                    <li className="botoes-menu-vertical">Histórico</li>
                 </ul>
             </nav>
 

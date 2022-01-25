@@ -20,6 +20,11 @@ header {
   height: 10%;
 }
 
+header h1 {
+  color: white;
+  font-size: 1em;
+}
+
 main {
   min-height: 80%;
   display: flex;
@@ -31,8 +36,9 @@ main {
   border-right-width: thin;
 }
 
-.botoes-meunu-vertical {
+.botoes-menu-vertical {
   list-style-type: none;
+  color: white;
 }
 
 .painel-de-videos {
