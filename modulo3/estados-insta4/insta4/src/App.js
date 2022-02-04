@@ -43,7 +43,7 @@ class App extends React.Component {
       {
         nomeUsuario: "Paulinha",
         fotoUsuario: "https://picsum.photos/50/45",
-        fotoPost: "https://picsum.photos/200/130"
+        fotoPost: "https://picsum.photos/200/130",
       },
       {
         nomeUsuario: "Mileny",
