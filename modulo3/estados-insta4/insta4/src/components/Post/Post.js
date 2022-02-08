@@ -7,6 +7,7 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import iconeSalvar from '../../img/bookmark_border_black_24dp.svg'
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -19,6 +20,11 @@ const PostHeader = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10px;
+`
+
+const IconeSalvar = styled.img`
+  margin-left: auto;
+  margin-right: 5px;
 `
 
 const PostFooter = styled.div`
@@ -94,6 +100,7 @@ class Post extends React.Component {
       <PostHeader>
         <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{this.props.nomeUsuario}</p>
+        <IconeSalvar src={iconeSalvar} alt={'Imagem de salvar'}/>
       </PostHeader>
 
       <PostPhoto src={this.props.fotoPost} alt={'Imagem do post'}/>

@@ -14,22 +14,43 @@ const InputComentario = styled.input`
 
 export class SecaoComentario extends Component {
 	state = {
+		comentarios: [""],
 		inputComentario: "",
+		valorInputComentario: ""
 	}
+
+	adicionaComentario = () => {
+		const novoComentario = {
+		  comentarios: this.state.valorInputComentario
+		};
+	
+		const novosComentarios = [...this.state.comentarios, novoComentario];
+	
+		this.setState({comentarios: novosComentarios});
+		this.setState({inputComentario: ""})
+	  };
 
 	onChangeComentario = (event) => {
 		this.setState({inputComentario: event.target.value})
-		console.log(this.state.inputComentario)
 	}
 
 	render() {
-		return <CommentContainer>
-			<InputComentario
+		const listaDeComentarios = this.state.comentarios.map((comentario) => {
+			return (
+			<div>
+				<InputComentario
 				placeholder={'Comentário'}
 				value={this.state.inputComentario}
 				onChange={this.onChangeComentario}
-			/>
-			<button onClick={this.props.aoEnviar}>Enviar</button>
+				/>
+				<button onClick={this.props.aoEnviar} onClick={this.adicionaComentario}>Enviar</button>
+				</div>
+			);
+		}
+	);
+
+		return <CommentContainer>
+			{listaDeComentarios}
 		</CommentContainer>
 	}
 }
