@@ -1,42 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import PerguntaAberta from "./PerguntaAberta";
 
 const ContainerEtapa2 = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 500px;
-    text-align: center;
-    font-size: 20px;
-`;
-
-const StyledForm = styled.form`
-    display: flex;
-    flex-direction: column;
-`;
-
-const StyledInputs = styled.input`
-    margin: 20px;
-    width: 200px;
-`;
-
-const StyledButton = styled.button`
-    margin: 20px auto;
-    width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  text-align: center;
+  font-size: 20px;
 `;
 
 class Etapa2 extends React.Component {
-  render () {
+  render() {
     return (
       <ContainerEtapa2>
         <h3>ETAPA 2 - INFORMAÇÕES DO ENSINO SUPERIOR</h3>
-        <StyledForm action="#">
-            <label for="curso">5. Qual curso?</label>
-            <StyledInputs type="text" id="curso" />
-            
-            <label for="unidade">6. Qual a unidade de ensino?</label>
-            <StyledInputs type="text" id="unidade" />
-        </StyledForm>
+        <PerguntaAberta pergunta={"5. Qual curso?"} />
+        <PerguntaAberta pergunta={"6. Qual a unidade de ensino?"} />
       </ContainerEtapa2>
     );
   }

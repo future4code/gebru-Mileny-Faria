@@ -2,18 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const ContainerFinal = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 500px;
-    text-align: center;
-    font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  text-align: center;
+  font-size: 20px;
 `;
 
-
-
 class Final extends React.Component {
-  render () {
+  render() {
     return (
       <ContainerFinal>
         <h3>O FORMULÁRIO ACABOU</h3>
