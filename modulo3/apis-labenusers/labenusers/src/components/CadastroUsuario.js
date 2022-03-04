@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
-import ListaUsers from "./ListaUsers";
+import styled from "styled-components"
+
+
+
 
 
 class CadastroUsuario extends React.Component {
@@ -46,7 +49,6 @@ class CadastroUsuario extends React.Component {
 
       return (
         <div>
-          <button>Trocar de Tela</button>
           <input
             placeholder='Nome'
             onChange={this.onChangeName}

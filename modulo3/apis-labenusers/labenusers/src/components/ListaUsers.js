@@ -1,6 +1,14 @@
 import React from "react";
 import axios from "axios";
-import CadastroUsuario from "./CadastroUsuario";
+import styled from "styled-components"
+
+const listaUsuarios = styled.div `
+  display: flex;
+  flex-direction: column;
+ 
+
+
+`
 
 class ListaUsers extends React.Component {
 
@@ -60,17 +68,16 @@ class ListaUsers extends React.Component {
   
         const listUsers = this.state.listaUsers.map((user) => {
           return (
-            <>
-              <li key={user.id} > {user.name} </li>
+            <listaUsuarios>
+              <p key={user.id} > {user.name} </p>
               <button onClick={() => this.deleteUsers(user.id)} >X</button>
-            </>
+            </listaUsuarios>
           )
       })
   
         return (
           <div>
-            <button onClick={CadastroUsuario} >Trocar de Tela</button>
-              
+            
             {listUsers}
   
             <br />
