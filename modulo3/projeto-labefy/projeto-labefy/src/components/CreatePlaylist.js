@@ -1,16 +1,21 @@
-import react from 'react';
+import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import React from 'react';
 
-const urlPlaylist =
-  "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
+const ContainerMenu = styled.menu`
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  justify-content: space-around ;
+  align-items: center;
+  background-color: orange;
+  margin: 20px auto;
+  padding:0 ;
+  border-radius: 30px;
 
-const headers = {
-  headers: {
-    Authorization: "mileny-faria-gebru"
-  }
-};
+
+`
 
 class CreatePlaylist extends React.Component {
 
@@ -25,33 +30,41 @@ class CreatePlaylist extends React.Component {
     
     
     getAllPlaylists = () => {
+      const urlPlaylist =   "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
+
         axios
-          .get(urlPlaylist, headers)
-          .then((response) => {
-            console.log(response.data.result.list);
-            this.setState({playlists: response.data.result.list});
+          .get(urlPlaylist, {
+            headers: {
+              Authorization: "mileny-faria-gebru"
+            }
           })
-          .catch((error) => {
-            console.log(error.response);
+          .then((res) => {
+            this.setState({playlists: res.data});
+          })
+          .catch((err) => {
+            console.log(err.response);
           });
     };
 
     createPlaylist = () => {
-            
+        const urlPlaylist =   "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
         const body = {
           name: this.state.playlistInput
         };
+
         axios
-          .post(urlPlaylist, body, headers)
-          .then((response) => {
-            console.log(response.data.result.list);
+          .post(urlPlaylist, body, {
+            headers: {
+              Authorization: "mileny-faria-gebru"
+            }
+          })
+          .then((res) => {
             alert(`A playlist ${this.state.playlistInput} foi criada com sucesso`);
             this.setState({playlistInput: ""});
             this.getAllPlaylists();
           })
-          .catch((error) => {
-            console.log(error.response.data.message);
-            alert(`A playlist não foi criada`)
+          .catch((err) => {
+            alert(err.response.data.message)
           });
     };
 
@@ -61,25 +74,27 @@ class CreatePlaylist extends React.Component {
 
 
     render () {
-        const playlists = this.state.playlists.map((playlist) => {
+      
+        const listPlaylists = this.state.playlists.map((playlist) => {
             return (
-                <>
-                    <li key={playlist.id}> {playlist.name} </li>
+                <div key={playlist.id}>
+                    <p> {playlist.name} </p>
                     <button>Deletar</button>
-                </>
+                </div>
             )
         });
 
         return (
             <section>
-                <input
-                    placeholder='Insira aqui sua nova playlist'
-                    value={this.state.playlistInput}
-                    onChange={this.onChangePlaylist}
-                />
-                <button onClick={this.createPlaylist} > Criar playlist </button>
-
-                {playlists}
+                <ContainerMenu>
+                  <input
+                      placeholder='Digite aqui sua nova playlist'
+                      value={this.state.playlistInput}
+                      onChange={this.onChangePlaylist}
+                  />
+                  <button onClick={this.createPlaylist} > Criar playlist </button>
+                </ContainerMenu>
+                {listPlaylists}
 
             </section>
 

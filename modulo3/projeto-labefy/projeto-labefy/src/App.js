@@ -1,10 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
 import CreatePlaylist from './components/CreatePlaylist';
+import React from 'react';
 import styled from "styled-components";
 
+const Container = styled.div`
+  background-color: black;
+  width: 100vw;
+  height: 100vh ;
 
-
+`
 
 class App extends React.Component {
 
@@ -13,9 +16,9 @@ class App extends React.Component {
 
     
     return (
-      <div>
+      <Container>
         <CreatePlaylist />
-      </div>
+      </Container>
     );
   }
 }
