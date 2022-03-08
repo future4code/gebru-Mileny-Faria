@@ -2,6 +2,42 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components"
 
+const Container = styled.div`
+  display: flex ;
+  flex-direction: column;
+  align-items:  center;
+  height: 100vh ;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+
+`
+
+const ContainerInputs = styled.div`
+  display: flex ;
+  flex-direction: column ;
+  justify-content: space-around;
+  height: 200px ;
+  border-radius: 20px ;
+  border: solid black 1px ;
+  padding: 15px;
+
+`
+const Inputs = styled.input`
+  height: 30px;
+  border-radius: 5px ;
+  border-color: black;
+  border: solid black 1px;
+
+`
+const Button = styled.button`
+  height: 30px;
+  border-radius: 5px ;
+  border-color: black;
+  border: solid black 1px;
+
+`
+
+
+
 
 class CadastroUsuario extends React.Component {
 
@@ -35,28 +71,32 @@ class CadastroUsuario extends React.Component {
         this.setState({inputName: "", inputEmail: ""})
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        alert("Este usuário já está cadastrado");
       })
   }
 
   render () {
 
       return (
-        <div>
-          <button onClick={this.props.irTelaListas}> Trocar de Tela </button>
+        <Container>
+          <h2>Tela de Cadastro</h2>
+
+          <Button onClick={this.props.irTelaListas}> Ir para Lista de Usuários </Button>
           <br />
-          <input
-            placeholder='Nome'
-            onChange={this.onChangeName}
-            value={this.state.inputName}
-          />
-          <input
-            placeholder='Email'
-            onChange={this.onChangeEmail}
-            value={this.state.inputEmail}
-          />
-          <button onClick={this.createListaUsers}>Criar Usuário</button>
-        </div>
+          <ContainerInputs>
+            <Inputs
+              placeholder='Nome'
+              onChange={this.onChangeName}
+              value={this.state.inputName}
+            />
+            <Inputs
+              placeholder='Email'
+              onChange={this.onChangeEmail}
+              value={this.state.inputEmail}
+            />
+            <Button onClick={this.createListaUsers}>Cadastrar</Button>
+          </ContainerInputs>
+        </Container>
       );
     }
   }

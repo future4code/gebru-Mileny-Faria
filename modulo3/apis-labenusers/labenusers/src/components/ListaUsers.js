@@ -2,11 +2,36 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components"
 
-const listaUsuarios = styled.div `
-  display: flex;
+
+const Container = styled.div`
+  display: flex ;
   flex-direction: column;
- 
+  align-items:  center;
+  height: 100vh ;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+
 `
+
+const ContainerLists = styled.div`
+  display: flex ;
+  align-items: center ;
+  justify-content: space-between;
+  margin-top: 10px ;
+  height: 50px ;
+  width:300px ;
+  border-radius: 20px ;
+  border: solid black 1px ;
+  padding: 15px;
+
+`
+const Button = styled.button`
+  height: 30px;
+  border-radius: 5px ;
+  border-color: black;
+  border: solid black 1px;
+
+`
+
 
 class ListaUsers extends React.Component {
 
@@ -39,7 +64,9 @@ class ListaUsers extends React.Component {
       const headers = {
         headers: {Authorization: "mileny-faria-gebru"}
       }
-  
+      const deletar = window.confirm(`Tem certeza de que deseja deletar o usuário?`)
+
+      if(deletar === true) {
       axios
         .delete(url, headers)
         .then((response) => {
@@ -50,6 +77,7 @@ class ListaUsers extends React.Component {
           console.log(this.state.listaUsers.name, this.state.listaUsers.email)
           alert(`Não conseguimos deletar esse usuário`);
         })
+      }
     }
   
   
@@ -57,25 +85,22 @@ class ListaUsers extends React.Component {
   
         const listUsers = this.state.listaUsers.map((user) => {
           return (
-            <listaUsuarios>
+            <ContainerLists>
               <p key={user.id} > {user.name} </p>
-              <button onClick={() => this.deleteUsers(user.id)} >X</button>
-            </listaUsuarios>
+              <Button onClick={() => this.deleteUsers(user.id)} >Deletar</Button>
+            </ContainerLists>
           )
       })
   
         return (
-          <div>
-            <button onClick={this.props.irTelaCadastro}> Trocar de Tela </button>
+          <Container>
+            <h2>Lista de Usuários Cadastrados</h2>
+
+            <Button onClick={this.props.irTelaCadastro}> Voltar para Cadastro </Button>
             <br />
-            {listUsers}
-  
-            <br />
-            
-            <h2>Procurar Usuário</h2>
-            <input placeholder='Nome exato para busca' />
-            <button>Salvar Edição</button>    
-          </div>
+            {listUsers}  
+
+          </Container>
         );
       }
     }
