@@ -6,8 +6,6 @@ const listaUsuarios = styled.div `
   display: flex;
   flex-direction: column;
  
-
-
 `
 
 class ListaUsers extends React.Component {
@@ -29,7 +27,6 @@ class ListaUsers extends React.Component {
           .get(url, headers)
           .then((response) => {
               this.setState({listaUsers: response.data})
-              this.getAllUsers()
           })
           .catch((error) => {
               console.log(error.response.data)
@@ -38,29 +35,21 @@ class ListaUsers extends React.Component {
     }
   
     deleteUsers = (idUserDelete) => {
-      const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:id"
-      const param = {
-        id: this.state.listaUsers.id
-      }
+      const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${idUserDelete}`
       const headers = {
         headers: {Authorization: "mileny-faria-gebru"}
       }
   
       axios
-        .post(url, param, headers)
+        .delete(url, headers)
         .then((response) => {
-          console.log(response.data)
-          const copia = [...this.state.listaUsers]
-          const newListUsers = copia.filter((user) => {
-            return user.id !== idUserDelete
-          })
-          alert(`O usuário ${this.state.listaUsers.name} foi deletado`);
-          this.setState({listaUsers: newListUsers})
+          alert(`O usuário foi deletado`);
           this.getAllUsers() 
         })
-        .catch((error) => {console.log(error.response.data)})
+        .catch((error) => {
           console.log(this.state.listaUsers.name, this.state.listaUsers.email)
           alert(`Não conseguimos deletar esse usuário`);
+        })
     }
   
   
@@ -77,16 +66,15 @@ class ListaUsers extends React.Component {
   
         return (
           <div>
-            
+            <button onClick={this.props.irTelaCadastro}> Trocar de Tela </button>
+            <br />
             {listUsers}
   
             <br />
             
             <h2>Procurar Usuário</h2>
             <input placeholder='Nome exato para busca' />
-            <button>Salvar Edição</button>
-    
-    
+            <button>Salvar Edição</button>    
           </div>
         );
       }

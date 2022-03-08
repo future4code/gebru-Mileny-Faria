@@ -3,9 +3,6 @@ import axios from "axios";
 import styled from "styled-components"
 
 
-
-
-
 class CadastroUsuario extends React.Component {
 
   state= {
@@ -34,21 +31,20 @@ class CadastroUsuario extends React.Component {
     axios
       .post(url, body, headers)
       .then((response) => {
-        console.log(response.data)
         alert(`O usuário ${this.state.inputName} foi criado com sucesso`);
         this.setState({inputName: "", inputEmail: ""})
-        this.props.getAllUsers() 
       })
-      .catch((error) => {console.log(error.response.data)})
-        console.log(this.state.inputName, this.state.inputEmail)
-        alert(`Não conseguimos criar seu usuário`);
-    
+      .catch((error) => {
+        alert(error.response.data.message);
+      })
   }
 
   render () {
 
       return (
         <div>
+          <button onClick={this.props.irTelaListas}> Trocar de Tela </button>
+          <br />
           <input
             placeholder='Nome'
             onChange={this.onChangeName}
@@ -59,9 +55,7 @@ class CadastroUsuario extends React.Component {
             onChange={this.onChangeEmail}
             value={this.state.inputEmail}
           />
-          <button onClick={this.createListaUsers} >Criar Usuário</button>
-
-          
+          <button onClick={this.createListaUsers}>Criar Usuário</button>
         </div>
       );
     }
