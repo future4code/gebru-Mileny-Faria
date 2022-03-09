@@ -3,18 +3,23 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const ContainerMenu = styled.menu`
-  display: flex;
+  display: flex ;
   flex-direction: column;
-  width: 200px;
-  height: 200px;
-  justify-content: space-around ;
-  align-items: center;
-  background-color: orange;
-  margin: 20px auto;
-  padding:0 ;
-  border-radius: 30px;
+  align-items:  center;
+  height: 100vh ;
+  font-family: Verdana, Geneva, Tahoma, sans-serif ;
+`
 
-
+const ContainerLists = styled.div`
+  display: flex ;
+  align-items: center ;
+  justify-content: space-between;
+  margin-top: 10px ;
+  height: 50px ;
+  width:300px ;
+  border-radius: 20px ;
+  border: solid black 1px ;
+  padding: 15px;
 `
 
 class CreatePlaylist extends React.Component {
@@ -64,7 +69,7 @@ class CreatePlaylist extends React.Component {
             this.getAllPlaylists();
           })
           .catch((err) => {
-            alert(err.response.data.message)
+            alert("Já existe uma playlist com esse nome")
           });
     };
 
@@ -75,14 +80,14 @@ class CreatePlaylist extends React.Component {
 
     render () {
       
-        const listPlaylists = this.state.playlists.map((playlist) => {
-            return (
-                <div key={playlist.id}>
-                    <p> {playlist.name} </p>
-                    <button>Deletar</button>
-                </div>
-            )
-        });
+      const listPlaylist = this.state.playlists.map((playlist) => {
+        return (
+          <ContainerLists>
+            <p key={playlist.id} > {playlist.name} </p>
+            <button>Deletar</button>
+          </ContainerLists>
+        )
+    })
 
         return (
             <section>
@@ -94,7 +99,7 @@ class CreatePlaylist extends React.Component {
                   />
                   <button onClick={this.createPlaylist} > Criar playlist </button>
                 </ContainerMenu>
-                {listPlaylists}
+                {listPlaylist}
 
             </section>
 
