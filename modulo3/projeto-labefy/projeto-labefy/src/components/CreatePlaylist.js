@@ -1,119 +1,93 @@
 import React from 'react';
+import styled from "styled-components";
 import axios from 'axios';
-import styled from 'styled-components';
 
-const ContainerMenu = styled.menu`
-  display: flex ;
-  flex-direction: column;
-  align-items:  center;
-  height: 100vh ;
+const ContainerInput = styled.div`
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
+  display: flex ;
+  flex-direction: column ;
+  justify-content: space-around;
+  padding: 30px;
+  margin: auto ;
+  width: 250px ;
+  height: 180px ;
+  background-color: black ;
+  border-radius: 30px;
+
 `
 
-const ContainerLists = styled.div`
-  display: flex ;
-  align-items: center ;
-  justify-content: space-between;
-  margin-top: 10px ;
-  height: 50px ;
-  width:300px ;
+const Titulo = styled.h3`
+  color: orange;
+  text-align: center ;
+  margin-top: 5px ;
+`
+
+const Input = styled.input`
+  color: #fff;
+  font-family: inherit;
+  border-bottom: 2px solid #9b9b9b;
+  border: 0;
+  outline: 0 ;
+  background: transparent ;
+  transition: border-color 0.2s;
+  text-align: center;
+`
+
+const Button = styled.button`
+  margin-top: 30px;
+  height: 50px;
   border-radius: 20px ;
-  border: solid black 1px ;
-  padding: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px ;
+  background-color: orange ;
 `
 
 class CreatePlaylist extends React.Component {
 
     state = {
-        playlists: [],
-        playlistInput: ""
-    };
-
-    componentDidMount() {
-        this.getAllPlaylists();
+      inputPlaylist: ""
     }
-    
-    
-    getAllPlaylists = () => {
-      const urlPlaylist =   "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
 
-        axios
-          .get(urlPlaylist, {
-            headers: {
-              Authorization: "mileny-faria-gebru"
-            }
-          })
-          .then((res) => {
-            this.setState({playlists: res.data});
-          })
-          .catch((err) => {
-            console.log(err.response);
-          });
-    };
+    handlePlaylistInput = (event) => {
+      this.setState({inputPlaylist: event.target.value})
+
+    }
 
     createPlaylist = () => {
-        const urlPlaylist =   "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";
-        const body = {
-          name: this.state.playlistInput
-        };
+      const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
+      const body = {
+        name: this.state.inputPlaylist
+      }
 
-        axios
-          .post(urlPlaylist, body, {
-            headers: {
-              Authorization: "mileny-faria-gebru"
-            }
-          })
-          .then((res) => {
-            alert(`A playlist ${this.state.playlistInput} foi criada com sucesso`);
-            this.setState({playlistInput: ""});
-            this.getAllPlaylists();
-          })
-          .catch((err) => {
-            alert("Já existe uma playlist com esse nome")
-          });
-    };
+      axios
+        .post(url, body, {
+          headers: {
+            Authorization: "mileny-faria-gebru"
+          }
+        })
+        .then(res => {
+          alert(`Playlist criada com sucesso`)
+          this.setState({inputPlaylist: "" })
+        })
+        .catch(err => alert("Já existe uma playlist com esse nome!"))
 
-    onChangePlaylist = (event) => {
-        this.setState({playlistInput: event.target.value});
-      };
-
+    }
 
     render () {
       
-      const listPlaylist = this.state.playlists.map((playlist) => {
         return (
-          <ContainerLists>
-            <p key={playlist.id} > {playlist.name} </p>
-            <button>Deletar</button>
-          </ContainerLists>
+          <ContainerInput>
+            <Titulo>Crie sua Playlist</Titulo>
+            <Input
+              placeholder="Nome da Playlist"
+              value={this.state.inputPlaylist}
+              onChange={this.handlePlaylistInput}
+            />
+            <Button onClick={this.createPlaylist}>CRIAR</Button>
+          </ContainerInput>
         )
-    })
-
-        return (
-            <section>
-                <ContainerMenu>
-                  <input
-                      placeholder='Digite aqui sua nova playlist'
-                      value={this.state.playlistInput}
-                      onChange={this.onChangePlaylist}
-                  />
-                  <button onClick={this.createPlaylist} > Criar playlist </button>
-                </ContainerMenu>
-                {listPlaylist}
-
-            </section>
-
-)
-
-
-
 
     }
-
-
-
-
-
 
 }
 
