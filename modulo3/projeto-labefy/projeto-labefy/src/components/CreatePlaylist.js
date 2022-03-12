@@ -8,12 +8,11 @@ const ContainerInput = styled.div`
   flex-direction: column ;
   justify-content: space-around;
   padding: 30px;
-  margin: auto ;
+  margin: 30px auto ;
   width: 250px ;
   height: 180px ;
   background-color: black ;
   border-radius: 30px;
-
 `
 
 const Titulo = styled.h3`
@@ -29,14 +28,13 @@ const Input = styled.input`
   border: 0;
   outline: 0 ;
   background: transparent ;
-  transition: border-color 0.2s;
   text-align: center;
 `
 
 const Button = styled.button`
   margin-top: 30px;
   height: 50px;
-  border-radius: 20px ;
+  border-radius: 15px ;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 30px ;
   background-color: orange ;
@@ -72,6 +70,10 @@ class CreatePlaylist extends React.Component {
         .catch(err => alert("Já existe uma playlist com esse nome!"))
 
     }
+
+   
+  
+   
 
     render () {
       

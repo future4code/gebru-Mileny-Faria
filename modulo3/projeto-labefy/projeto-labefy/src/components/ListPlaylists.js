@@ -11,7 +11,7 @@ const ContainerLists = styled.div`
   margin-top: 20px;
   width: 350px ;
   height: 100vh ;
-  background-color: #1C1C1C ;
+  
   border-radius: 30px;
 
 `
@@ -45,7 +45,8 @@ const Button = styled.button`
 class ListPlaylists extends React.Component {
 
     state = {
-        playlists: []
+        playlists: [],
+        
     }
 
     componentDidMount() {
@@ -86,7 +87,7 @@ class ListPlaylists extends React.Component {
         const renderedPlaylists = this.state.playlists.map((playlist) => {
             return (
                 <Lists key={playlist.id}>
-                    <p>{playlist.name}</p>
+                    <p onClick={this.props.irPraTelaMusicas()}>{playlist.name}</p>
                     <Button onClick={() => this.deletePlaylist(playlist.id)}>Deletar</Button>
                 </Lists>
             )
