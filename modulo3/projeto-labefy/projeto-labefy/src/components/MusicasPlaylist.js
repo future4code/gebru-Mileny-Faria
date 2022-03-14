@@ -3,8 +3,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import AddMusica from './AddMusica';
 import NotaMusical1 from '../imgs/notas1.png';
-import NotaMusical2 from '../imgs/notas2.png';
-import NotaMusical3 from '../imgs/notas3.png';
+
 
 const ContainerLists = styled.div`
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
@@ -59,20 +58,11 @@ const ListasMusicas = styled.p`
 
 `
 const Imagem1 = styled.img`
-  width: 150px;
-  position: fixed;
-  margin: 30px 50px;
+  width: 10vw;
+  position: absolute;
+  margin: 20px 60px;
 `
-const Imagem2 = styled.img`
-  width: 400px;
-  position: fixed;
-  margin: 200px 60px;
-`
-const Imagem3 = styled.img`
-  width: 450px;
-  position: fixed;
-  margin: 30px 930px;
-`
+
 
 class MusicasPlaylist extends React.Component {
 
@@ -130,8 +120,6 @@ removeTrackFromPlaylist = (trackId) => {
         return (
           <div>
             <Imagem1 src={NotaMusical1}></Imagem1>
-            <Imagem2 src={NotaMusical2}></Imagem2>
-            <Imagem3 src={NotaMusical3}></Imagem3>
           
             <ContainerLists>
               <Titulo>Minha Playlist</Titulo>
