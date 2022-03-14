@@ -24,4 +24,4 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ### Deploy da aplicação :dash:
 
- > https://material-women.surge.sh/
+ > https://obedient-sail.surge.sh/
