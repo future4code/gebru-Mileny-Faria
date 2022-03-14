@@ -3,7 +3,7 @@
 > Status do Projeto: Concluido :heavy_check_mark:
 
 ## Descrição do Projeto
-<p align="center">O Labefy é uma versão simplificada do spotify, onde o usuário pode criar playlists, adicionar e ouvir músicas. O objetivo desse projeto foi realizar a integração com a API Labefy, que permite o gerenciamento básico de playlists musicais.</p>
+<p align="center">O Labefy é uma versão simplificada do Spotify, onde o usuário pode criar playlists, adicionar e ouvir músicas. O objetivo desse projeto foi realizar a integração com a API Labefy, que permite o gerenciamento básico de playlists musicais.</p>
 
 
 ### Features
