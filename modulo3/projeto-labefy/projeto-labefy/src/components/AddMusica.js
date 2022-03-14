@@ -17,8 +17,9 @@ border-radius: 30px;
 `
 
 const Titulo = styled.h3`
-color: orange;
+color: #ff6605;
 text-align: center ;
+background-color: black;
 `
 
 const Input = styled.input`
@@ -40,7 +41,7 @@ align-self: center;
 border-radius: 15px ;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 font-size: 20px ;
-background-color: orange ;
+background-color: #ff6605 ;
 `
 
 class AddMusica extends React.Component {
@@ -65,7 +66,7 @@ class AddMusica extends React.Component {
 
 
     addTrackToPlaylist = (playlistId) => {
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlistId}/tracks`
         const body = {
           name: this.state.inputNomeMusica,
           artist: this.state.inputNomeArtista,
@@ -81,6 +82,7 @@ class AddMusica extends React.Component {
           .then(res => {
             alert(`Música adicionada com sucesso`)
             this.setState({inputNomeMusica: "", inputNomeArtista: "", inputLinkAudio: ""})
+            this.props.getPlaylistTracks()
           })
           .catch(err => alert("Não conseguimos adicionar essa música!"))
   
@@ -107,7 +109,7 @@ class AddMusica extends React.Component {
                 value={this.state.inputLinkAudio}
                 onChange={this.onChangeInputLinkAudio}
                 />
-                {/* <Button onClick={this.addTrackToPlaylist(music.id)}>ADICIONAR</Button> */}
+                <Button onClick={() => this.addTrackToPlaylist(this.props.playlistId)}>ADICIONAR</Button>
             </ContainerInput>
         )
 

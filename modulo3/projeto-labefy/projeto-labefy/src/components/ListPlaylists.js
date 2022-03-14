@@ -1,45 +1,78 @@
 import React from 'react';
 import styled from "styled-components";
 import axios from 'axios';
+import CreatePlaylist from './CreatePlaylist';
+import NotaMusical1 from '../imgs/notas1.png';
+import NotaMusical2 from '../imgs/notas2.png';
+import NotaMusical3 from '../imgs/notas3.png';
+
 
 const ContainerLists = styled.div`
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
   display: flex ;
   flex-direction: column ;
+  align-items: center;
   padding: 30px;
-  margin: auto ;
-  margin-top: 20px;
-  width: 350px ;
-  height: 100vh ;
-  
-  border-radius: 30px;
+  margin:20px, auto;
 
 `
 
 const Titulo = styled.h3`
-  color: orange;
+  color: #ff6605;
   text-align: center ;
   margin-top: 5px ;
 `
 
 const Lists = styled.span`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: orange;
+  color: #ff6605;
   text-transform: uppercase;
+  justify-content: space-around;
   font-family: 'Courier New', Courier, monospace;
-  margin-top: 15px;
+  margin: 15px;
+  border: solid 5px #ff6605;
+  border-radius: 30px;
+  width: 300px;
+  padding: 30px;
   
 `
-const Button = styled.button`
+const ButtonDeletar = styled.button`
   height: 20px;
-  width: 80px;
+  width: 100px;
   border-radius: 10px ;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 10px ;
-  background-color: orange ;
+  background-color: black ;
+  margin-left: 50px;
+  color: blanchedalmond;
 `
+const ButtonOuvir = styled.button`
+  height: 20px;
+  width: 100px;
+  border-radius: 10px ;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px ;
+  background-color: black ;
+  margin-left: 50px;
+  color: blanchedalmond;
+`
+
+const Imagem1 = styled.img`
+  width: 150px;
+  position: fixed;
+  margin: 30px 50px;
+`
+const Imagem2 = styled.img`
+  width: 400px;
+  position: fixed;
+  margin: 200px 60px;
+`
+const Imagem3 = styled.img`
+  width: 450px;
+  position: fixed;
+  margin: 30px 930px;
+`
+
 
 
 class ListPlaylists extends React.Component {
@@ -87,18 +120,26 @@ class ListPlaylists extends React.Component {
         const renderedPlaylists = this.state.playlists.map((playlist) => {
             return (
                 <Lists key={playlist.id}>
-                    <p onClick={this.props.irPraTelaMusicas()}>{playlist.name}</p>
-                    <Button onClick={() => this.deletePlaylist(playlist.id)}>Deletar</Button>
+                    <p>{playlist.name}</p>
+                    <ButtonOuvir onClick={() => this.props.irPraTelaMusicas(playlist.id)}>Ouvir</ButtonOuvir>
+                    <ButtonDeletar onClick={() => this.deletePlaylist(playlist.id)}>Deletar</ButtonDeletar>
                 </Lists>
             )
         })
       
 
         return (
-          <ContainerLists>
-            <Titulo>Minhas Playlists</Titulo>
-            {renderedPlaylists}
-          </ContainerLists>
+          <div>
+            <Imagem1 src={NotaMusical1}></Imagem1>
+            <Imagem2 src={NotaMusical2}></Imagem2>
+            <Imagem3 src={NotaMusical3}></Imagem3>
+          
+            <ContainerLists>
+              <Titulo>Minhas Playlists</Titulo>
+              {renderedPlaylists}
+              <CreatePlaylist getAllPlaylists={this.getAllPlaylists}/>
+            </ContainerLists>
+          </div>
         )
 
     }

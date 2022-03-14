@@ -1,26 +1,24 @@
 import React from 'react';
-import styled from "styled-components"
-import CreatePlaylist from './components/CreatePlaylist';
 import ListPlaylists from './components/ListPlaylists';
 import MusicasPlaylist from './components/MusicasPlaylist';
+
 
 
 class App extends React.Component {
 
   state = {
     renderizarTela: 'telaPlaylists',
-    idDaPlaylist: ""
+    playlistId: "",
   }
   
   escolherTela = () => {
     switch (this.state.renderizarTela) {
       case 'irPraMusicas':
-        return <MusicasPlaylist irPraTelaPlaylists={this.irPraTelaPlaylists()}/>
+        return <MusicasPlaylist playlistId={this.state.playlistId} irPraTelaPlaylists={this.irPraTelaPlaylists}/>
       case 'telaPlaylists':
         return (
           <div>
-            <CreatePlaylist />
-            <ListPlaylists  irPraTelaMusicas={this.irPraTelaMusicas(this.state.idDaPlaylist)}/>
+            <ListPlaylists irPraTelaMusicas={this.irPraTelaMusicas}/>
           </div>
         )
       default:
@@ -30,7 +28,8 @@ class App extends React.Component {
   }
 
   irPraTelaMusicas = (playlistId) => {
-    this.setState({ renderizarTela: 'irPraMusicas', idDaPlaylist: playlistId })
+    this.setState({ renderizarTela: 'irPraMusicas'})
+    this.setState({ playlistId: playlistId })
   }
 
   irPraTelaPlaylists = () => {

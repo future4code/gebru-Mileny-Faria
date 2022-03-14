@@ -16,9 +16,10 @@ const ContainerInput = styled.div`
 `
 
 const Titulo = styled.h3`
-  color: orange;
+  color: #ff6605;
   text-align: center ;
   margin-top: 5px ;
+  background-color: black;
 `
 
 const Input = styled.input`
@@ -37,7 +38,7 @@ const Button = styled.button`
   border-radius: 15px ;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 30px ;
-  background-color: orange ;
+  background-color: #ff6605 ;
 `
 
 class CreatePlaylist extends React.Component {
@@ -66,6 +67,7 @@ class CreatePlaylist extends React.Component {
         .then(res => {
           alert(`Playlist criada com sucesso`)
           this.setState({inputPlaylist: "" })
+          this.props.getAllPlaylists()
         })
         .catch(err => alert("Já existe uma playlist com esse nome!"))
 

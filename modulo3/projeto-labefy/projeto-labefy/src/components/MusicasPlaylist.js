@@ -2,36 +2,76 @@ import React from 'react';
 import styled from "styled-components";
 import axios from 'axios';
 import AddMusica from './AddMusica';
+import NotaMusical1 from '../imgs/notas1.png';
+import NotaMusical2 from '../imgs/notas2.png';
+import NotaMusical3 from '../imgs/notas3.png';
 
 const ContainerLists = styled.div`
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
   display: flex ;
   flex-direction: column ;
+  align-items: center;
   padding: 30px;
-  margin: auto ;
-  margin-top: 20px;
-  width: 350px ;
-  height: 100vh ;
-  
-  border-radius: 30px;
+  margin:20px, 50px;
 
+`
+const Lists = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ff6605;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 15px;
+  border: solid 5px #ff6605;
+  border-radius: 30px;
+  width: 300px;
+  padding: 30px;
+  
 `
 
 const Titulo = styled.h3`
-  color: orange;
+  color: #ff6605;
   text-align: center ;
   margin-top: 5px ;
 `
 
-const Lists = styled.span`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: orange;
-  text-transform: uppercase;
-  font-family: 'Courier New', Courier, monospace;
-  margin-top: 15px;
-  
+const Button = styled.button`
+  margin-top: 30px;
+  width: 300px;
+  height: 40px;
+  border-radius: 15px ;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px ;
+  background-color: #ff6605 ;
+`
+
+const ButtonDeletarMusica = styled.button`
+  color: white;
+  width: 150px;
+  border-radius: 5px;
+  padding: 8px;
+  margin-top: 20px;
+`
+
+const ListasMusicas = styled.p`
+  margin-bottom: 10px;
+
+`
+const Imagem1 = styled.img`
+  width: 150px;
+  position: fixed;
+  margin: 30px 50px;
+`
+const Imagem2 = styled.img`
+  width: 400px;
+  position: fixed;
+  margin: 200px 60px;
+`
+const Imagem3 = styled.img`
+  width: 450px;
+  position: fixed;
+  margin: 30px 930px;
 `
 
 class MusicasPlaylist extends React.Component {
@@ -45,7 +85,7 @@ class MusicasPlaylist extends React.Component {
   }
 
   getPlaylistTracks = (playlistId) => {
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}/tracks`
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlistId}/tracks`
 
     axios
       .get(url, {
@@ -53,9 +93,24 @@ class MusicasPlaylist extends React.Component {
             Authorization: "mileny-faria-gebru"
           }
       })
-      .then(res => this.setState({musics: res.data.result.list}))
-      .catch(err => alert("Não conseguimos mostrar suas músicas"))
+      .then(res => {this.setState({musics: res.data.result.tracks})})
+      .catch(err => console.log(err.response))
 
+}
+
+removeTrackFromPlaylist = (trackId) => {
+  const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlistId}/tracks/${trackId}`
+
+  axios
+      .delete(url, {
+          headers: {
+              Authorization: "mileny-faria-gebru"
+          }})
+      .then(res => {
+              alert("Música deletada!")
+              this.getPlaylistTracks()
+      })
+      .catch(err => alert("Não conseguimos excluir essa música!"))
 }
    
 
@@ -64,20 +119,27 @@ class MusicasPlaylist extends React.Component {
       const renderizaMusicas = this.state.musics.map((music) => {
         return (
             <Lists key={music.id}>
-                <p>{music.name}</p>
-                <p>{music.artista}</p>
-                <p>{music.url}</p>
+                <ListasMusicas>Música: {music.name}</ListasMusicas>
+                <ListasMusicas>Artista: {music.artist}</ListasMusicas>
+                <audio src={music.url} controls loop></audio>
+                <ButtonDeletarMusica onClick={() => this.removeTrackFromPlaylist(music.id)}>Deletar Música</ButtonDeletarMusica>
             </Lists>
         )
     })
 
         return (
-          <ContainerLists>
-            <p>Minha Playlist</p>
-            {renderizaMusicas}
-            <button onClick={this.props.irPraTelaPlaylists}>Voltar para Playlists</button>
-            <AddMusica />
-          </ContainerLists>
+          <div>
+            <Imagem1 src={NotaMusical1}></Imagem1>
+            <Imagem2 src={NotaMusical2}></Imagem2>
+            <Imagem3 src={NotaMusical3}></Imagem3>
+          
+            <ContainerLists>
+              <Titulo>Minha Playlist</Titulo>
+              {renderizaMusicas}
+              <AddMusica getPlaylistTracks={this.getPlaylistTracks} playlistId={this.props.playlistId}/>
+              <Button onClick={this.props.irPraTelaPlaylists}>Voltar para Playlists</Button>
+            </ContainerLists>
+          </div>
         )
 
     }
