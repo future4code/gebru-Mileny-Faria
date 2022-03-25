@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerPerfil = styled.div`
+export const ContainerProfile = styled.div`
   padding: 15px;
   display: grid;
   grid-template-rows: 400px 1fr;
@@ -25,7 +25,7 @@ export const Blur = styled.img`
   margin-top: 20px;
 `;
 
-export const ImagemStilo = styled.img`
+export const Photo = styled.img`
   max-width: 300px;
   max-height: 400px;
   z-index: 2;
@@ -39,7 +39,7 @@ export const ContainerBio = styled.div`
   z-index: 3;
 `;
 
-export const NomeEIdade = styled.div`
+export const NameAge = styled.div`
   margin-left: 40px;
   font-size: 1.5em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -47,7 +47,7 @@ export const NomeEIdade = styled.div`
   color: white;
 `;
 
-export const TextoPerfil = styled.p`
+export const Bio = styled.p`
   margin: 15px 40px;
   font-size: 1em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;

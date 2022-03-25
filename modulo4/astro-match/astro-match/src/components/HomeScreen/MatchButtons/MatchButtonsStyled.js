@@ -1,12 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 
-const ContainerButtons = styled.div`
+export const ContainerButtons = styled.div`
   padding: 10px 0px;
   position: absolute;
   margin-top: 430px;
 `;
-const ButtonXStyled = styled.button`
+
+export const ButtonX = styled.button`
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -20,7 +20,7 @@ const ButtonXStyled = styled.button`
   box-shadow: rgb(205 205 205 / 73%) 0px 0px 15px 0px;
   overflow: hidden;
   border: 1px solid red;
-  margin-left: 80px;
+  margin-left: 55px;
   &:hover {
     background-color: red;
     color: white;
@@ -28,7 +28,7 @@ const ButtonXStyled = styled.button`
   }
 `;
 
-const ButtonHeartStyled = styled.button`
+export const ButtonHeart = styled.button`
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -42,19 +42,10 @@ const ButtonHeartStyled = styled.button`
   box-shadow: rgb(205 205 205 / 73%) 0px 0px 15px 0px;
   overflow: hidden;
   border: 1px solid green;
-  margin-left: 80px;
+  margin-left: 122px;
   &:hover {
     background-color: green;
     color: white;
     border: 1px solid green;
   }
 `;
-
-export function BotaoMatch(props) {
-  return (
-    <ContainerButtons>
-      <ButtonXStyled onClick={props.onClickNo}> X </ButtonXStyled>
-      <ButtonHeartStyled onClick={props.onClickYes}> ♥ </ButtonHeartStyled>
-    </ContainerButtons>
-  );
-}

@@ -1,24 +1,20 @@
 import React from "react";
-import styled from "styled-components";
-import { TelaInicial } from "./components/TelaInicial/TelaInicial";
-
-const AppContainer = styled.div`
-  width: 400px;
-  height: 600px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: rgb(0 0 0 / 6%) 0px 0px 5px;
-`;
+import { HomeScreen } from "./components/HomeScreen/HomeScreen/HomeScreen";
+import { ResetButton } from "./components/ResetButton/ResetButton";
+import { AppContainer } from "./AppStyled";
+import axios from "axios";
 
 export default function App() {
-  return (
-    <AppContainer>
-      <TelaInicial />
-    </AppContainer>
-  );
+  const onClickClearMatch = () => {
+    axios
+      .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/clear")
+      .then((res) => {return alert("Lista de matchs deletada com sucesso!")})
+      .catch((err) => {return alert("Erro ao apagar lista, tente novamente")})
+  }
+    return (
+      <AppContainer>
+        <HomeScreen />
+        <ResetButton onClickClearMatch={() => onClickClearMatch()} />
+      </AppContainer>
+    )
 }
