@@ -1,12 +1,12 @@
 import React from "react";
-import { DivStyled, HeaderStyled, ButtonProfiles, ButtonMatchs } from "./HeaderStyled";
+import { ContainerHeader, Logo, ButtonProfiles, ButtonMatchs } from "./HeaderStyled";
 
 export const Header = (props) => {
   return (
-    <DivStyled>
+    <ContainerHeader>
       <ButtonProfiles onClick={props.goToProfileCardScreen}> PERFIS </ButtonProfiles>
-      <HeaderStyled> astromatch </HeaderStyled>
+      <Logo> astromatch </Logo>
       <ButtonMatchs onClick={props.goToMatchScreen}> MATCHS </ButtonMatchs>
-    </DivStyled>
+    </ContainerHeader>
   )
 }

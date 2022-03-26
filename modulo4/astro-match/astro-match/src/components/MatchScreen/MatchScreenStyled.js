@@ -1,20 +1,25 @@
 import styled from "styled-components";
 
 export const ContainerListMatchs = styled.div`
+  height: 10%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   border-bottom: 1px solid #a1887f;
   &:hover {
-    background-color: #bdbdbd;
+    box-shadow:
+                1px 1px purple,
+                2px 2px purple,
+                3px 3px purple;
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
   }
 `;
 
 export const Perfil = styled.img`
   border-radius: 50%;
   padding: 15px;
-  width: 70px;
-  height: 70px;
+  width: 12%;
+  height: 70%;
 `;
 
 export const Name = styled.p`

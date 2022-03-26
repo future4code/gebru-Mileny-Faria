@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const ContainerClearButton = styled.div`
-  margin-top: 45px;
-  margin-left: 132px;
+  
+  margin-top: 18%;
+  margin-left: 33%;
 `;
 
 export const ClearButton = styled.button`
@@ -16,4 +17,9 @@ export const ClearButton = styled.button`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   position: fixed;
+  &:hover {
+    background-color: purple;
+    color: white;
+    border: 1px solid purple;
+  }
 `;

@@ -10,7 +10,7 @@ export const ProfileCard = (props) => {
       </ContainerPhoto>
       <ContainerBio>
         <NameAge>
-          {props.profile.name}, {props.profile.age}
+          {props.profile.name} {props.profile.age}
         </NameAge>
         <Bio>{props.profile.bio}</Bio>
       </ContainerBio>

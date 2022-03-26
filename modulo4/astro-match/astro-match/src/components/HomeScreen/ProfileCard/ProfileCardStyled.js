@@ -11,6 +11,7 @@ export const ContainerPhoto = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 `;
 
 export const Blur = styled.img`
@@ -35,7 +36,7 @@ export const Photo = styled.img`
 export const ContainerBio = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: -90px;
+  margin-top: -130px;
   z-index: 3;
 `;
 
@@ -43,7 +44,8 @@ export const NameAge = styled.div`
   margin-left: 40px;
   font-size: 1.5em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-shadow: 0.2em 0.2em 0.3em black;
+  text-shadow: 1px 2px 1px black;
+  -webkit-text-stroke: 0.3px black;
   color: white;
 `;
 
@@ -51,6 +53,7 @@ export const Bio = styled.p`
   margin: 15px 40px;
   font-size: 1em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-shadow: 0.2em 0.2em 0.3em black;
+  text-shadow: 1px 2px 1px black;
+  -webkit-text-stroke: 0.3px black;
   color: white;
 `;

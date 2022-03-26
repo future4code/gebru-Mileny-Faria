@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DivStyled = styled.div`
+export const ContainerHeader = styled.div`
   height: 60px;
   border-bottom: 1px solid lightgray;
   display: flex;
@@ -9,7 +9,7 @@ export const DivStyled = styled.div`
   padding: 0px 10px;
 `;
 
-export const HeaderStyled = styled.h2`
+export const Logo = styled.h2`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-image: linear-gradient(to right, #40e0d0 50%, purple 50%);
@@ -19,6 +19,13 @@ export const HeaderStyled = styled.h2`
   -webkit-text-fill-color: transparent;
   font-size: 200%;
   margin-top: 20px;
+  &:hover {
+    background-image: linear-gradient(to right, purple 50%, #40e0d0 50%);
+  color: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
 `;
 
 export const ButtonProfiles = styled.button`
@@ -30,6 +37,11 @@ export const ButtonProfiles = styled.button`
   height: 50%;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  &:hover {
+    background-color: purple;
+    color: white;
+    border: 1px solid purple;
+  }
 `;
 
 export const ButtonMatchs = styled.button`
@@ -41,4 +53,9 @@ export const ButtonMatchs = styled.button`
   height: 50%;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  &:hover {
+    background-color: #40e0d0;
+    color: white;
+    border: 1px solid #40e0d0;
+  }
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerButtons = styled.div`
   padding: 10px 0px;
   position: absolute;
-  margin-top: 430px;
+  margin-top: 550px;
 `;
 
 export const ButtonX = styled.button`
