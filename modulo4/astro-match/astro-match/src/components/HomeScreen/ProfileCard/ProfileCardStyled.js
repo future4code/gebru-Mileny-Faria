@@ -16,6 +16,9 @@ export const ContainerPhoto = styled.div`
 
 export const Blur = styled.img`
   background-image: url(${(props) => props.imagem});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   filter: blur(10px);
   border: 1px solid transparent;
   border-radius: 10px;

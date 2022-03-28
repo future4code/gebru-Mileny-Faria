@@ -13,5 +13,5 @@ export const AppContainer = styled.div`
   box-shadow: rgb(0 0 0 / 6%) 0px 0px 5px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  /* justify-content: start; */
 `;

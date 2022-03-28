@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const ContainerClearButton = styled.div`
-  
-  margin-top: 18%;
-  margin-left: 33%;
-`;
 
 export const ClearButton = styled.button`
   border-radius: 30px;
@@ -16,7 +11,13 @@ export const ClearButton = styled.button`
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
-  position: fixed;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  
+  
   &:hover {
     background-color: purple;
     color: white;

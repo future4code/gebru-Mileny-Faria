@@ -20,7 +20,7 @@ export const ButtonX = styled.button`
   box-shadow: rgb(205 205 205 / 73%) 0px 0px 15px 0px;
   overflow: hidden;
   border: 1px solid red;
-  margin-left: 55px;
+  margin-left: 58px;
   &:hover {
     background-color: red;
     color: white;

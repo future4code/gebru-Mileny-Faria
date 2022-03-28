@@ -4,21 +4,28 @@ import { ProfileCard } from "../ProfileCard/ProfileCard";
 import { MatchScreen } from "../../MatchScreen/MatchScreen";
 import { Header } from "../../Header/Header";
 import { MatchButtons } from "../MatchButtons/MatchButtons";
-import { ContainerProfileAndButtons } from "./HomeScreenStyled";
+import { ContainerProfileAndButtons, LoadingProfile, Text } from "./HomeScreenStyled";
+import { ResetButton } from "../../ResetButton/ResetButton";
+import Triste from "../../../img/triste.png";
 
 export const HomeScreen = () => {
   const [renderScreen, setRenderScreen] = useState("profileCard")
-  const [profileToChoose, setProfileToChoose] = useState([])
+  const [profileToChoose, setProfileToChoose] = useState()
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getProfileToChoose()
   }, [])
 
-  const getProfileToChoose = () => {
-    axios
+  const getProfileToChoose = async () => {
+    setIsLoading(true)
+    await axios
       .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/person`)
       .then((res) => {setProfileToChoose(res.data.profile)})
-      .catch((err) => {alert("Erro ao carregar perfil")})
+      .catch((err) => {
+        alert("Erro ao carregar perfil")
+      })
+    setIsLoading(false)
   }
 
   const chooseProfile = (choice) => {
@@ -44,14 +51,25 @@ export const HomeScreen = () => {
   const renderSelectedScreen = () => {
     switch (renderScreen) {
       case "profileCard":
+        if (isLoading) {
+          return <LoadingProfile>  </LoadingProfile>
+        }
+        if (profileToChoose) {
+          return (
+            <ContainerProfileAndButtons>
+              <ProfileCard profile={profileToChoose} />
+              <MatchButtons onClickNo={() => onClickNo()} onClickYes={() => onClickYes()} />
+            </ContainerProfileAndButtons>
+          )
+        }
         return (
-          <ContainerProfileAndButtons>
-            <ProfileCard profile={profileToChoose} />
-            <MatchButtons onClickNo={() => onClickNo()} onClickYes={() => onClickYes()} />
-          </ContainerProfileAndButtons>
+          <>
+            <img src={Triste} />
+            <Text>Limpe sua lista de matchs para aparecer mais perfis!</Text>
+          </>
         )
       case "screenMatchs":
-        return <MatchScreen profile={profileToChoose} />
+        return <MatchScreen />
       default:
         return "Não foi possível carregar a página"
     }
@@ -61,13 +79,27 @@ export const HomeScreen = () => {
 
   const goToMatchScreen = () => {setRenderScreen("screenMatchs")}
 
-    return (
-      <>
-        <Header
-          goToProfileCardScreen={() => goToProfileCardScreen()}
-          goToMatchScreen={() => goToMatchScreen()}
-        />
-        {renderSelectedScreen()}
-      </>
-    )
+  const onClickClearMatch = () => {
+    axios
+      .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/clear")
+      .then((res) => {
+        alert("Lista de matchs deletada com sucesso!")
+        if (!profileToChoose){
+          getProfileToChoose()
+        }
+      })
+      .catch((err) => {alert("Erro ao apagar a lista, tente novamente")})
+  }
+   
+
+  return (
+    <>
+      <Header
+        goToProfileCardScreen={() => goToProfileCardScreen()}
+        goToMatchScreen={() => goToMatchScreen()}
+      />
+      {renderSelectedScreen()}
+      <ResetButton onClickClearMatch={() => onClickClearMatch()} />
+    </>
+  )
 }
