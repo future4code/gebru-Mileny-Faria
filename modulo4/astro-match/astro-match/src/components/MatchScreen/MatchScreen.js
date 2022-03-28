@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ContainerListMatchs, Perfil, Name } from "./MatchScreenStyled";
+import { ContainerListMatchs, Perfil, Name, ListRender } from "./MatchScreenStyled";
 
 export const MatchScreen = () => {
   const [matches, setMatches] = useState([])
@@ -25,6 +25,6 @@ export const MatchScreen = () => {
     )
   })
 
-  return <>{listMatches}</>
+  return <ListRender>{listMatches}</ListRender>
 
 }

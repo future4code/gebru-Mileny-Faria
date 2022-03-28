@@ -12,4 +12,4 @@ O Astromatch é um clone do aplicativo de relacionamento conhecido como Tinder.
 - O usuário pode limpar a lista de matches a qualquer momento em qualquer tela do site com um botão.
 
 ### Link Surge 
-https://young-dock.surge.sh/
+https://curvy-sail.surge.sh/

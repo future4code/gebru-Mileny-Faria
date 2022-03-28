@@ -16,19 +16,16 @@ export const LoadingProfile = styled.h1`
   border-top-color: #51d4db;
   height: 50px;
   width: 50px;
-
-@keyframes is-rotating {
-  to {
-    transform: rotate(1turn);
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
   }
-}
-`
+`;
 
 export const Text = styled.h3`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #40e0d0;
   text-align: center;
   margin-top: -100px;
-
-
-`
+`;

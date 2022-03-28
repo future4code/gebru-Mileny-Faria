@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import swal from "sweetalert";
 import axios from "axios";
 import { ProfileCard } from "../ProfileCard/ProfileCard";
 import { MatchScreen } from "../../MatchScreen/MatchScreen";
@@ -15,50 +16,70 @@ export const HomeScreen = () => {
 
   useEffect(() => {
     getProfileToChoose()
-  }, [])
+  }, []);
 
   const getProfileToChoose = async () => {
     setIsLoading(true)
     await axios
-      .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/person`)
-      .then((res) => {setProfileToChoose(res.data.profile)})
+      .get(
+        `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/person`
+      )
+      .then((res) => {
+        setProfileToChoose(res.data.profile)
+      })
       .catch((err) => {
-        alert("Erro ao carregar perfil")
+        swal("Erro ao Carregar perfil")
       })
     setIsLoading(false)
-  }
+  };
 
   const chooseProfile = (choice) => {
     const headers = {
       "Content-Type": "application/json"
-    }
+    };
     const body = {
       id: profileToChoose.id,
       choice: choice
-    }
+    };
     setProfileToChoose([])
 
     axios
-      .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/choose-person",body,headers)
-      .then((res) => {getProfileToChoose()})
+      .post(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/choose-person",
+        body,
+        headers
+      )
+      .then((res) => {
+        getProfileToChoose()
+        if (res.data.isMatch === true) {
+          return swal("Deu Match!!")
+        }
+      })
       .catch((err) => console.log(err.response.data))
-  }
+  };
 
-  const onClickNo = () => {chooseProfile(false)}
-  
-  const onClickYes = () => {chooseProfile(true)}
+  const onClickNo = () => {
+    chooseProfile(false)
+  };
+
+  const onClickYes = () => {
+    chooseProfile(true)
+  };
 
   const renderSelectedScreen = () => {
     switch (renderScreen) {
       case "profileCard":
         if (isLoading) {
-          return <LoadingProfile>  </LoadingProfile>
+          return <LoadingProfile> </LoadingProfile>;
         }
         if (profileToChoose) {
           return (
             <ContainerProfileAndButtons>
               <ProfileCard profile={profileToChoose} />
-              <MatchButtons onClickNo={() => onClickNo()} onClickYes={() => onClickYes()} />
+              <MatchButtons
+                onClickNo={() => onClickNo()}
+                onClickYes={() => onClickYes()}
+              />
             </ContainerProfileAndButtons>
           )
         }
@@ -69,28 +90,35 @@ export const HomeScreen = () => {
           </>
         )
       case "screenMatchs":
-        return <MatchScreen />
+        return <MatchScreen />;
       default:
-        return "Não foi possível carregar a página"
+        return swal("Não foi possível carregar a página!")
     }
-  }
+  };
 
-  const goToProfileCardScreen = () => {setRenderScreen("profileCard")}
+  const goToProfileCardScreen = () => {
+    setRenderScreen("profileCard")
+  };
 
-  const goToMatchScreen = () => {setRenderScreen("screenMatchs")}
+  const goToMatchScreen = () => {
+    setRenderScreen("screenMatchs")
+  };
 
   const onClickClearMatch = () => {
     axios
-      .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/clear")
+      .put(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/mileny/clear"
+      )
       .then((res) => {
         alert("Lista de matchs deletada com sucesso!")
-        if (!profileToChoose){
+        if (!profileToChoose) {
           getProfileToChoose()
         }
       })
-      .catch((err) => {alert("Erro ao apagar a lista, tente novamente")})
-  }
-   
+      .catch((err) => {
+        swal("Erro ao apagar lista, tente novamente!")
+      });
+  };
 
   return (
     <>
