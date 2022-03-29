@@ -26,8 +26,7 @@ export const Name = styled.p`
 `;
 
 export const ListRender = styled.div`
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
   padding-bottom: 60px;
 
   ::-webkit-scrollbar {

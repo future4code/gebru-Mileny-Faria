@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import axios from "axios";
 import { ProfileCard } from "../ProfileCard/ProfileCard";
 import { MatchScreen } from "../../MatchScreen/MatchScreen";
@@ -16,7 +16,7 @@ export const HomeScreen = () => {
 
   useEffect(() => {
     getProfileToChoose()
-  }, []);
+  }, [])
 
   const getProfileToChoose = async () => {
     setIsLoading(true)
@@ -28,10 +28,12 @@ export const HomeScreen = () => {
         setProfileToChoose(res.data.profile)
       })
       .catch((err) => {
-        swal("Erro ao Carregar perfil")
+        Swal.fire({
+          titleText: "Erro ao Carregar perfil!"
+        })
       })
     setIsLoading(false)
-  };
+  }
 
   const chooseProfile = (choice) => {
     const headers = {
@@ -40,7 +42,7 @@ export const HomeScreen = () => {
     const body = {
       id: profileToChoose.id,
       choice: choice
-    };
+    }
     setProfileToChoose([])
 
     axios
@@ -52,19 +54,20 @@ export const HomeScreen = () => {
       .then((res) => {
         getProfileToChoose()
         if (res.data.isMatch === true) {
-          return swal("Deu Match!!")
+          return Swal.fire({
+            titleText: "Deu Match!"
+          })
         }
       })
-      .catch((err) => console.log(err.response.data))
-  };
+  }
 
   const onClickNo = () => {
     chooseProfile(false)
-  };
+  }
 
   const onClickYes = () => {
     chooseProfile(true)
-  };
+  }
 
   const renderSelectedScreen = () => {
     switch (renderScreen) {
@@ -92,17 +95,20 @@ export const HomeScreen = () => {
       case "screenMatchs":
         return <MatchScreen />;
       default:
-        return swal("Não foi possível carregar a página!")
-    }
-  };
+        return Swal.fire({
+          titleText: "Não foi possível carregar a página!"
+        })
+      }
+  
+  }
 
   const goToProfileCardScreen = () => {
     setRenderScreen("profileCard")
-  };
+  }
 
   const goToMatchScreen = () => {
     setRenderScreen("screenMatchs")
-  };
+  }
 
   const onClickClearMatch = () => {
     axios
@@ -116,9 +122,12 @@ export const HomeScreen = () => {
         }
       })
       .catch((err) => {
-        swal("Erro ao apagar lista, tente novamente!")
-      });
-  };
+        Swal.fire({
+          titleText: "Erro ao apagar lista, tente novamente!"
+        })
+      })
+  }
+  
 
   return (
     <>
