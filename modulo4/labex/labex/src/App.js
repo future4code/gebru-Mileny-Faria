@@ -1,10 +1,10 @@
 import React from "react";
-import { HomePage } from "./pages/HomePage";
+import { Router } from "./routes/Router";
 
 export const App = () => {
   return (
     <div>
-      <HomePage />
+      <Router />
     </div>
   )
 }
