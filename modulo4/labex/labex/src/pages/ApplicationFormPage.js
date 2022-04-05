@@ -1,86 +1,117 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { goBack } from "../routes/coordinator";
-import { Input, Select, Form, ButtonBack, ButtonSend, Imagem, Title, ContainerButtons, Option } from "../styled/ApplicationFormPageStyled";
-import FotoAppForm from "../img/FotoAppForm.png";
+import {
+  Input,
+  Select,
+  Form,
+  ButtonBack,
+  ButtonSend,
+  Imagem,
+  Title,
+  ContainerButtons,
+  Option
+} from "../styled/ApplicationFormPageStyled";
+import Foto from "../img/FotoAppForm.png";
+import useRequestData from "../hooks/useRequestData";
 
 
-export const ApplicationFormPage = () => {
-  const navigate = useNavigate()
-  const [inputName, setInputName] = useState("")
-  const [inputAge, setInputAge] = useState("")
-  const [inputText, setInputText] = useState("")
-  const [inputOccupation, setInputOccupation] = useState("")
-  const [trips, setTrips] = useState()
+export const ApplicationFormPage = (props) => {
+  const [inputTrip, setInputTrip] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [inputAge, setInputAge] = useState("");
+  const [inputText, setInputText] = useState("");
+  const [inputOccupation, setInputOccupation] = useState("");
+  const [inputCountry, setInputCountry] = useState("");
+  const [trips, setTrips] = useState();
+  const [trip, loadindTrips, errorTrips] = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru")
+
+  const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru"
 
   useEffect(() => {
-    getTrips()
-  }, [])
+    getTrips();
+  }, []);
 
   const getTrips = () => {
     axios
-      .get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru/trips")
-      .then((res) => setTrips(res.data.trips))
-  }
+      .get()
+      .then((res) => setTrips(res.data.trips));
+  };
+
+  const postApplyToTrip = (tripId) => {
+    const body = {
+      name: inputName,
+      age: inputAge,
+      applicationText: inputText,
+      profession: inputOccupation,
+      country: inputCountry
+    };
+    const headers = {
+      "Content-Type": "application/json"
+    };
+
+    axios
+      .post(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru/trips/${tripId}/apply`,
+        body,
+        headers
+      )
+      .then((res) => {
+        console.log(res.data);
+        setInputName("");
+        setInputAge("");
+        setInputText("");
+        setInputOccupation("");
+      });
+  };
+
+  const onChangeTrip = (event) => {
+    setInputTrip(event.target.value);
+  };
 
   const onChangeName = (event) => {
     setInputName(event.target.value);
-    console.log(inputName)
-  }
+  };
 
   const onChangeAge = (event) => {
     setInputAge(event.target.value);
-    console.log(inputAge)
-  }
+  };
 
   const onChangeText = (event) => {
     setInputText(event.target.value);
-    console.log(inputText)
-  }
+  };
 
   const onChangeOccupation = (event) => {
     setInputOccupation(event.target.value);
-    console.log(inputOccupation)
-  }
+  };
 
-  const onChangeTrips = (event) => {
-    setTrips(event.target.value)
-  }
+  const onChangeCountry = (event) => {
+    setInputCountry(event.target.value);
+  };
 
   const onClickBack = () => {
-    console.log("Voltei")
-    setInputName("")
-    setInputAge("")
-    setInputText("")
-    setInputOccupation("")
-  }
-
-  const onClickSend = () => {
-    console.log("Enviei")
-    setInputName("")
-    setInputAge("")
-    setInputText("")
-    setInputOccupation("")
-  }
-
+    console.log("Voltei");
+    setInputName("");
+    setInputAge("");
+    setInputText("");
+    setInputOccupation("");
+  };
+  console.log(inputTrip);
   const listTrips =
     trips &&
     trips.map((trip) => {
       return (
-        <Option key={trip.id} value={trip.name}>
+        <Option tripId={trip.id} key={trip.id} value={trip.name}>
           {trip.name}
         </Option>
-      )
-    })
+      );
+    });
 
   return (
     <div>
-      <h1>APPLICATION FORM PAGE</h1>
-      <Imagem src={FotoAppForm} />
+      <Imagem src={Foto} />
       <Title>Eu Quero!</Title>
       <Form action="#" method="get">
-        <Select onChange={onChangeTrips}>
+        <Select onChange={onChangeTrip}>
           <Option value={""}>Escolha uma Viagem</Option>
           {listTrips}
         </Select>
@@ -96,16 +127,31 @@ export const ApplicationFormPage = () => {
           value={inputOccupation}
           onChange={onChangeOccupation}
         />
-        <Select>
-          <option>Escolha um País</option>
+        <Select onChange={onChangeCountry}>
+          <option value={""}>Escolha um País</option>
+          <option value="Afeganistão">Afeganistão</option>
+          <option value="África do Sul">África do Sul</option>
+          <option value="Albânia">Albânia</option>
+          <option value="Alemanha">Alemanha</option>
+          <option value="Andorra">Andorra</option>
+          <option value="Angola">Angola</option>
+          <option value="Anguilla">Anguilla</option>
+          <option value="Antilhas Holandesas">Antilhas Holandesas</option>
+          <option value="Antárctida">Antárctida</option>
+          <option value="Antígua e Barbuda">Antígua e Barbuda</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Argélia">Argélia</option>
+          <option value="Armênia">Armênia</option>
+          <option value="Aruba">Aruba</option>
         </Select>
         <ContainerButtons>
           <ButtonBack onClick={onClickBack}> Voltar </ButtonBack>
-          <ButtonSend onClick={onClickSend}> Enviar </ButtonSend>
+          <ButtonSend onClick={() => postApplyToTrip(props.tripId)}>
+            {" "}
+            Enviar{" "}
+          </ButtonSend>
         </ContainerButtons>
       </Form>
-      <button onClick={() => goBack(navigate)}>Voltar</button>
     </div>
-  )
-
-}
+  );
+};
