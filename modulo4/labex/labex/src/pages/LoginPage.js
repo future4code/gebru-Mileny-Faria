@@ -3,6 +3,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { goBack } from "../routes/coordinator";
 import { goToAdminPage } from "../routes/coordinator";
+import { goToHomePage } from "../routes/coordinator";
 
 export const LoginPage = () => {
   const navigate = useNavigate()
@@ -51,6 +52,7 @@ export const LoginPage = () => {
     <br />
     <br />
      <button onClick={() => goBack(navigate)}>Voltar</button>
+     <button onClicl={() => goToHomePage(navigate)}>Home Page</button>
     </div>
   )
 }

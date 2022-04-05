@@ -9,6 +9,7 @@ import { LogoStyled, ButtonTrips, ButtonLogin } from "../styled/HomePageStyled";
 
 export const HomePage = () => {
   const navigate = useNavigate()
+   
 
   return (
     <div>

@@ -3,7 +3,7 @@ export const goToLogin = (navigate) => {
   }
   
 export const goToListTrips = (navigate) => {
-  navigate("trips/list")
+  navigate("/trips/list")
 
 }
 
@@ -14,7 +14,6 @@ export const goBack = (navigate) => {
 
   export const goToApplicationForm = (navigate) => {
     navigate("/trips/application")
-
   }
 
   export const goToAdminPage = (navigate) => {
@@ -27,5 +26,9 @@ export const goBack = (navigate) => {
 
   export const gotToDetailsTrip = (navigate) => {
     navigate("/admin/trips/:id")
+  }
+
+  export const goToHomePage = (navigate) => {
+    navigate("/")
   }
 

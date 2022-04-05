@@ -17,6 +17,7 @@ import {
 export const CardTrip = (props) => {
   const navigate = useNavigate()
 
+
   return (
     <CardContainer key={props.tripId}>
       <Imagem

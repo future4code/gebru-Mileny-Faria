@@ -12,7 +12,6 @@ import {
   Option
 } from "../styled/ApplicationFormPageStyled";
 import Foto from "../img/FotoAppForm.png";
-import useRequestData from "../hooks/useRequestData";
 
 
 export const ApplicationFormPage = (props) => {
@@ -23,10 +22,7 @@ export const ApplicationFormPage = (props) => {
   const [inputOccupation, setInputOccupation] = useState("");
   const [inputCountry, setInputCountry] = useState("");
   const [trips, setTrips] = useState();
-  const [trip, loadindTrips, errorTrips] = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru")
-
-  const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru"
-
+  
   useEffect(() => {
     getTrips();
   }, []);
