@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "../hooks/useForm"
 import axios from "axios";
 import {
   Input,
@@ -15,12 +16,8 @@ import Foto from "../img/FotoAppForm.png";
 
 
 export const ApplicationFormPage = (props) => {
+  const { form, onChange, cleanFields } = useForm({name: "", age: "", applicationText: "", profession: "", country: "" })
   const [inputTrip, setInputTrip] = useState("");
-  const [inputName, setInputName] = useState("");
-  const [inputAge, setInputAge] = useState("");
-  const [inputText, setInputText] = useState("");
-  const [inputOccupation, setInputOccupation] = useState("");
-  const [inputCountry, setInputCountry] = useState("");
   const [trips, setTrips] = useState();
   
   useEffect(() => {
@@ -29,18 +26,13 @@ export const ApplicationFormPage = (props) => {
 
   const getTrips = () => {
     axios
-      .get()
+      .get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru/trips")
       .then((res) => setTrips(res.data.trips));
   };
 
-  const postApplyToTrip = (tripId) => {
-    const body = {
-      name: inputName,
-      age: inputAge,
-      applicationText: inputText,
-      profession: inputOccupation,
-      country: inputCountry
-    };
+  const postApplyToTrip = (event, tripId) => {
+    event.preventDefault()
+
     const headers = {
       "Content-Type": "application/json"
     };
@@ -48,50 +40,24 @@ export const ApplicationFormPage = (props) => {
     axios
       .post(
         `https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru/trips/${tripId}/apply`,
-        body,
+        form,
         headers
       )
       .then((res) => {
-        console.log(res.data);
-        setInputName("");
-        setInputAge("");
-        setInputText("");
-        setInputOccupation("");
+        console.log("Enviado com sucesso!")
       });
+    
+      cleanFields()
   };
 
   const onChangeTrip = (event) => {
     setInputTrip(event.target.value);
   };
 
-  const onChangeName = (event) => {
-    setInputName(event.target.value);
-  };
-
-  const onChangeAge = (event) => {
-    setInputAge(event.target.value);
-  };
-
-  const onChangeText = (event) => {
-    setInputText(event.target.value);
-  };
-
-  const onChangeOccupation = (event) => {
-    setInputOccupation(event.target.value);
-  };
-
-  const onChangeCountry = (event) => {
-    setInputCountry(event.target.value);
-  };
-
   const onClickBack = () => {
     console.log("Voltei");
-    setInputName("");
-    setInputAge("");
-    setInputText("");
-    setInputOccupation("");
   };
-  console.log(inputTrip);
+
   const listTrips =
     trips &&
     trips.map((trip) => {
@@ -106,24 +72,39 @@ export const ApplicationFormPage = (props) => {
     <div>
       <Imagem src={Foto} />
       <Title>Eu Quero!</Title>
-      <Form action="#" method="get">
+      <Form onSubmit={() => postApplyToTrip(props.tripId)}>
         <Select onChange={onChangeTrip}>
           <Option value={""}>Escolha uma Viagem</Option>
           {listTrips}
         </Select>
-        <Input placeholder="Nome" value={inputName} onChange={onChangeName} />
-        <Input placeholder="Idade" value={inputAge} onChange={onChangeAge} />
+        <Input 
+          placeholder="Nome" 
+          name={"name"}
+          value={form.name} 
+          onChange={onChange} 
+          required
+        />
+        <Input 
+          placeholder="Idade" 
+          name={"age"}
+          value={form.age} 
+          onChange={onChange} 
+          required
+       />
         <Input
           placeholder="Texto de Candidatura"
-          value={inputText}
-          onChange={onChangeText}
+          name={"applicationText"}
+          value={form.text}
+          onChange={onChange}
+          required
         />
         <Input
           placeholder="Profissão"
-          value={inputOccupation}
-          onChange={onChangeOccupation}
+          name={"profession"}
+          value={form.profession}
+          onChange={onChange}
         />
-        <Select onChange={onChangeCountry}>
+        <Select onChange={onChange}>
           <option value={""}>Escolha um País</option>
           <option value="Afeganistão">Afeganistão</option>
           <option value="África do Sul">África do Sul</option>
@@ -142,7 +123,7 @@ export const ApplicationFormPage = (props) => {
         </Select>
         <ContainerButtons>
           <ButtonBack onClick={onClickBack}> Voltar </ButtonBack>
-          <ButtonSend onClick={() => postApplyToTrip(props.tripId)}>
+          <ButtonSend>
             {" "}
             Enviar{" "}
           </ButtonSend>

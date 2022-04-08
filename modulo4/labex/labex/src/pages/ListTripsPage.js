@@ -5,7 +5,7 @@ import { CardTrip } from "../components/CardTrip";
 import { ContainerListTrips } from "../styled/ListTripPageStyled";
 import { goBack } from "../routes/coordinator"
 
-export const ListTripsPage = (props) => {
+export const ListTripsPage = () => {
   const navigate = useNavigate()
  
   useEffect(() => {
@@ -24,6 +24,10 @@ export const ListTripsPage = (props) => {
 
   };
 
+  const goToApplicationForm = () => {
+    console.log("CLIQUEI")
+  }
+
 
   const listTrips =
     trips &&
@@ -31,6 +35,7 @@ export const ListTripsPage = (props) => {
       return (
         <div>
           <CardTrip
+            textButton={"EU QUERO!"}
             tripId={trip.id}
             tripName={trip.name}
             tripDescription={trip.description}
@@ -45,6 +50,7 @@ export const ListTripsPage = (props) => {
   <div>
     <button onClick={() => goBack(navigate)}> Voltar </button>
     <ContainerListTrips>{listTrips}</ContainerListTrips>
+    <button onCLick={() => goToApplicationForm()}>CLIQUE AQUI TESTE FUNCAO</button>
     
   </div>
   )

@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"
-import { goToApplicationForm } from "../routes/coordinator"
+// import { useNavigate } from "react-router-dom"
+// import { goToApplicationForm } from "../routes/coordinator"
 import {
   CardContainer,
   Imagem,
@@ -15,7 +15,11 @@ import {
 } from "../styled/CardTripStyled";
 
 export const CardTrip = (props) => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+
+  const goToApplicationForm = () => {
+    console.log("CLIQUEI")
+  }
 
 
   return (
@@ -25,7 +29,7 @@ export const CardTrip = (props) => {
           "https://t.ctcdn.com.br/WAIOfq4e6nuDheS7LjnofGka3j4=/512x288/smart/filters:format(webp)/i398758.jpeg"
         }
       />
-      <Button onCLick={() => goToApplicationForm(navigate)}>EU QUERO</Button>
+      <Button onCLick={() => goToApplicationForm()}>{props.textButton}</Button>
       <Name> {props.tripName} </Name>
       <Description>{props.tripDescription}</Description>
       <TripDate>Data do lançamento: {props.tripDate}</TripDate>
