@@ -1,4 +1,4 @@
-import { goToLogin } from "../routes/coordinator";
+import { goToLoginPage } from "../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -9,7 +9,7 @@ export const useProtectedPage = () => {
     const token = localStorage.getItem("token");
 
     if (token === null) {
-      goToLogin(navigate);
+      goToLoginPage(navigate);
     }
   }, [navigate]);
 };
