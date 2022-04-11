@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import FotoLogin from "../../img/FotoLogin.png";
+import FotoLogin from "../../img/FotoLogin.png"
 
 
-export const ContainerLoginPage = styled.div`
+export const ContainerCreate = styled.div`
   position: absolute;
   width:100vw;
   height:100vh;
@@ -12,8 +12,7 @@ export const ContainerLoginPage = styled.div`
 
 `
 
-
-export const ContainerBoxLogin = styled.div`
+export const ContainerBoxForm = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,7 +26,6 @@ export const ContainerBoxLogin = styled.div`
 
 `
 
-
 export const Title = styled.h2`
   margin: 0 0 30px;
   padding: 0;
@@ -37,12 +35,10 @@ export const Title = styled.h2`
 
 `
 
-
 export const ContainerInput = styled.div`
   position: relative;
 
 `
-
 
 export const Input = styled.input`
   width: 100%;
@@ -70,8 +66,7 @@ export const Input = styled.input`
 
 `
 
-
-export const ButtonLogIn = styled.button`
+export const ButtonCreate = styled.button`
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -110,4 +105,43 @@ export const ButtonHome = styled.button`
     }
 
 `
+
+
+export const ButtonAdmin = styled.button`
+  padding: 10px 20px;
+  transition: 0.5s;
+  margin-top: 50px;
+  margin-left: 1100px;
+  background-color: transparent;
+  border: none;
+    :hover {
+      background: #ff0043;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #ff0043, 0 0 25px #ff0043, 0 0 50px #ff0043,
+        0 0 100px #ff0043;
+    }
+
+`
+
+export const ButtonLogout = styled.button`
+  padding: 10px 20px;
+  transition: 0.5s;
+  margin-top: 50px;
+  margin-left: 1100px;
+  background-color: transparent;
+  border: none;
+    :hover {
+      background: #ff0043;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #ff0043, 0 0 25px #ff0043, 0 0 50px #ff0043,
+        0 0 100px #ff0043;
+    }
+    
+`
+
+
+
+
 

@@ -5,6 +5,6 @@ export const App = () => {
     <div>
       <Router />
     </div>
-  );
+  )
 }
 

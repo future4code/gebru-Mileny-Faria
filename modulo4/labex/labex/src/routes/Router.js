@@ -20,5 +20,5 @@ export const Router = () => {
         <Route path="/admin/trips/:id" element={<TripDetailsPage />} />
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}

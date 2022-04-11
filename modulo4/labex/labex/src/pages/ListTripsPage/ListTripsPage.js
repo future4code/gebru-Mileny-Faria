@@ -3,40 +3,31 @@ import { useNavigate } from "react-router-dom";
 import { useRequestData } from "../../hooks/useRequestData";
 import { CardTrips } from "../../components/CardTrips";
 import { goToHomePage } from "../../routes/coordinator";
+import { BiHomeAlt } from "react-icons/bi";
+import { ContainerListTrips, ListRender, ButtonHome, Loading } from "./ListTripsPageStyled";
+
 
 export const ListTripsPage = () => {
-  const navigate = useNavigate();
-  const BASE_URL =
-    "https://us-central1-labenu-apis.cloudfunctions.net/labeX/mileny-faria-gebru/trips";
-  const [trips] = useRequestData(BASE_URL);
+  const navigate = useNavigate()
+  const [listTrips, setListTrips, isLoading] = useRequestData(`/trips`, {})
 
-  const tripsList =
-    trips &&
-    trips.map((trip) => {
-      return (
+
+  const renderedTripsList = listTrips.trips && listTrips.trips.map((trip) => {
+    return (
         <CardTrips
-          texto={"Eu Quero"}
           name={trip.name}
           description={trip.description}
           planet={trip.planet}
           durationInDays={trip.durationInDays}
           date={trip.date}
         />
-      );
-    });
+    )
+  })
 
   return (
-    <div>
-      <h1>List Trip Page</h1>
-
-      {tripsList}
-      <button
-        onClick={() => {
-          goToHomePage(navigate);
-        }}
-      >
-        Ir para Home
-      </button>
-    </div>
-  );
-};
+    <ContainerListTrips>
+      {isLoading ? <Loading></Loading> : <ListRender>{renderedTripsList}</ListRender>}
+      <ButtonHome onClick={() => goToHomePage(navigate)}><BiHomeAlt size={40} color="#fff" /></ButtonHome>
+    </ContainerListTrips>
+  )
+}
