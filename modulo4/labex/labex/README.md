@@ -1,5 +1,5 @@
 
-<img src="https://user-images.githubusercontent.com/93015632/163055330-f83481f7-7de6-477f-afa8-c077ddac9cfb.png' width="200" />
+# LabeX
 
 ## Descrição do Projeto
 O LabeX é um site para uma agência de viagens espaciais fictícia. O objetivo era aplicar react-route, criação de formulários com autenticação, sistema para autenticação do usuário.
@@ -13,13 +13,17 @@ O LabeX é um site para uma agência de viagens espaciais fictícia. O objetivo 
 ![Captura de Tela (39)](https://user-images.githubusercontent.com/93015632/163054444-9d83aa18-ea4e-43ba-b7a5-4919cc24226c.png)
 ![Captura de Tela (40)](https://user-images.githubusercontent.com/93015632/163054462-f714b63c-53a8-4b9f-89b1-9bf1d2d7450d.png)
 
+## Link
+https://childlike-seashore.surge.sh/
+login: mileny-gebru@gmail.com.br
+password: 123456
 
 ## Features
- Ver viagens disponíveis
- Autenticação de usuários
- Criar viagens
- Formulário de aplicação
- Detalhes de cada viagem
+ * Ver viagens disponíveis
+ * Autenticação de usuários
+ * Criar viagens
+ * Formulário de aplicação
+ * Detalhes de cada viagem
  
 ## 🛠 Tecnologias
  As seguintes ferramentas foram usadas na construção do projeto:
