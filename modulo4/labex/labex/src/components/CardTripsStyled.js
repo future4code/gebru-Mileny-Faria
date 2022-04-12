@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 
 export const ContainerCard = styled.div`
+    position: relative;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     height: 600px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-    margin: 4rem;
+    margin: 20px;
     box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.15);
-    /* opacity: 0.9; */
 
 `
 
@@ -24,7 +24,6 @@ export const Name = styled.h3`
   margin-top: 15px;
   font-size: 18px;
   font-weight: bold;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
   letter-spacing: 4px;
 
 `
@@ -34,7 +33,6 @@ export const Description = styled.p`
   margin-left: 15px;
   margin-top: 0px;
   font-size: 14px;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 `
 
@@ -42,7 +40,6 @@ export const TripDate = styled.p`
   color: #fff;
   margin-left: 15px;
   font-size: 10px;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 `
 
@@ -51,7 +48,6 @@ export const TripDurationInDays = styled.p`
   margin-left: 15px;
   margin-top: -5px;
   font-size: 10px;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 `
 
@@ -60,7 +56,6 @@ export const PerPerson = styled.p`
   margin-left: 15px;
   margin-top: 20px;
   font-size: 12px;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 `
 
@@ -70,7 +65,6 @@ export const Sign = styled.p`
   margin-top: -5px;
   font-size: 14px;
   font-weight: bold;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 `
 
@@ -80,22 +74,26 @@ export const Value = styled.p`
   margin-top: -35px;
   font-size: 22px;
   font-weight: bold;
-  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 
 `
 
 export const Button = styled.button`
-  padding: 10px 20px;
-  color: #ff0043;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: 0.5s;
-  margin-top: 30px;
-  margin-left: 75px;
-  letter-spacing: 4px;
-  border-radius: 5px;
+    bottom: 10px;
+    position: absolute;
+    padding: 10px 20px;
+    color: #ff0043;
+    font-size: 16px;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    border-radius: 5px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 200px;
+
     :hover {
       background: #ff0043;
       color: #fff;
@@ -105,3 +103,10 @@ export const Button = styled.button`
     }
 
 `
+
+
+    
+
+
+
+    

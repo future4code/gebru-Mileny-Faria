@@ -37,18 +37,20 @@ export const LoginPage = () => {
               <Input
                 placeholder="Digite seu Email"
                 name={"email"}
-                type="email"
+                type={"email"}
                 value={form.email}
                 onChange={onChange}
+                required
               />
             </ContainerInput>
             <ContainerInput>
               <Input
                 placeholder="Digite sua Senha"
                 name={"password"}
-                type="password"
+                type={"password"}
                 value={form.password}
                 onChange={onChange}
+                required
               />
             </ContainerInput>
             <ButtonLogIn>Entrar</ButtonLogIn>

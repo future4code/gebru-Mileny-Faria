@@ -7,7 +7,17 @@ import { useForm } from "../../hooks/useForm";
 import { useRequestData } from "../../hooks/useRequestData";
 import { goToListTripsPage, goToHomePage } from "../../routes/coordinator";
 import { Countries } from "../../components/Countries";
-import { ContainerApplicationFormPage, ContainerBoxForm, Title, ContainerInput, Input, ButtonHome, ButtonTrip, Select, ButtonSend } from "./ApplicationFormPageStyled";
+import { ContainerApplicationFormPage, 
+  ContainerBoxForm, 
+  Title, 
+  ContainerInput, 
+  Input, 
+  ButtonHome, 
+  ButtonTrip, 
+  Select, 
+  ButtonSend,
+  Option,
+  InputText } from "./ApplicationFormPageStyled";
 import { BiHomeAlt } from "react-icons/bi";
 import { IoRocketOutline } from 'react-icons/io5';
 
@@ -41,7 +51,7 @@ export const ApplicationFormPage = () => {
 
   const renderedlistTrips = trips.trips && trips.trips.map((trip) => {
     return (
-      <option key={trip.id} value={trip.id}>{trip.name}</option>
+      <Option key={trip.id} value={trip.id}>{trip.name}</Option>
     )
   })
 
@@ -52,7 +62,7 @@ export const ApplicationFormPage = () => {
           <form onSubmit={postApplytoTrip}>
             <ContainerInput>
               <Select onChange={onChangeTripId}>
-                <option disabled selected>Escolha uma Viagem</option>
+                <Option disabled selected>Escolha uma Viagem</Option>
                 {renderedlistTrips}
               </Select>
             </ContainerInput>
@@ -60,31 +70,38 @@ export const ApplicationFormPage = () => {
               <Input 
                 placeholder="Qual seu nome?"
                 name={"name"}
-                type="text"
+                type={"text"}
                 value={form.name}
                 onChange={onChange}
+                required
+                minlength={3}
               />
             </ContainerInput>
             <ContainerInput>
               <Input 
                 placeholder="Qual sua idade?"
                 name={"age"}
-                type="text"
+                type={"number"}
                 value={form.age}
                 onChange={onChange}
+                required
+                min={18}
               />
             </ContainerInput>
             <ContainerInput>
               <Input 
                 placeholder="Qual sua profissão?"
                 name={"profession"}
-                type="text"
+                type={"text"}
                 value={form.profession}
                 onChange={onChange}
+                required
+                minlength={10}
               />
             </ContainerInput>
             <ContainerInput>
               <Select 
+                required
                 name={"country"}
                 type="text"
                 value={form.country}
@@ -93,12 +110,14 @@ export const ApplicationFormPage = () => {
               </Select>
             </ContainerInput>
             <ContainerInput>
-              <Input 
+              <InputText 
                 placeholder="Por que devemos te escolher?"
                 name={"applicationText"}
-                type="text"
+                type={"text"}
                 value={form.applicationText}
                 onChange={onChange}
+                required
+                minlength={30}
               />
             </ContainerInput>
             <ButtonSend type={"submit"}>Enviar</ButtonSend>

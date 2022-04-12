@@ -33,9 +33,9 @@ export const AdminHomePage = () => {
     const confirm = window.confirm(`Tem certeza que deseja deletar a viagem para ${name}?`)
     if(confirm){
       axios
-        .del(`${BASE_URL}/trips/${id}`, headers)
+        .delete(`${BASE_URL}/trips/${id}`, headers)
         .then((res) => {
-          Swal.fire("Viagem deletada")
+          Swal.fire(`Viagem ${name} deletada`)
           setListTrips()
         })
         .catch((err) => {

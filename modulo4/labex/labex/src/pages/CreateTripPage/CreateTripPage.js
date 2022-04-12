@@ -6,9 +6,21 @@ import { BASE_URL } from "../../constants/url";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import { useNavigate } from "react-router-dom";
 import { goToAdminHomePage, goToHomePage, goToLoginPage } from "../../routes/coordinator";
-import { ContainerCreate, ContainerBoxForm, Title, ContainerInput, Input, ButtonCreate,ButtonHome, ButtonAdmin, ButtonLogout } from "./CreateTripPageStyled";
+import { ContainerCreate, 
+  ContainerBoxForm, 
+  Title, 
+  ContainerInput, 
+  Input, 
+  ButtonCreate,
+  ButtonHome, 
+  ButtonAdmin, 
+  ButtonLogout, 
+  Select,
+  Option } from "./CreateTripPageStyled";
 import { BiHomeAlt } from "react-icons/bi";
-import { CgLogOut, CgLogOff } from "react-icons/cg";
+import { CgLogOff } from "react-icons/cg";
+import { IoArrowBack } from "react-icons/io5";
+import { planets } from "../../constants/planets";
 
 export const CreateTripPage = () => {
   useProtectedPage()
@@ -33,7 +45,7 @@ export const CreateTripPage = () => {
         Swal.fire("Viagem criada com sucesso!")
       })
       .catch((err) => {
-        Swal.fire("Naõ conseguimos criar sua viagem...")
+        Swal.fire("Não conseguimos criar sua viagem...")
       })
 
     cleanFields()
@@ -48,28 +60,35 @@ export const CreateTripPage = () => {
             <ContainerInput>
               <Input
                 placeholder="Nome da sua Viagem"
-                name="name"
+                name={"name"}
                 value={form.name}
                 onChange={onChange}
                 required
+                minlength={5}
+                type={"text"}
               />
             </ContainerInput>
             <ContainerInput>
-              <Input
-                placeholder="Nome do Planeta"
-                name="planet"
-                value={form.planet}
-                onChange={onChange}
-                required
-              />
+            <Select
+              name={"planet"}
+              value={form.planet}
+              onChange={onChange}
+              required
+            >
+              <Option value={""} disabled selected>Planetas</Option>
+              {planets.map((planet)=>{
+                return <Option key={planet}>{planet}</Option>
+              })}
+            </Select>
             </ContainerInput>
             <ContainerInput>
               <Input 
                 placeholder="Dia da Viagem" 
-                name="date" 
+                name={"date"} 
                 value={form.date} 
                 onChange={onChange}
                 required
+                type={"date"}
               />
             </ContainerInput>
             <ContainerInput>
@@ -79,6 +98,8 @@ export const CreateTripPage = () => {
                 value={form.durationInDays} 
                 onChange={onChange}
                 required 
+                type={"number"}
+                min={50}
               />
             </ContainerInput>
             <ContainerInput>
@@ -87,13 +108,15 @@ export const CreateTripPage = () => {
                 name="description"
                 value={form.description}
                 onChange={onChange}
+                minlength={30}
+                type={"text"}
                 required
               />
             </ContainerInput>
             <ButtonCreate type={"submit"}>Criar</ButtonCreate>
           </form>
         </ContainerBoxForm>
-        <ButtonAdmin onClick={() => goToAdminHomePage(navigate)}><CgLogOut size={50} color="#fff" /></ButtonAdmin>
+        <ButtonAdmin onClick={() => goToAdminHomePage(navigate)}><IoArrowBack size={50} color="#fff" /></ButtonAdmin>
         <ButtonHome onClick={() => goToHomePage(navigate)}><BiHomeAlt size={50} color="#fff" /></ButtonHome>
         <ButtonLogout onClick={() => logOut()}><CgLogOff size={50} color="#fff" /></ButtonLogout>
       </ContainerCreate>

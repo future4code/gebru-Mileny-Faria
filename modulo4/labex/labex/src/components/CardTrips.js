@@ -10,7 +10,7 @@ export const CardTrips = (props) => {
 
   return (
     <ContainerCard key={props.id}>
-        <Img src={"https://picsum.photos/200"} />
+        <Img src={`https://picsum.photos/200?random=${props.id}`} />
         <Name> {props.name} </Name>
         <Description>{props.description}</Description>
         <TripDate>Data do lançamento: {props.date}</TripDate>

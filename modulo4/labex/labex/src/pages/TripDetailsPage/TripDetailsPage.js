@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import Swal from "sweetalert2";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
@@ -24,8 +25,9 @@ import {
   CardTitle,
   TextCandidates } from "./TripDetailsPageStyled";
 import { BiHomeAlt } from "react-icons/bi";
-import { CgLogOut, CgLogOff } from "react-icons/cg";
+import { CgLogOff } from "react-icons/cg";
 import { BsCheck2, BsX } from "react-icons/bs";
+import { IoArrowBack } from "react-icons/io5";
 
 
 
@@ -34,9 +36,8 @@ export const TripDetailsPage = () => {
   const navigate = useNavigate()
   const params = useParams()
   const [ detailTrip, setDetailTrip, isLoading ] = useRequestData(`/trip/${params.id}`, [])
-  const [ aprove, setAprove ] = useState(true)
 
-  const decideCandidate = (candidateId) => {
+  const decideCandidate = (candidateId, approve) => {
     const headers = {
       headers: {
         auth: localStorage.getItem("token")
@@ -44,22 +45,18 @@ export const TripDetailsPage = () => {
     }
 
     const body = {
-      approve: aprove
+      approve
     }
 
     axios
       .put(`${BASE_URL}/trips/${params.id}/candidates/${candidateId}/decide`, body, headers)
       .then((res) => {
-        alert("Decisão registrada com sucesso")
+        Swal.fire("Decisão registrada com sucesso")
         setDetailTrip()
       })
       .catch((err) => {
-        alert("Deu erro")
+        Swal.fire("Deu erro")
       })
-  }
-
-  const changeDecide = () => {
-    setAprove(false)
   }
 
   const logOut = () => {
@@ -71,16 +68,16 @@ export const TripDetailsPage = () => {
     return(
       <div>
         <p>{`Oi, meu nome é ${candidate.name}, tenho ${candidate.age} anos, moro no ${candidate.country} e trabalho como ${candidate.profession}`}</p>
-        <p>{`Acho que vocês devem me escolher porque ${candidate.applicationText}`}</p>
+        <p>{`Acho que vocês devem me escolher ${candidate.applicationText.toLowerCase()}`}</p>
         <ContainerButtonsAproved>
-          <ButtonsAprovDesapr onClick={() => decideCandidate(candidate.id)}><BsCheck2 size={30} color="#fff"/></ButtonsAprovDesapr>
-          <ButtonsAprovDesapr onClick={() => decideCandidate(candidate.id)} onChange={changeDecide}><BsX size={30} color="#fff"/></ButtonsAprovDesapr>
+          <ButtonsAprovDesapr onClick={() => decideCandidate(candidate.id, true)}><BsCheck2 size={30} color="#fff"/></ButtonsAprovDesapr>
+          <ButtonsAprovDesapr onClick={() => decideCandidate(candidate.id, false)}><BsX size={30} color="#fff"/></ButtonsAprovDesapr>
         </ContainerButtonsAproved>
       </div>
     )
   })
 
-  const candidatesAproved = detailTrip && detailTrip.trip && detailTrip.trip.approved.map((aprov) => {
+  const candidatesAproved = detailTrip?.trip?.approved?.map((aprov) => {
     return(
       <TextCandidates>
         {aprov.name}
@@ -111,7 +108,7 @@ export const TripDetailsPage = () => {
           </div>
         </ContainerCardTrip>
         <ContainerButtons>
-          <ButtonAdmin onClick={() => goToAdminHomePage(navigate)}><CgLogOut size={50} color="#fff" /></ButtonAdmin>
+          <ButtonAdmin onClick={() => goToAdminHomePage(navigate)}><IoArrowBack size={50} color="#fff" /></ButtonAdmin>
           <ButtonHome onClick={() => goToHomePage(navigate)}><BiHomeAlt size={50} color="#fff" /></ButtonHome>
           <ButtonLogout onClick={() => logOut()}><CgLogOff size={50} color="#fff" /></ButtonLogout>
         </ContainerButtons>

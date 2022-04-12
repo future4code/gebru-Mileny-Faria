@@ -22,16 +22,12 @@ export const ListRender = styled.div`
   height: 500px;
   padding-bottom: 60px;
   ::-webkit-scrollbar {
-    height: 6px;
+    height: 4px;
     background: black;
-    border: solid 0.5px #ff0043;
+    
   }
   ::-webkit-scrollbar-thumb {
-    height: 6px;
-    background: #ff0043;
-  }
-  ::-webkit-scrollbar-button {
-    height: 6px;
+    height: 4px;
     background: #ff0043;
   }
 

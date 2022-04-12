@@ -26,6 +26,11 @@ export const ContainerBoxForm = styled.div`
 
 `
 
+export const Option = styled.option`
+  color: #ff0043;
+  background-color: black;
+`
+
 export const Title = styled.h2`
   margin: 0 0 30px;
   padding: 0;
@@ -141,7 +146,28 @@ export const ButtonLogout = styled.button`
     
 `
 
-
-
-
+export const Select = styled.select`
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #ff0043;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  font-family: sans-serif;
+  :focus-within {
+    top: -20px;
+    left: 0;
+    color: #ff0043;
+    font-size: 12px;
+  }
+  :valid {
+    top: -20px;
+    left: 0;
+    color: #ff0043;
+    font-size: 12px;
+  }
+`
 

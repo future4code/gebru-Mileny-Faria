@@ -54,6 +54,45 @@ export const Select = styled.select`
   outline: none;
   background: transparent;
   font-family: sans-serif;
+  :focus-within {
+    top: -20px;
+    left: 0;
+    color: #ff0043;
+    font-size: 12px;
+  }
+  :valid {
+    top: -20px;
+    left: 0;
+    color: #ff0043;
+    font-size: 12px;
+  }
+
+  option {
+    background-color: black;
+  }
+`
+
+
+export const Option = styled.option`
+  color: #ff0043;
+  background-color: black;
+
+`
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #ff0043;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  font-family: sans-serif;
+    :first-letter {
+      text-transform: uppercase;
+    }
     :focus-within {
       top: -20px;
       left: 0;
@@ -66,17 +105,10 @@ export const Select = styled.select`
       color: #ff0043;
       font-size: 12px;
     }
-`
-
-
-export const Option = styled.option`
-  color: #ff0043;
-  background-color: transparent;
 
 `
 
-
-export const Input = styled.input`
+export const InputText = styled.input`
   width: 100%;
   padding: 10px 0;
   font-size: 16px;

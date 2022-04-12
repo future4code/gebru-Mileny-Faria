@@ -15,6 +15,7 @@ export const ListTripsPage = () => {
   const renderedTripsList = listTrips.trips && listTrips.trips.map((trip) => {
     return (
         <CardTrips
+          id={trip.id}
           name={trip.name}
           description={trip.description}
           planet={trip.planet}

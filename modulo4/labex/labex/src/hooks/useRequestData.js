@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../constants/url";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const useRequestData = (url, initialState) => {
   const [ data, setData ] = useState(initialState)
@@ -26,7 +27,7 @@ export const useRequestData = (url, initialState) => {
         setIsLoading(false)
       })
       .catch((err) => {
-        alert("Deu erro!")
+        Swal.fire("Deu erro!")
       })
   }
 
