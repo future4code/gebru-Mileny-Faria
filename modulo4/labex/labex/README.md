@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+![Logo LabeX (5)](https://user-images.githubusercontent.com/93015632/163054766-4893aa1a-e52e-423b-92b9-629677158772.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Descrição do Projeto
+O LabeX é um site para uma agência de viagens espaciais fictícia. O objetivo era aplicar react-route, criação de formulários com autenticação, sistema para autenticação do usuário.
 
-## Available Scripts
 
-In the project directory, you can run:
+![Captura de Tela (34)](https://user-images.githubusercontent.com/93015632/163054345-2be91a1d-887f-46bb-b2af-d7854e599062.png)
+![Captura de Tela (35)](https://user-images.githubusercontent.com/93015632/163054351-f2aab1da-280b-49a7-9596-7a0112b18943.png)
+![Captura de Tela (36)](https://user-images.githubusercontent.com/93015632/163054358-dde4c11b-f1a9-40bd-baa0-d3cae7a8024a.png)
+![Captura de Tela (37)](https://user-images.githubusercontent.com/93015632/163054365-29545d5d-4092-46b7-9ed6-be148ff81930.png)
+![Captura de Tela (38)](https://user-images.githubusercontent.com/93015632/163054438-f4b1d052-1342-4afe-88d3-99a19ebd6d50.png)
+![Captura de Tela (39)](https://user-images.githubusercontent.com/93015632/163054444-9d83aa18-ea4e-43ba-b7a5-4919cc24226c.png)
+![Captura de Tela (40)](https://user-images.githubusercontent.com/93015632/163054462-f714b63c-53a8-4b9f-89b1-9bf1d2d7450d.png)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Features
+ Ver viagens disponíveis
+ Autenticação de usuários
+ Criar viagens
+ Formulário de aplicação
+ Detalhes de cada viagem
+ 
+🛠 Tecnologias
+As seguintes ferramentas foram usadas na construção do projeto:
+  React
+  Styled Components
+  Axios
+  Material-UI
