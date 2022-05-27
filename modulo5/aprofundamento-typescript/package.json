@@ -1,0 +1,15 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node ./build/exercicio6.js"
+  },
+  "keywords": [],
+  "author": "Mileny Faria",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.2"
+  }
+}
