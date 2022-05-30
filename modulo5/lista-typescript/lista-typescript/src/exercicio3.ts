@@ -13,3 +13,19 @@ type Catalogo = {
     pontuação: number
 }
 
+const organizaCatalogo = (nome: string, anoLançamento: number, genero: Genero, pontuação?: number): Catalogo => {
+
+	const filmes: Catalogo = {
+		nome,
+		anoLançamento,
+		genero,
+		pontuação,
+	}
+
+	return filmes
+
+}
+
+console.log(organizaCatalogo("Duna", 2021, Genero.ACAO, 74))
+console.log(organizaCatalogo("Duna", 2021, Genero.ACAO))
+

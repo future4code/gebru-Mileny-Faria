@@ -48,12 +48,11 @@ const listaColaboradores: Colaboradores[] = [{
     presencial: true
 }]
 
-const trabalhamPessoalmente = (listaColaboradores: Colaboradores[]): any => {
-    const presencial: Colaboradores[] = listaColaboradores.filter((pres) => {
-        if(pres.setor === Setores.MARKETING && pres.presencial === true) {
+const trabalhamPessoalmente = (listaColaboradores: Colaboradores[]): Colaboradores[] => {
+    return listaColaboradores.filter((colaboradores) => {
+        if(colaboradores.setor === Setores.MARKETING && colaboradores.presencial === true) {
             return listaColaboradores
         }
-        return presencial
     })
 }
 
