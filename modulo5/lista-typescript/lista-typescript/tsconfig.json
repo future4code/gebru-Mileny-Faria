@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
+    "outDir": "./build",                                 /* Specify an output folder for all emitted files. */
+    "rootDir": "./src",                                  /* Specify the root directory of input files. */
+    "removeComments": true,                              /* Do not emit comments to output. */
+    "noImplicitAny": true,                               /* Enable error reporting for expressions and declarations with an implied 'any' type. */
+  }
+}
