@@ -1,4 +1,7 @@
+import { v4 as generateId } from 'uuid'
+
 type Extract = {
+    id: string,
     value: number,
     date: string,
     description: string
@@ -20,6 +23,7 @@ export const users: Account[] = [
         balance: 0,
         extract: [
             {
+                id: generateId(),
                 value: 0,
                 date: "",
                 description: ""
@@ -32,6 +36,7 @@ export const users: Account[] = [
         balance: 0,
         extract: [
             {
+                id: generateId(),
                 value: 0,
                 date: "",
                 description: ""
@@ -44,6 +49,7 @@ export const users: Account[] = [
         balance: 0,
         extract: [
             {
+                id: generateId(),
                 value: 0,
                 date: "",
                 description: ""
@@ -56,6 +62,7 @@ export const users: Account[] = [
         balance: 0,
         extract: [
             {
+                id: generateId(),
                 value: 0,
                 date: "",
                 description: ""

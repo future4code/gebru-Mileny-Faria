@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { users, Account } from '../data'
+import { age } from '../calculateAge'
 
 export const registerUser = (req: Request, res: Response) => {
     let errorCode = 500
@@ -13,15 +14,22 @@ export const registerUser = (req: Request, res: Response) => {
             throw new Error('Faltam parâmetros a serem passados pelo body')
         }
 
-        const newUser: Account = {
-            name,
-            cpf,
-            birth_date,
-            balance: 0,
-            extract: []
-        }
+        if(age(birth_date) > 18) {
 
-        users.push(newUser)
+            const newUser: Account = {
+                name,
+                cpf,
+                birth_date,
+                balance: 0,
+                extract: []
+            }
+
+            users.push(newUser)
+
+        } else {
+            errorCode = 422
+            throw new Error('Usuário precisa ter mais de 18 anos')
+        }
 
         res.status(202).send(users)
         
