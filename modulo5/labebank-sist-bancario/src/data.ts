@@ -4,7 +4,7 @@ type Extract = {
     description: string
 }
 
-type Account = {
+export type Account = {
     name: string,
     cpf: string,
     birth_date: string,
@@ -12,7 +12,7 @@ type Account = {
     extract: Extract[]
 }
 
-export const Users: Account[] = [
+export const users: Account[] = [
     {
         name: "Mileny",
         cpf: "111.222.333-44",
