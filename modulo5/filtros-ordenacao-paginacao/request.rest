@@ -1,0 +1,6 @@
+// Query Params
+GET http://localhost:3003/users?name=
+
+###
+// Path params
+GET http://localhost:3003/users/Teacher
