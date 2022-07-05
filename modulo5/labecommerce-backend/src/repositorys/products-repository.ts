@@ -20,3 +20,13 @@ export const getAllProductsRepository = async () => {
         
     }
 }
+
+export const getProductPriceRepository = async (id: string) => {
+    try {
+        return await connection('labecommerce_products').select('price').where('id', id)
+        
+    } catch (error: any) {
+        return error.message
+        
+    }
+}

@@ -26,3 +26,20 @@ Content-Type: application/json
 ###
 // GET PRODUCTS
 GET http://localhost:3003/products
+
+
+###
+// POST PURCHASE
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "7724dcb0-64e6-41f2-ad0d-87f98b88ba49",
+    "product_id": "ac4cbf15-ee72-42b5-baac-0419b1434646",
+    "quantity": 2
+}
+
+
+###
+// GET USER PURCHASES
+GET http://localhost:3003/users/7724dcb0-64e6-41f2-ad0d-87f98b88ba49/purchases
