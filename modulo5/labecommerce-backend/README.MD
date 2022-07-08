@@ -55,4 +55,5 @@ npm run dev
 
 Agora seu back-end estará rodando na porta 3003.
 
-### Deploy da aplicação:
+### Deploy da aplicação
+[https://labecommerce-backend.herokuapp.com/](https://labecommerce-backend.herokuapp.com/)
