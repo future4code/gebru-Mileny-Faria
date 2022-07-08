@@ -1,7 +1,7 @@
 import { connection } from '../data/connection'
 import { Purchase } from '../types/types'
 
-export const createPurchaseRepository = async (purchase: Purchase): Promise<void> => {
+export const createPurchaseRepository = async (purchase: Purchase) => {
     try {
         return await connection('labecommerce_purchases').insert(purchase).into('labecommerce_purchases')
 

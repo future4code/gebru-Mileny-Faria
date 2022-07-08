@@ -4,7 +4,7 @@ import { getProductPriceRepository } from '../repositorys/products-repository'
 import { createPurchaseRepository, getAllPurchasesUserRepository } from '../repositorys/purchases-repository'
 import { Purchase } from '../types/types'
 
-export const createPurchaseController = async (req: Request, res: Response): Promise<void> => {
+export const createPurchaseController = async (req: Request, res: Response) => {
     let errorCode = 500
 
     try {
