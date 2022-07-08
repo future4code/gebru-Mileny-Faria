@@ -4,7 +4,7 @@ import { getProductPriceRepository } from '../repositorys/products-repository'
 import { createPurchaseRepository, getAllPurchaseRepository } from '../repositorys/purchases-repository'
 import { Purchase } from '../types/types'
 
-export const createPurchaseController = async (req: Request, res: Response) => {
+export const createPurchaseController = async (req: Request, res: Response): Promise<void> => {
     let errorCode = 500
 
     try {
@@ -17,7 +17,7 @@ export const createPurchaseController = async (req: Request, res: Response) => {
 
         let total_price: number = 0
         const price = await getProductPriceRepository(product_id)
-
+       
         if (price) {
             total_price = price.price * quantity
         } else {
@@ -56,6 +56,7 @@ export const getAllPurchaseController = async (req: Request, res: Response) => {
             throw new Error('There are no purchases for this user')
         }
 
+        console.log(purchase)
         res.status(200).send(purchase)
         
     } catch (error: any) {

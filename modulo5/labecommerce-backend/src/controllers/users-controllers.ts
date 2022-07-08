@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { v4 as generateId } from 'uuid'
 import { createUserRepository, getAllUsersRepository } from '../repositorys/users-repository'
 import { User } from '../types/types'
+import { transporter } from '../services/transporter'
 
 export const createUserController = async (req: Request, res: Response) => {
     let errorCode = 500
@@ -22,6 +23,14 @@ export const createUserController = async (req: Request, res: Response) => {
         }
 
         await createUserRepository(newUser)
+
+        await transporter.sendMail({
+            from: "<mileny-gebru@outlook.com>",
+            to: email,
+            subject: "Mensagem de confirmação",
+            text: `Olá ${name}, sua conta foi criada com sucesso`,
+            html: `<p>Olá ${name} sua conta foi criada</p>`     
+        })   
 
         res.status(201).send('User created successfully')
         

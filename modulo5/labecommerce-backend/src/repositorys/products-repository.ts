@@ -23,7 +23,9 @@ export const getAllProductsRepository = async () => {
 
 export const getProductPriceRepository = async (id: string) => {
     try {
-        return await connection('labecommerce_products').select('price').where('id', id)
+        const price = await connection('labecommerce_products').select('price').where('id', id)
+
+        return price[0]
         
     } catch (error: any) {
         return error.message
