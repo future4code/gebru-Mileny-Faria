@@ -56,7 +56,6 @@ export const getAllPurchaseController = async (req: Request, res: Response) => {
             throw new Error('There are no purchases for this user')
         }
 
-        console.log(purchase)
         res.status(200).send(purchase)
         
     } catch (error: any) {

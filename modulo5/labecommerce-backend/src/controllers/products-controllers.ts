@@ -36,7 +36,19 @@ export const getAllProductsController = async (req: Request, res: Response) => {
     let errorCode = 500
 
     try {
-        const products = await getAllProductsRepository()
+        let searchProducts = req.query.search as string
+        let sortProducts = req.query.sort as string
+        let orderProducts = req.query.order as string
+
+        if (!searchProducts) {
+            searchProducts = '%'
+        }
+
+        if (sortProducts !== 'name' && sortProducts !== 'price') {
+            sortProducts = 'name'
+        }
+
+        const products = await getAllProductsRepository(searchProducts, sortProducts, orderProducts)
 
         if (!products.length) {
             throw new Error('There are no registered products')

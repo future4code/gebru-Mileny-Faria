@@ -11,9 +11,11 @@ export const createProductRepository = async (product: Product) => {
     }
 }
 
-export const getAllProductsRepository = async () => {
+export const getAllProductsRepository = async (search: string, sort: string, order: string) => {
     try {
-        return await connection('labecommerce_products').select()
+        return await connection('labecommerce_products')
+            .where('name', 'like', `%${search}%`)
+            .orderBy(sort, order)
         
     } catch (error: any) {
         return error.message
