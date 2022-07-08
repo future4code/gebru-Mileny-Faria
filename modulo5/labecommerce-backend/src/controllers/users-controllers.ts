@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { v4 as generateId } from 'uuid'
 import { createUserRepository, getAllUsersRepository } from '../repositorys/users-repository'
+import { getAllPurchasesUserRepository } from '../repositorys/purchases-repository'
 import { User } from '../types/types'
 import { transporter } from '../services/transporter'
 
@@ -45,7 +46,14 @@ export const getAllUsersController = async (req: Request, res: Response) => {
     let errorCode = 500
 
     try {
+        const usersPurchases = async (users: any) => {
+            for(let i = 0; i < users.length; i++) {
+                users[i].purchases = await getAllPurchasesUserRepository(users[i].id)
+            }
+            return users
+        }
         const users = await getAllUsersRepository()
+        .then(usersPurchases)
 
         if (!users) {
             errorCode = 404

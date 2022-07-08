@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { v4 as generateId } from 'uuid'
 import { getProductPriceRepository } from '../repositorys/products-repository'
-import { createPurchaseRepository, getAllPurchaseRepository } from '../repositorys/purchases-repository'
+import { createPurchaseRepository, getAllPurchasesUserRepository } from '../repositorys/purchases-repository'
 import { Purchase } from '../types/types'
 
 export const createPurchaseController = async (req: Request, res: Response): Promise<void> => {
@@ -44,13 +44,13 @@ export const createPurchaseController = async (req: Request, res: Response): Pro
 
 }
 
-export const getAllPurchaseController = async (req: Request, res: Response) => {
+export const getAllPurchasesUserController = async (req: Request, res: Response) => {
     let errorCode = 500
 
     const id = req.params.id
 
     try {
-        const purchase = await getAllPurchaseRepository(id)
+        const purchase = await getAllPurchasesUserRepository(id)
 
         if (!purchase.length) {
             throw new Error('There are no purchases for this user')

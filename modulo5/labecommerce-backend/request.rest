@@ -35,8 +35,8 @@ Content-Type: application/json
 
 {
     "user_id": "7724dcb0-64e6-41f2-ad0d-87f98b88ba49",
-    "product_id": "ac4cbf15-ee72-42b5-baac-0419b1434646",
-    "quantity": 2
+    "product_id": "298f0e6d-9a27-487e-9846-58fba80e9e5e",
+    "quantity": 4
 }
 
 

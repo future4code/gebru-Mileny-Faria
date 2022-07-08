@@ -11,7 +11,7 @@ export const createPurchaseRepository = async (purchase: Purchase): Promise<void
     }
 }
 
-export const getAllPurchaseRepository = async (id: string) => {
+export const getAllPurchasesUserRepository = async (id: string) => {
     console.log(id)
     try {
         return await connection('labecommerce_purchases')

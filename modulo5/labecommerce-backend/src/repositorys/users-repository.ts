@@ -13,7 +13,7 @@ export const createUserRepository = async (user: User) => {
 
 export const getAllUsersRepository = async () => {
     try {
-        return await connection('labecommerce_users').select()
+        return await connection('labecommerce_users').select(['id', 'name', 'email'])
         
     } catch (error: any) {
         return error.message
