@@ -7,7 +7,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-
 app.use('/', router)
 
 const server = app.listen(process.env.PORT || 3003, () => {
