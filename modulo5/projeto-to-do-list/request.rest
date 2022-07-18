@@ -1,0 +1,47 @@
+// Get Users
+GET http://localhost:3003/users
+
+###
+// Get User By Id
+GET http://localhost:3003/user/001
+
+###
+// Create User
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Franciély Castro", 
+    "nick_name": "fran", 
+    "email": "fran@gmail.com"
+}
+
+###
+// Edit User
+PUT http://localhost:3003/user/edit/8ce11140-0fb7-459b-b005-6c4bcc5d8dc3
+Content-Type: application/json
+
+{
+    "name": "Gelson", 
+    "nick_name": "Gel"
+}
+
+###
+// Get Tasks
+GET http://localhost:3003/tasks
+
+###
+// Post Task
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "title": "Execercios Banco Dados", 
+    "description": "Exercicio do dia",
+    "limit_date": "01-07-2022",
+    "creator_user_id": "5b9370af-c167-4559-88fd-c2adb720f3fa"
+}
+
+###
+// Get Task By Id
+GET http://localhost:3003/task/001
