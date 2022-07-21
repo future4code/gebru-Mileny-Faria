@@ -1,18 +1,29 @@
-export class Teacher {
-    id: string
-    name: string
-    email: string
-    birthday: Date
-    classId: string
-    specialties: string[]
+import { User } from './User'
 
-    constructor(id: string, name: string, email: string, birthday: Date, classId: string, specialties: string[]) {
-        this.id = id
-        this.name = name
-        this.email = email
-        this.birthday = birthday
-        this.classId = classId
+enum Specialties {
+    JS = 'JS',
+    CSS = 'CSS',
+    REACT = 'REACT',
+    TYPESCRIPT = 'TYPESCRIPT',
+    POO = 'POO'
+}
+
+export class Teacher extends User {
+    
+    constructor (
+        id: string,
+        name: string,
+        email: string,
+        birthday: Date,
+        classId: string,
+        private specialties: Specialties
+    ) {
+        super(id, name, email, birthday, classId)
         this.specialties = specialties
-    }
+     }
+
+     getSpecialties(): Specialties {
+        return this.specialties
+     }
 
 }

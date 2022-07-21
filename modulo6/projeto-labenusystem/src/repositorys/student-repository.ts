@@ -1,10 +1,13 @@
-import { BaseDataBase } from '../data/BaseDataBase'
+import { connection } from '../data/connection'
 import { Student } from '../classes/Student'
 
-export class CharacterDataBase extends BaseDataBase {
+export const createStudent = async (student: Student) => {
+    try {
+        return await connection()
 
-    public createStudent = async () => {
+    } catch {
+
+    }
         
     }
 
-}

@@ -1,0 +1,8 @@
+POST http://localhost:3003/classes
+Content-Type: application/json
+
+{
+    "module": 2
+
+}
+
