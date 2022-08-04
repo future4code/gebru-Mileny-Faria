@@ -1,0 +1,26 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Mileny",
+    "email": "my@email.com",
+    "password": "23432535"
+}
+
+###
+
+GET http://localhost:3003/user/getAll
+
+
+###
+
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{
+    "title": "Interestelar",
+    "description": "As reservas naturais",
+    "durationInMinutes": "169",
+    "yearOfRelease": "2014"
+}
+
