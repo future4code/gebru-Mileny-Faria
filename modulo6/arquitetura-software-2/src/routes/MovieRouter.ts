@@ -1,9 +1,9 @@
 import express from 'express'
+import { MovieController } from '../controller/MovieController'
 
 
 export const MovieRouter = express.Router()
 
-// const movieController = new UserController()
+const movieController = new MovieController()
 
-MovieRouter.get('/getAll', )
-MovieRouter.post("/create", )
+MovieRouter.post("/create", movieController.create )
