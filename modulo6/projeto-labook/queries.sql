@@ -1,15 +1,12 @@
-import { connection } from "./index"
-
-connection
-   .raw(`
-      CREATE TABLE IF NOT EXISTS labook_users(
+-- Active: 1656975277986@@35.226.146.116@3306@gebru-4211616-mileny-faria
+     CREATE TABLE labook_users(
          id VARCHAR(255) PRIMARY KEY,
          name VARCHAR(255) NOT NULL,
          email VARCHAR(255) UNIQUE NOT NULL,
          password VARCHAR(255) NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS labook_posts(
+      CREATE TABLE labook_posts(
          id VARCHAR(255) PRIMARY KEY,
          photo VARCHAR(255) NOT NULL,
          description VARCHAR(255) NOT NULL,
@@ -18,6 +15,3 @@ connection
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
       )
-   `)
-   .then(console.log)
-   .catch(console.log)
