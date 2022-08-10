@@ -1,0 +1,38 @@
+import { PostDatabase } from '../data/PostDatabase'
+import { generateId } from '../services/generateId'
+import { createPostDTO } from '../model/PostDTO'
+import { InvalidRequest } from '../error/InvalidRequest'
+import { InvalidType } from '../error/InvalidType'
+
+export class PostBusiness {
+
+    createPost = async (input: createPostDTO): Promise<void> => {
+        try {
+            const {photo, description, type, authorId} = input
+        
+            if(!photo || !description) {
+                throw new InvalidRequest()
+            }
+        
+            if(type !== "normal" && type !== "event") {
+                throw new InvalidType()
+            }
+
+           const id = generateId()
+           const createdAt = new Date()
+
+           const postDatabase = new PostDatabase()
+           await postDatabase.createPost({
+            id, 
+            photo,
+            description,
+            type,
+            createdAt,
+            authorId 
+          })
+
+        } catch (error: any) {
+            throw new Error(error.message || 'Error creating user. Please check your system administrator')
+        }
+    }
+}

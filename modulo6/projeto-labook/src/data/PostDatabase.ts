@@ -4,9 +4,16 @@ import { Post } from '../model/Post'
 export class PostDatabase extends BaseDatabase {
   private static table_name = 'labook_posts'
 
-  createUser = async (post: Post): Promise<void> => {
+  createPost = async (post: Post): Promise<void> => {
     try {
-        await PostDatabase.connection(PostDatabase.table_name).insert(post)
+        await PostDatabase.connection(PostDatabase.table_name).insert({
+          id: post.id, 
+          photo: post.photo,
+          description: post.description,
+          type: post.type,
+          created_at: post.createdAt,
+          author_id: post.authorId
+        })
 
     } catch (error: any) {
         throw new Error(error.sqlMessage || error.message)

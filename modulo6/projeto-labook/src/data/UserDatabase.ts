@@ -6,7 +6,12 @@ export class UserDatabase extends BaseDatabase {
 
   createUser = async (user: User): Promise<void> => {
     try {
-        await UserDatabase.connection(UserDatabase.table_name).insert(user)
+        await UserDatabase.connection(UserDatabase.table_name).insert({
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          password: user.password
+        })
 
     } catch (error: any) {
         throw new Error(error.sqlMessage || error.message)
