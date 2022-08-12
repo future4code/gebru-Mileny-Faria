@@ -14,4 +14,11 @@
          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
-      )
+      );
+
+      CREATE TABLE labook_friendships(
+         user1_id VARCHAR(255) UNIQUE NOT NULL,
+         user2_id VARCHAR(255) UNIQUE NOT NULL,
+         FOREIGN KEY (user1_id) REFERENCES labook_users(id),
+         FOREIGN KEY (user2_id) REFERENCES labook_users(id)
+      );

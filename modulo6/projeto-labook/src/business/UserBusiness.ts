@@ -1,9 +1,10 @@
 import { UserDatabase } from '../data/UserDatabase'
 import { generateId } from '../services/generateId'
-import { createUserDTO } from '../model/UserDTO'
+import { createUserDTO, makeFriendsDTO } from '../model/UserDTO'
 import { InvalidEmail } from '../error/InvalidEmail'
 import { InvalidName } from '../error/InvalidName'
 import { InvalidPassword } from '../error/InvalidPassword'
+import { FriendshipDatabase } from '../data/FriendshipDatabase'
 
 export class UserBusiness {
 
@@ -35,6 +36,20 @@ export class UserBusiness {
 
         } catch (error: any) {
             throw new Error(error.message || 'Error creating user. Please check your system administrator')
+        }
+    }
+
+    makeFriendship = async (input: makeFriendsDTO): Promise<void> => {
+        try {
+            const { friend1Id, friend2Id } = input
+            
+
+            const friendsDatabase = new FriendshipDatabase()
+            await friendsDatabase.makeFriendship(friend1Id, friend2Id)
+
+        } catch (error: any) {
+            throw new Error(error.message || 'Error making friends. Please check system administrator')
+            
         }
     }
 }

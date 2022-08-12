@@ -2,9 +2,18 @@ POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "name": "Fran",
-    "email": "fran@gmail.com",
+    "name": "Loren",
+    "email": "loren@gmail.com",
     "password": "pass123"
+}
+
+###
+POST http://localhost:3003/user/makeFriends
+Content-Type: application/json
+
+{
+    "friend1Id": "5eb61fe1-b212-4994-95c4-32d4d6188f8f",
+    "friend2Id": "728ff67e-7cd4-4c96-8619-977a15fe987c"
 }
 
 ###
@@ -19,3 +28,5 @@ Content-Type: application/json
     "authorId": "1c4549e5-d43a-46db-89fa-8f29aba20549"
 }
 
+###
+GET http://localhost:3003/post/90fa2a5a-b404-4e8d-9477-bd5b77b0aea1

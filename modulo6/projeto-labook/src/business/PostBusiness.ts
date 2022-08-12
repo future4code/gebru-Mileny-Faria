@@ -3,6 +3,7 @@ import { generateId } from '../services/generateId'
 import { createPostDTO } from '../model/PostDTO'
 import { InvalidRequest } from '../error/InvalidRequest'
 import { InvalidType } from '../error/InvalidType'
+import { InvalidId } from '../error/InvalidId'
 
 export class PostBusiness {
 
@@ -33,6 +34,25 @@ export class PostBusiness {
 
         } catch (error: any) {
             throw new Error(error.message || 'Error creating user. Please check your system administrator')
+        }
+    }
+
+    getPostById = async (postId: string) => {
+        try {
+
+            const postDataBase = new PostDatabase()
+            const post = await postDataBase.getPostById(postId)
+
+            if(!postId) {
+                throw new InvalidId()
+            }
+
+            console.log(post)
+
+            return post
+            
+        } catch (error: any) {
+            throw new Error(error.message || 'Error')
         }
     }
 }

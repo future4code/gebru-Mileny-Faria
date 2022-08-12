@@ -17,8 +17,21 @@ export class PostController {
            await postBusiness.createPost(input)
 
            res.status(201).send({message: "Post created!"})
-        } catch (error:any) {
+        } catch (error: any) {
            res.status(error.statuscode || 400).send(error.message || error.sqlMessage)
+        }
+    }
+
+    getPostById = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const postId = req.params.id as string
+
+            const postBusiness = new PostBusiness()
+            const post = await postBusiness.getPostById(postId)
+
+            res.status(201).send(post)
+        } catch (error: any) {
+            res.status(error.statuscode || 400).send(error.message || error.sqlMessage)
         }
     }
 }

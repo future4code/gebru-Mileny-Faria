@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { UserBusiness } from '../business/UserBusiness'
-import { createUserDTO } from '../model/UserDTO'
+import { createUserDTO, makeFriendsDTO } from '../model/UserDTO'
 
 export class UserController {
 
@@ -18,6 +18,23 @@ export class UserController {
            res.status(201).send({message: "User created!"})
         } catch (error:any) {
            res.status(error.statuscode || 400).send(error.message || error.sqlMessage)
+        }
+    }
+
+    makeFriendship = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const input: makeFriendsDTO =  {
+                friend1Id: req.body.friend1Id,
+                friend2Id: req.body.friend2Id
+            }
+
+            const friendsBusiness = new UserBusiness()
+            await friendsBusiness.makeFriendship(input)
+
+            res.status(201).send({message: "You are friends now"})
+
+        } catch (error: any) {
+            res.status(error.statuscode || 400).send(error.message || error.sqlMessage)
         }
     }
 }

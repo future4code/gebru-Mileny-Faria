@@ -18,5 +18,14 @@ export class PostDatabase extends BaseDatabase {
     } catch (error: any) {
         throw new Error(error.sqlMessage || error.message)
     }
-  }  
+  }
+  
+  getPostById = async (postId: string) => {
+    try {
+        return await PostDatabase.connection(PostDatabase.table_name).select().where('id', postId)
+      
+    } catch (error: any) {
+        throw new Error(error.sqlMessage || error.message)
+    }
+  }
 }
