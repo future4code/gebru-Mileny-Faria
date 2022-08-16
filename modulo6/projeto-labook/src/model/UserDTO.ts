@@ -8,3 +8,7 @@ export interface makeFriendsDTO {
     friend1Id: string,
     friend2Id: string
 }
+
+export interface unfriendDTO {
+    id: string
+}

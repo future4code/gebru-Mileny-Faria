@@ -1,73 +1,58 @@
 # LABOOK
 
-## Primeiros Passos
+## Sobre o Projeto
+O LaBook é uma rede social com o objetivo de promover a conexão e interação entre seus mais diversos usuários. 
 
-* Clonar este repositório
-* Executar `npm install` para adicionar as dependências
-* Criar um arquivo .env na raiz do projeto e preencher as chaves a seguir com os valores apropriados:
-   ```
-   DB_HOST = 
-   DB_USER = 
-   DB_PASSWORD = 
-   DB_SCHEMA = 
- 
-   ```
-* Executar `npm run migrations` para adicionar as tabelas ao banco de dados (em caso de sucesso, o servidor já estará pronto para receber requisições )
+## Funcionalidades
+[x] Cadastro de Usuário
 
-## Endpoints
+[x] Criação de posts
 
-1. Cadastro
-   * Exemplo de requisição:
-      ```bash
-      curl -i -X POST http://localhost:3003/users/signup -H "Content-Type: application/json" -d '{"name":"Alice","email":"alice@gmail.com","password":"pass123"}'
-      ```
-   * Exemplo de resposta (sucesso):
-      ```bash
-      HTTP/1.1 201 Created
-      X-Powered-By: Express
-      Access-Control-Allow-Origin: *
-      Content-Type: application/json; charset=utf-8
-      Content-Length: 220
-      ETag: W/"dc-ec7r4rkKsMBe/V0SGyUkO6Vyto0"
-      Date: Tue, 17 Nov 2020 14:33:15 GMT
-      Connection: keep-alive
+[x] Buscar posts - em implementação
 
-      {"message":"Success!", "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5OGJjNDVlLTExZjEtNGEyMy04OTZhLTdmMmUyOWNmZTAxMiIsImlhdCI6MTYwNTYyMzU5NSwiZXhwIjoxNjA1NzA5OTk1fQ.pWxV2vtLnp0hKm0CXXnLpnDu6PEPkZM27A71oTTCYfE"}%   
-      ```
+[x] Fazer e desfazer amizades
 
-2. Criar Post
-   * Exemplo de requisição:
-      ```bash
-      curl -i -X POST http://localhost:3003/posts/create -H "Content-Type: application/json" -H "authorization:$token" -d '{"photo":"https://i.picsum.photos/id/238/200/200.jpg?hmac=O4Jc6lqHVfaKVzLf8bWssNTbWzQoaRUC0TDXod9xDdM","description":"My city is beautiful =D","type":"normal"}'
-      ```
-   * Exemplo de resposta (sucesso):
-      ```bash
-      HTTP/1.1 201 Created
-      X-Powered-By: Express
-      Access-Control-Allow-Origin: *
-      Content-Type: application/json; charset=utf-8
-      Content-Length: 22
-      ETag: W/"16-ChcZhlw1slqtGuDwxLsUclql5gE"
-      Date: Tue, 17 Nov 2020 14:47:15 GMT
-      Connection: keep-alive
+[x] Ver o feed com a postagem dos amigos  - em implementação
 
-      {"message":"Success!"}%    
-      ```
-3. Buscar Post por id
-   * Exemplo de requisição:
-      ```bash
-      curl -i http://localhost:3003/posts/$id -H "Content-Type: application/json" -H "authorization:$token" 
-      ```
-   * Exemplo de resposta (sucesso):
-      ```bash
-      HTTP/1.1 200 OK
-      X-Powered-By: Express
-      Access-Control-Allow-Origin: *
-      Content-Type: application/json; charset=utf-8
-      Content-Length: 322
-      ETag: W/"142-IYRwCODXZBltXE3MydHuIDB8M3w"
-      Date: Tue, 17 Nov 2020 14:52:19 GMT
-      Connection: keep-alive
+[x] Curtir e descurtir posts  - em implementação
 
-      {"message":"Success!","post":{"id":"e4eb1531-d814-4742-b614-be2a36602548","photo":"https://i.picsum.photos/id/238/200/200.jpg?hmac=O4Jc6lqHVfaKVzLf8bWssNTbWzQoaRUC0TDXod9xDdM","description":"My city is beautiful =D","type":"normal","createdAt":"2020-11-17T17:47:15.000Z","authorId":"898bc45e-11f1-4a23-896a-7f2e29cfe012"}}% 
-      ```
+[x] Comentar os posts  - em implementação
+
+## Tecnologias utilizadas
+```
+Server (NodeJS + Typescript)
+   Express
+   Cors
+   KnexJS
+   ts-node
+   dotENV
+```
+
+## Rodando o projeto
+
+Acesse a pasta `/src` e insira as informações de conexão com o banco de dados usando o modelo de arquivo `.env` abaixo:
+
+```
+DB_HOST= 
+DB_PORT= 
+DB_USER= 
+DB_PASSWORD= 
+DB_DATABASE= 
+```
+
+Depois instale as dependências usando:
+
+```
+npm install
+```
+
+Para rodar o projeto execute:
+
+```
+npm run dev
+```
+
+Agora seu back-end estará rodando na porta 3003.
+
+### Deploy da aplicação
+[https://labook-backend.herokuapp.com/](https://labook-backend.herokuapp.com/)

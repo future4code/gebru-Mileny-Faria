@@ -1,6 +1,6 @@
 import { UserDatabase } from '../data/UserDatabase'
 import { generateId } from '../services/generateId'
-import { createUserDTO, makeFriendsDTO } from '../model/UserDTO'
+import { createUserDTO, makeFriendsDTO, unfriendDTO } from '../model/UserDTO'
 import { InvalidEmail } from '../error/InvalidEmail'
 import { InvalidName } from '../error/InvalidName'
 import { InvalidPassword } from '../error/InvalidPassword'
@@ -42,14 +42,24 @@ export class UserBusiness {
     makeFriendship = async (input: makeFriendsDTO): Promise<void> => {
         try {
             const { friend1Id, friend2Id } = input
-            
 
             const friendsDatabase = new FriendshipDatabase()
             await friendsDatabase.makeFriendship(friend1Id, friend2Id)
 
         } catch (error: any) {
             throw new Error(error.message || 'Error making friends. Please check system administrator')
-            
+        }
+    }
+
+    unfriend = async (input: unfriendDTO): Promise<void> => {
+        try {
+            const friendId: unfriendDTO = input
+
+            const friendsDatabase = new FriendshipDatabase()
+            await friendsDatabase.unfriend(friendId)
+
+        } catch (error: any) {
+            throw new Error(error.message || 'Error when unfriending. Please check system administrator')
         }
     }
 }

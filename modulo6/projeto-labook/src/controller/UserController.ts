@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { UserBusiness } from '../business/UserBusiness'
-import { createUserDTO, makeFriendsDTO } from '../model/UserDTO'
+import { createUserDTO, makeFriendsDTO, unfriendDTO } from '../model/UserDTO'
 
 export class UserController {
 
@@ -37,4 +37,22 @@ export class UserController {
             res.status(error.statuscode || 400).send(error.message || error.sqlMessage)
         }
     }
+
+    unfriend = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const input: unfriendDTO = {
+                id: req.params.id
+            }
+
+            const friendsBusiness = new UserBusiness()
+            await friendsBusiness.unfriend(input)
+
+            res.status(201).send({message: "Broken friendship"})
+
+        } catch (error: any) {
+            res.status(error.statuscode || 400).send(error.message || error.sqlMessage)
+        }
+    }
+
+
 }
