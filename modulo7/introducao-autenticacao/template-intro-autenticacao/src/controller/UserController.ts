@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
-import { EditUserInputDTO, UserInputDTO } from "../model/user";
+import { EditUserInputDTO, GetProfileDTO, LoginInputDTO, UserInputDTO } from "../model/user";
 
 export class UserController {
 
@@ -22,7 +22,25 @@ export class UserController {
         } catch (error: any) {
           res.status(400).send(error.message)
         }
-      };    
+      };   
+      
+      public login = async (req: Request, res: Response) => {
+        try {
+          const { email, password } = req.body
+    
+          const input: LoginInputDTO = {
+            email,
+            password
+          }
+
+          const userBusiness = new UserBusiness()
+          const token = await userBusiness.login(input)
+    
+          res.status(201).send({ message: "Login efetuado com sucesso!", token })
+        } catch (error: any) {
+          res.status(400).send(error.message)
+        }
+      }; 
 
       public editUser = async (req: Request, res: Response) => {
         try {
@@ -41,6 +59,22 @@ export class UserController {
           res.status(400).send(error.message);
         }
       }; 
+
+      public getProfile = async (req: Request, res: Response) => {
+        try {
+    
+          const input: GetProfileDTO = {
+            token: req.headers.authorization as string
+          }
+
+          const userBusiness = new UserBusiness()
+          const profile = await userBusiness.getProfile(input)
+    
+          res.status(201).send({ profile })
+        } catch (error: any) {
+          res.status(400).send(error.message)
+        }
+      };   
  
 
 

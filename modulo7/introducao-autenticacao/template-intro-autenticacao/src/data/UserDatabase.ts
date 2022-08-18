@@ -5,7 +5,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class UserDatabase extends BaseDatabase {
   public insertUser = async (user: user) => {
     try {
-      await UserDatabase.connection
+      await UserDatabase.connection("Auth_users")
         .insert({
           id: user.id,
           name: user.name,
@@ -13,11 +13,23 @@ export class UserDatabase extends BaseDatabase {
           email: user.email,
           password: user.password,
         })
-        .into("Auth_users");
     } catch (error: any) {
-      throw new CustomError(400, error.message);
+      throw new CustomError(400, error.message)
     }
-  };
+  }
+
+  public findUserByEmail = async (email: string): Promise<user> => {
+    try {
+      const result = await UserDatabase.connection("Auth_users")
+      .select()
+      .where({email})
+
+      return result[0]
+
+    } catch (error: any) {
+      throw new CustomError(400, error.message)
+    }
+  }
 
   public editUser = async (user: EditUserInput) => {
     try {
@@ -29,4 +41,14 @@ export class UserDatabase extends BaseDatabase {
       throw new CustomError(400, error.message);
     }
   };
+
+  public selectProfile = async (id: string) => {
+    try {
+      return await UserDatabase.connection("Auth_users")
+        .select()
+        .where('id', id)
+    } catch (error: any) {
+      throw new CustomError(400, error.message)
+    }
+  }
 }

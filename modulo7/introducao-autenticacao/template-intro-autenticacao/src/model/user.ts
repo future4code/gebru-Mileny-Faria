@@ -6,9 +6,25 @@ export type user = {
    password: string
 }
 
+export type login = {
+   id: string
+   email: string
+   password: string
+}
+
 export interface UserInputDTO {
    name: string,
    nickname: string,
+   email: string,
+   password: string
+}
+
+export interface GetProfileDTO {
+   token: string
+}
+
+
+export interface LoginInputDTO {
    email: string,
    password: string
 }

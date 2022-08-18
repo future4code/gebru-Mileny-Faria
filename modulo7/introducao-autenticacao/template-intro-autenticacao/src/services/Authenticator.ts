@@ -1,8 +1,9 @@
 import * as jwt from 'jsonwebtoken'
-import { authenticator } from '../model/authenticator'
+import { Unauthorized } from '../error/customError'
+import { AuthenticationData } from '../model/authentication'
 
 export class Authenticator {
-    generateToken = (id: authenticator): string => {
+    generateToken = (id: AuthenticationData): string => {
         const token = jwt.sign(
             {
                 id
@@ -12,7 +13,19 @@ export class Authenticator {
                 expiresIn: process.env.JWT_DURATION
             }
         )
-
         return token
+    }
+
+    getTokenData = (token: string): AuthenticationData => {
+        try {
+            const payload = jwt.verify(
+                token,
+                process.env.JWT_KEY as string
+            ) as AuthenticationData
+            return payload
+        } catch (error: any) {
+            console.log(error.message)
+            throw new Unauthorized()
+        }
     }
 }
