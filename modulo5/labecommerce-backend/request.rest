@@ -1,0 +1,45 @@
+// CREATE USER
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Mileny",
+    "email": "myrfaria@gmail.com",
+    "password": "123456"
+}
+
+###
+// GET USERS
+GET http://localhost:3003/users
+
+###
+// POST PRODUCT
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "TARDIS",
+    "price": 750.00,
+    "image_url": "https://rollingstone.uol.com.br/media/_versions/legacy/2015/img-1031390-tardis_widelg.jpg"
+}
+
+###
+// GET PRODUCTS
+GET http://localhost:3003/products?sort=name&order=ASC
+
+
+###
+// POST PURCHASE
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "7724dcb0-64e6-41f2-ad0d-87f98b88ba49",
+    "product_id": "298f0e6d-9a27-487e-9846-58fba80e9e5e",
+    "quantity": 4
+}
+
+
+###
+// GET USER PURCHASES
+GET http://localhost:3003/users/7724dcb0-64e6-41f2-ad0d-87f98b88ba49/purchases
