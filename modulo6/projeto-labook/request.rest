@@ -1,0 +1,39 @@
+// Criar usuario
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Loren",
+    "email": "loren@gmail.com",
+    "password": "pass123"
+}
+
+###
+// Fazer amizade
+POST http://localhost:3003/user/makeFriends
+Content-Type: application/json
+
+{
+    "friend1Id": "5eb61fe1-b212-4994-95c4-32d4d6188f8f",
+    "friend2Id": "728ff67e-7cd4-4c96-8619-977a15fe987c"
+}
+
+###
+// Desfazer amizade
+DELETE http://localhost:3003/user/728ff67e-7cd4-4c96-8619-977a15fe987c
+
+###
+// Criar post
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo": "https://t.ctcdn.com.br/t0MbCACzXf49PIrakR_q-21nO84=/1024x0/smart/i335193.jpeg",
+    "description": "Ninguém sabe quantas estrelas existem na Via Láctea, mas estima-se algo em torno de 100 bilhões a 400 bilhões. A Via Láctea, por sua vez, é apenas uma das 140 bilhões de galáxias, muitas delas bem maiores que a nossa.",
+    "type": "normal",
+    "authorId": "5eb61fe1-b212-4994-95c4-32d4d6188f8f"
+}
+
+###
+// Buscar post por id do post
+GET http://localhost:3003/post/90fa2a5a-b404-4e8d-9477-bd5b77b0aea1
