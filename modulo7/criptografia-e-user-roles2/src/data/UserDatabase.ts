@@ -5,19 +5,6 @@ import { BaseDatabase } from './BaseDatabase'
 export class UserDatabase extends BaseDatabase {
   private static table_name = 'Auth_users'
 
-  findUserByEmail = async (email: string): Promise<user> => {
-    try {
-      const result = await UserDatabase.connection(UserDatabase.table_name)
-      .select()
-      .where({email})
-
-      return result[0]
-
-    } catch (error: any) {
-      throw new CustomError(400, error.message)
-    }
-  }
-
   insertUser = async (user: user) => {
     try {
       await UserDatabase.connection(UserDatabase.table_name)
@@ -27,22 +14,24 @@ export class UserDatabase extends BaseDatabase {
           nickname: user.nickname,
           email: user.email,
           password: user.password,
+          role: user.role
         })
 
     } catch (error: any) {
-      throw new CustomError(400, error.message)
+      throw new CustomError(400, error.sqlMessage)
     }
   }
-
-  editUser = async (user: EditUserInput) => {
+ 
+  findUserByEmail = async (email: string): Promise<user> => {
     try {
-      await UserDatabase.connection
-        .update({ name: user.name, nickname: user.nickname })
-        .where({ id: user.id })
-        .into(UserDatabase.table_name)
+      const result = await UserDatabase.connection(UserDatabase.table_name)
+      .select()
+      .where({email})
+
+      return result[0]
 
     } catch (error: any) {
-      throw new CustomError(400, error.message);
+      throw new CustomError(400, error.sqlMessage)
     }
   }
 
@@ -56,4 +45,20 @@ export class UserDatabase extends BaseDatabase {
       throw new CustomError(400, error.message)
     }
   }
+
+ 
+
+  // editUser = async (user: EditUserInput) => {
+  //   try {
+  //     await UserDatabase.connection
+  //       .update({ name: user.name, nickname: user.nickname })
+  //       .where({ id: user.id })
+  //       .into(UserDatabase.table_name)
+
+  //   } catch (error: any) {
+  //     throw new CustomError(400, error.message);
+  //   }
+  // }
+
+
 }

@@ -1,7 +1,6 @@
-import { v4 } from "uuid";
+import { v4 } from 'uuid'
 
 class IdGenerator {
-
     public generateId = () => v4() 
 } 
 

@@ -33,7 +33,7 @@ export interface LoginInputDTO {
 
 
 export interface GetProfileDTO {
-   token: string
+   id: string
 }
 
 

@@ -33,3 +33,9 @@ export class Unauthorized extends CustomError{
         super(401, "Usuário não autorizado")
     }
 } 
+
+export class UnathorizedUser extends CustomError{ 
+    constructor(){
+        super(401, "Usuário não autorizado")
+    }
+}

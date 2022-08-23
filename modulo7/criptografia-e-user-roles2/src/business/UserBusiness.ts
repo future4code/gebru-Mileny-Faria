@@ -3,16 +3,15 @@ import { CustomError,
   InvalidEmail,
   InvalidName,
   InvalidPassword,
-  Unauthorized,
+  UnathorizedUser,
   UserNotFound
 } from '../error/customError'
 import {
   UserInputDTO,
   user,
-  EditUserInputDTO,
-  EditUserInput,
   LoginInputDTO,
-  GetProfileDTO,
+  AuthenticationData,
+  GetProfileDTO
 } from '../model/user'
 import HashManager from '../services/HashManager'
 import IdGenerator from '../services/IdGenerator'
@@ -28,9 +27,7 @@ export class UserBusiness {
     const { name, nickname, email, password, role } = input
 
       if (!name || !nickname || !email || !password) {
-        throw new CustomError(
-          400,
-          'Preencha os campos "name","nickname", "email" e "password"')
+        throw new CustomError(400, 'Preencha os campos "name","nickname", "email" e "password"')
       }
 
       if (name.length < 4) {
@@ -59,36 +56,56 @@ export class UserBusiness {
       return token
   }
 
-  // login = async (input: LoginInputDTO): Promise<string> => {
-  //   const { email, password } = input
+  login = async (input: LoginInputDTO): Promise<string> => {
+    const { email, password } = input
 
-  //     if (!email || !password) {
-  //       throw new CustomError(
-  //         400,
-  //         'Preencha os campos"email" e "password"'
-  //       )
-  //     }
+      if (!email || !password) {
+        throw new CustomError(
+          400,
+          'Preencha os campos"email" e "password"'
+        )
+      }
 
-  //     if (!email.includes("@")) {
-  //       throw new InvalidEmail()
-  //     }
+      if (!email.includes("@")) {
+        throw new InvalidEmail()
+      }
 
-  //     const user = await this.userDatabase.findUserByEmail(email)
+      const user = await this.userDatabase.findUserByEmail(email)
 
-  //     if (!user) {
-  //       throw new UserNotFound()
-  //     }
+      if (!user) {
+        throw new UserNotFound()
+      }
 
-  //     const hashCompare = await HashManager.compareHash(password, user.password)
+      const hashCompare = await HashManager.compareHash(password, user.password)
 
-  //     if(!hashCompare){ 
-  //       throw new InvalidPassword()
-  //     }
+      if(!hashCompare){ 
+        throw new InvalidPassword()
+      }
 
-  //     const token = TokenGenerator.generateToken()
+      const payload: AuthenticationData = {
+        id: user.id,
+        role: user.role
+      }
 
-  //     return token
-  // }
+      const token = TokenGenerator.generateToken(payload)
+
+      return token
+  }
+
+  getProfile = async (input: GetProfileDTO, token: string) => {
+    const { id } = input
+
+    const tokenData = TokenGenerator.getTokenData(token)
+    
+    if(tokenData.role !== "NORMAL") {
+      throw new UnathorizedUser()
+    }
+
+    const userDatabase = new UserDatabase()
+    const profile = await userDatabase.selectProfile(id)
+
+    return profile
+  }
 
   // editUser = async (input: EditUserInputDTO) => {
   //   const { name, nickname, id, token } = input
@@ -118,16 +135,5 @@ export class UserBusiness {
 
   //     const userDatabase = new UserDatabase()
   //     await userDatabase.editUser(editUserInput)
-  // }
-
-  // getProfile = async (input: GetProfileDTO) => {
-  //   const { token } = input
-
-  //   const { id } = tokenGenerator.tokenData(token)
-
-  //   const userDatabase = new UserDatabase()
-  //   const profile = await userDatabase.selectProfile(id)
-
-  //   return profile
   // }
 }
