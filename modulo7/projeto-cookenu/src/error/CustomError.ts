@@ -20,3 +20,15 @@ export class InvalidPassword extends CustomError{
         super(400, "Email must be longer than 6 characters")
     }
 }
+
+export class UserNotFound extends CustomError{ 
+    constructor(){
+        super(404, "User not found")
+    }
+}
+
+export class Unauthorized extends CustomError{ 
+    constructor(){
+        super(401, "Unauthorized user")
+    }
+} 

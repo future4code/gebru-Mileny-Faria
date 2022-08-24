@@ -9,3 +9,21 @@ Content-Type: application/json
 }
 
 ###
+
+// login
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "loren@gmail.com",
+    "password": "pass123"
+}
+
+###
+
+// get profile
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjktNDJiYi1iN2FjLWIwNGY2OGUxNDIyMCIsImlhdCI6MTY2MTM4MjE2MSwiZXhwIjoxNjYxMzg1NzYxfQ.BswQ8SqTmBLIstkuR55Ab2RRGTK7-t7SZ25MHkYMEBI
+
+###

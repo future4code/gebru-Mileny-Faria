@@ -5,3 +5,10 @@
          email VARCHAR(255) UNIQUE NOT NULL,
          password VARCHAR(255) NOT NULL
       );
+
+      CREATE TABLE IF NOT EXISTS cookenu_recipes(
+        id VARCHAR(255) PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        preparation_mode TEXT NOT NULL,
+        creation_date DATE NOT NULL
+      )
