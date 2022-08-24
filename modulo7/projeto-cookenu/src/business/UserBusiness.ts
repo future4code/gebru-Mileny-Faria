@@ -1,19 +1,17 @@
 import { UserDatabase } from '../data/UserDatabase'
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword } from '../error/CustomError'
 import { createUserDTO, User } from '../models/User'
-import { HashManager } from '../services/HashManager'
-import { IdGenerator } from '../services/IdGenerator'
-import { TokenGenerator } from '../services/TokenGenerator'
-
-const idGenerator = new IdGenerator()
-const tokenGenerator = new TokenGenerator()
-const userDatabase = new UserDatabase()
-const hashManager = new HashManager()
+import Authorization from '../services/Authorization'
+import HashManager from '../services/HashManager'
+import IdGenerator from '../services/IdGenerator'
 
 export class UserBusiness {
+    private userDatabase: UserDatabase
+    constructor() {
+        this.userDatabase = new UserDatabase()
+    }
 
     createUser = async (input: createUserDTO): Promise<string> => {
-        try {
             const { name, email, password } = input
 
             if (!name || !email || !password) {
@@ -32,9 +30,8 @@ export class UserBusiness {
                 throw new InvalidPassword()
             }
 
-           const id = idGenerator.generateId()
-
-           const hashPassword = await hashManager.generateHash(password)
+           const id = IdGenerator.generateId()
+           const hashPassword = await HashManager.generateHash(password)
 
            const user: User = {
                 id, 
@@ -43,14 +40,9 @@ export class UserBusiness {
                 password: hashPassword
            }
            
-           await userDatabase.insertUser(user)
-           
-           const token = tokenGenerator.generateToken(id)
+           await this.userDatabase.insertUser(user)
+           const token = Authorization.generateToken(id)
 
            return token
-
-        } catch (error: any) {
-            throw new CustomError(400, error.message)
-        }
     }
 } 

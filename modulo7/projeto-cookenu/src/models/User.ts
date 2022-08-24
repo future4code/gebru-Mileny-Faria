@@ -11,4 +11,8 @@ export type User = {
     password: string
 } 
 
+export interface AuthenticationData {
+    id: string
+ } 
+
  

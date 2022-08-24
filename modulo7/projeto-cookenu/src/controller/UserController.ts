@@ -4,6 +4,10 @@ import { createUserDTO } from '../models/User'
 
 
 export class UserController {
+    private userBusiness: UserBusiness
+    constructor() {
+        this.userBusiness = new UserBusiness()
+    }
 
     signup = async (req: Request, res: Response): Promise<void> => {
         try {       
@@ -13,8 +17,7 @@ export class UserController {
                 password: req.body.password
             }     
 
-           const userBusiness = new UserBusiness()
-           const token = await userBusiness.createUser(input)
+           const token = await this.userBusiness.createUser(input)
 
            res.status(201).send({message: "User created!", token})
 
