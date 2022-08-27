@@ -4,4 +4,4 @@ import { userRouter } from './controller/UserRouter'
 
 
 app.use('/user/', userRouter)
-app.use('/recipe', recipeRouter)
+app.use('/recipe/', recipeRouter)

@@ -7,6 +7,7 @@ export type recipe = {
 
 export interface CreateRecipeDTO {
     title: string,
-    preparationMode: string
+    preparationMode: string,
+    token: string
 } 
 

@@ -27,3 +27,15 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjktNDJiYi1iN2FjLWIwNGY2OGUxNDIyMCIsImlhdCI6MTY2MTM4MjE2MSwiZXhwIjoxNjYxMzg1NzYxfQ.BswQ8SqTmBLIstkuR55Ab2RRGTK7-t7SZ25MHkYMEBI
 
 ###
+
+// create recipe
+POST http://localhost:3003/recipe/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjktNDJiYi1iN2FjLWIwNGY2OGUxNDIyMCIsImlhdCI6MTY2MTYxMzg1MSwiZXhwIjoxNjYxNjE3NDUxfQ.FqN-9pgRsH--pbw5xl_RHwz69Fs4NtCCeH_edAokWiU
+
+{
+    "title": "RISOTO DE PALMITO",
+    "preparationMode": "Numa panela grossa, aqueça 2 colheres de manteiga, refogue a cebola até ficar transparente. Junte o arroz, refogue rapidamente, coloque o vinho, mexa até evaporar. Adicione metade do caldo e mexa. Deixe cozinhar por uns 5 minutos, adicione o restante do caldo e mexa novamente, deixe reduzir o caldo. Desligue o fogo ou abaixe bem, junte o palmito, o creme de leite, o restante da manteiga e o queijo. Misture tudo, polvilhe com a salsa e sirva em seguida."
+}
+
+###
