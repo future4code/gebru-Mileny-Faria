@@ -1,6 +1,6 @@
 import { UserDatabase } from '../data/UserDatabase'
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from '../error/CustomError'
-import { GetProfileDTO, LoginInputDTO, SignupUserDTO, user, userProfile } from '../models/User'
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, Unauthorized, UserNotFound } from '../error/CustomError'
+import { GetProfileByIdDTO, GetProfileDTO, LoginInputDTO, SignupUserDTO, user, userProfile } from '../models/User'
 import Authorization from '../services/Authorization'
 import HashManager from '../services/HashManager'
 import IdGenerator from '../services/IdGenerator'
@@ -79,7 +79,29 @@ export class UserBusiness {
     getProfile = async (input: GetProfileDTO): Promise<userProfile> => {
         const { token } = input
 
+        if (!token) {
+            throw new CustomError(400, 'Fill in the token fields')
+        }
+
         const { id } = Authorization.getTokenData(token)
+
+        const profile = await this.userDatabase.selectProfile(id)
+
+        return profile
+    }
+
+    getProfileById = async (input: GetProfileByIdDTO): Promise<userProfile> => {
+        const { id, token } = input
+
+        if (!id || !token) {
+            throw new CustomError(400, 'Fill in the id and token fields')
+        }
+
+        const data = Authorization.getTokenData(token)
+
+        if(!data.id) {
+            throw new Unauthorized()
+        }
 
         const profile = await this.userDatabase.selectProfile(id)
 

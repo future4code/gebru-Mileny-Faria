@@ -29,6 +29,11 @@ export interface LoginInputDTO {
 export interface GetProfileDTO {
    token: string
 }
+
+export interface GetProfileByIdDTO {
+    id: string,
+    token: string
+}
  
 
  
