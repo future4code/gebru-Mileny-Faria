@@ -1,6 +1,6 @@
 import { RecipeDatabase } from "../data/RecipeDatabase"
 import { CustomError, Unauthorized } from "../error/CustomError"
-import { CreateRecipeDTO, EditRecipe, EditRecipeDTO, GetRecipeDTO, recipe } from "../models/Recipes"
+import { CreateRecipeDTO, EditRecipe, EditRecipeDTO, recipe, RecipeDTO } from "../models/Recipes"
 import Authorization from "../services/Authorization"
 import IdGenerator from "../services/IdGenerator"
 
@@ -36,7 +36,7 @@ export class RecipeBusiness {
         await this.recipeDatabase.insertRecipe(recipe)
     }
 
-    getRecipe = async (input: GetRecipeDTO): Promise<recipe> => {
+    getRecipe = async (input: RecipeDTO): Promise<recipe> => {
         const { id, token } = input
 
         if (!id || !token) {
@@ -82,5 +82,22 @@ export class RecipeBusiness {
         }
     
         await this.recipeDatabase.editRecipe(recipeEdit)
+    }
+
+    deleteRecipe = async (input: RecipeDTO): Promise<void> => {
+        const { id, token }= input
+
+        if (!id || !token) {
+            throw new CustomError(400, 'Fill in the id and token fields')
+        }
+
+        const data = Authorization.getTokenData(token)
+
+        if(!data.id) {
+            throw new Unauthorized()
+        }
+
+        await this.recipeDatabase.deleteRecipe(id)
+
     }
 } 

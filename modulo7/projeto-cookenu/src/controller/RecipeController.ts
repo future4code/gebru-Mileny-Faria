@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { RecipeBusiness } from '../business/RecipeBusiness'
-import { CreateRecipeDTO, EditRecipeDTO, GetRecipeDTO } from '../models/Recipes'
+import { CreateRecipeDTO, EditRecipeDTO, RecipeDTO } from '../models/Recipes'
 
 
 export class RecipeController {
@@ -28,7 +28,7 @@ export class RecipeController {
 
   getRecipe = async (req: Request, res: Response): Promise<void> => {
     try {
-      const input: GetRecipeDTO = {
+      const input: RecipeDTO = {
         token: req.headers.authorization!,
         id: req.params.id
       }
@@ -53,6 +53,22 @@ export class RecipeController {
       await this.recipeBusiness.editRecipe(input)
 
       res.status(201).send({message: 'Recipe changed successfully'})
+    } catch (error: any) {
+      res.status(400).send(error.message)
+    }
+  }
+
+  deleteRecipe = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const input: RecipeDTO = {
+        token: req.headers.authorization!,
+        id: req.params.id
+      }
+
+      await this.recipeBusiness.deleteRecipe(input)
+
+      res.status(201).send({message: 'Recipe deleted successfully!'})
+
     } catch (error: any) {
       res.status(400).send(error.message)
     }

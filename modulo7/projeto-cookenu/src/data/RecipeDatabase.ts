@@ -46,4 +46,16 @@ export class RecipeDatabase extends BaseDatabase {
       throw new CustomError(400, error.sqlMessage)
     }
   }
+
+  deleteRecipe = async (id: string): Promise<void> => {
+    try {
+      await RecipeDatabase
+        .connection(RecipeDatabase.table_name)
+        .where('id', id)
+        .del()
+
+    } catch (error: any) {
+      throw new CustomError(400, error.sqlMessage)
+    }
+  }
 } 

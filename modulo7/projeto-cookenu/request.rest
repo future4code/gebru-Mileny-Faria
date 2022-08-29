@@ -65,6 +65,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzct
 
 ###
 
+// delete recipe
+DELETE http://localhost:3003/recipe/delete/c142d4d4-92c0-4b04-aa4f-adf4e023c1cd
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjE4MTU3NDgsImV4cCI6MTY2MTgxOTM0OH0.uYeGgsHpB99zm8JH7SgYXu-8jDZq3CBlUnBPbc_iRvo
+
+###
+
 // make friends
 POST http://localhost:3003/user/follow
 Content-Type: application/json

@@ -11,7 +11,7 @@ export interface CreateRecipeDTO {
     token: string
 } 
 
-export interface GetRecipeDTO {
+export interface RecipeDTO {
     token: string
     id: string
 }
