@@ -1,26 +1,26 @@
 export type user = {
-    id: string,
-    name: string,
-    email: string,
-    password: string,
+    id: string
+    name: string
+    email: string
+    password: string
     role: ROLE_TYPES
 }
 
 export type userProfile = {
-   id: string,
-   name: string,
+   id: string
+   name: string
    email: string
 }
 
 export type friendship = {
-    id: string,
+    id: string
     friendId: string
 }
 
 export interface SignupUserDTO {
-    email: string,
-    name: string,
-    password: string,
+    email: string
+    name: string
+    password: string
     role: ROLE_TYPES
 }
 
@@ -30,12 +30,12 @@ enum ROLE_TYPES {
 }
 
 export interface AuthenticationData {
-    id: string,
+    id: string
     role: string
  } 
 
 export interface LoginInputDTO {
-    email: string,
+    email: string
     password: string
 }
 
@@ -44,13 +44,13 @@ export interface GetProfileDTO {
 }
 
 export interface GetProfileByIdDTO {
-    id: string,
+    id: string
     token: string
 }
 
 export interface FriendsDTO {
-    friendId: string;
-    token: string;
-  }
+    friendId: string
+    token: string
+}
 
  

@@ -38,11 +38,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzct
 // create recipe
 POST http://localhost:3003/recipe/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjktNDJiYi1iN2FjLWIwNGY2OGUxNDIyMCIsImlhdCI6MTY2MTYxMzg1MSwiZXhwIjoxNjYxNjE3NDUxfQ.FqN-9pgRsH--pbw5xl_RHwz69Fs4NtCCeH_edAokWiU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjE4MTQ1MjgsImV4cCI6MTY2MTgxODEyOH0.j3WJn8usEBsbrbfkhkglVeDoi-tdfB3T77Kl1G7b8Fo
 
 {
-    "title": "RISOTO DE PALMITO",
-    "preparationMode": "Numa panela grossa, aqueça 2 colheres de manteiga, refogue a cebola até ficar transparente. Junte o arroz, refogue rapidamente, coloque o vinho, mexa até evaporar. Adicione metade do caldo e mexa. Deixe cozinhar por uns 5 minutos, adicione o restante do caldo e mexa novamente, deixe reduzir o caldo. Desligue o fogo ou abaixe bem, junte o palmito, o creme de leite, o restante da manteiga e o queijo. Misture tudo, polvilhe com a salsa e sirva em seguida."
+    "title": "CEVICHE DE TILÁPIA",
+    "preparationMode": "Corte os filés de tilápia em pequenos cubos. Fatie a cebola finamente. Descarte as sementes da pimenta e fatie bem fininha. Coloque o peixe, a cebola, o milho e a pimenta em um recipiente, acrescente o sal e misture bem. Acrescente o suco dos limões e leve à geladeira por cerca de uma hora. Na hora de servir, acrescente o tomate cortado em cubinhos, o coentro (ou salsa) e um fio de azeite."
 }
 
 ###
@@ -51,6 +51,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjkt
 GET http://localhost:3003/recipe/9d408b88-eb46-4b3b-9d4d-96a012978aa4
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsImlhdCI6MTY2MTgxMDA0NywiZXhwIjoxNjYxODEzNjQ3fQ.s2qQekZzbj57fHTV4kS2_snRkM2FkfoxNBgcmqnXrS8
+
+###
+
+// edit recipe
+PUT http://localhost:3003/recipe/edit/c142d4d4-92c0-4b04-aa4f-adf4e023c1cd
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjE4MTQ2MzYsImV4cCI6MTY2MTgxODIzNn0.NVUJHLfrWbH6D5ELSU73CUzPUwOfzPjU1By1cr9C-QU
+
+{
+    "preparationMode": "Corte os filés de tilápia em pequenos cubos. Fatie a cebola finamente. Descarte as sementes da pimenta e fatie bem fininha. Coloque o peixe, a cebola, o milho e a pimenta em um recipiente, acrescente o sal e misture bem. Acrescente o suco dos limões e leve à geladeira por cerca de uma hora. Na hora de servir, acrescente o tomate cortado em cubinhos, o coentro (ou salsa) e um fio de azeite."
+}
 
 ###
 

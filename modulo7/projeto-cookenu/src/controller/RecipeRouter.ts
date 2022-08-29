@@ -7,3 +7,4 @@ const recipeController = new RecipeController()
 
 recipeRouter.get('/:id', recipeController.getRecipe)
 recipeRouter.post('/create', recipeController.createRecipe)
+recipeRouter.put('/edit/:id', recipeController.editRecipe)

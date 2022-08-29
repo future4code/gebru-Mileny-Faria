@@ -1,5 +1,5 @@
 import { BaseDatabase } from './BaseDatabase'
-import { recipe } from '../models/Recipes'
+import { EditRecipe, recipe } from '../models/Recipes'
 import { CustomError } from '../error/CustomError'
 
 export class RecipeDatabase extends BaseDatabase {
@@ -29,6 +29,18 @@ export class RecipeDatabase extends BaseDatabase {
         .where('id', id)
 
       return result[0]
+
+    } catch (error: any) {
+      throw new CustomError(400, error.sqlMessage)
+    }
+  }
+
+  editRecipe = async (recipeEdit: EditRecipe): Promise<void> => {
+    try {
+      await RecipeDatabase
+        .connection(RecipeDatabase.table_name)
+        .update({title: recipeEdit.title, preparation_mode: recipeEdit.preparationMode})
+        .where({id: recipeEdit.id})
 
     } catch (error: any) {
       throw new CustomError(400, error.sqlMessage)
