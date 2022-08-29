@@ -17,4 +17,7 @@
         id VARCHAR(255) PRIMARY KEY,
         friend_id VARCHAR(255) UNIQUE NOT NULL,
         FOREIGN KEY (friend_id) REFERENCES cookenu_users(id)
-      )
+      );
+
+      ALTER TABLE cookenu_users 
+      ADD role ENUM('ADMIN', 'NORMAL') DEFAULT 'NORMAL'

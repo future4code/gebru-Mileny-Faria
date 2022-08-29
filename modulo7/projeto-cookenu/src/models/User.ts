@@ -2,7 +2,8 @@ export type user = {
     id: string,
     name: string,
     email: string,
-    password: string
+    password: string,
+    role: ROLE_TYPES
 }
 
 export type userProfile = {
@@ -19,11 +20,18 @@ export type friendship = {
 export interface SignupUserDTO {
     email: string,
     name: string,
-    password: string
-} 
+    password: string,
+    role: ROLE_TYPES
+}
+
+enum ROLE_TYPES {
+    ADMIN = 'ADMIN',
+    NORMAL = 'NORMAL'
+}
 
 export interface AuthenticationData {
-    id: string
+    id: string,
+    role: string
  } 
 
 export interface LoginInputDTO {

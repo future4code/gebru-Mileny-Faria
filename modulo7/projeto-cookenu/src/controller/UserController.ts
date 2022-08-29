@@ -5,6 +5,7 @@ import { SignupUserDTO, LoginInputDTO, GetProfileDTO, GetProfileByIdDTO, Friends
 
 export class UserController {
     private userBusiness: UserBusiness
+
     constructor() {
         this.userBusiness = new UserBusiness()
     }
@@ -14,7 +15,8 @@ export class UserController {
             const input: SignupUserDTO = {
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                role: req.body.role
             }     
 
            const token = await this.userBusiness.createUser(input)

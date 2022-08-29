@@ -3,9 +3,9 @@ import { AuthenticationData } from '../models/User'
 
 class Authorization {
     
-    generateToken = (id: string) => {
+    generateToken = (payload: AuthenticationData) => {
         const token = jwt.sign(
-            { id },
+            payload,
             process.env.JWT_KEY as string,
             { expiresIn: "1h" }
          )

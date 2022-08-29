@@ -1,7 +1,7 @@
 import { FriendsDatabase } from '../data/FriendsDatabase'
 import { UserDatabase } from '../data/UserDatabase'
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, Unauthorized, UserNotFound } from '../error/CustomError'
-import { FriendsDTO, friendship, GetProfileByIdDTO, GetProfileDTO, LoginInputDTO, SignupUserDTO, user, userProfile } from '../models/User'
+import { AuthenticationData, FriendsDTO, friendship, GetProfileByIdDTO, GetProfileDTO, LoginInputDTO, SignupUserDTO, user, userProfile } from '../models/User'
 import Authorization from '../services/Authorization'
 import HashManager from '../services/HashManager'
 import IdGenerator from '../services/IdGenerator'
@@ -16,7 +16,7 @@ export class UserBusiness {
     }
 
     createUser = async (input: SignupUserDTO): Promise<string> => {
-        const { name, email, password } = input
+        const { name, email, password, role } = input
 
         if(!name || !email || !password) {
             throw new CustomError(400, 'Fill in the name, email and password fields')
@@ -41,11 +41,12 @@ export class UserBusiness {
             id, 
             name,
             email,
-            password: hashPassword
+            password: hashPassword,
+            role
         }
         
         await this.userDatabase.insertUser(user)
-        const token = Authorization.generateToken(id)
+        const token = Authorization.generateToken({id, role})
 
         return token
     }
@@ -73,9 +74,12 @@ export class UserBusiness {
             throw new InvalidPassword()
         }
 
-        const id: string = user.id
+        const payload: AuthenticationData = {
+            id: user.id,
+            role: user.role
+        }
 
-        const token = Authorization.generateToken(id)
+        const token = Authorization.generateToken(payload)
 
         return token
     }
