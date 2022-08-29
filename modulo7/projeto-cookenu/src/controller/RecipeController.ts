@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { RecipeBusiness } from '../business/RecipeBusiness'
-import { CreateRecipeDTO } from '../models/Recipes'
+import { CreateRecipeDTO, GetRecipeDTO } from '../models/Recipes'
 
 
 export class RecipeController {
@@ -25,4 +25,19 @@ export class RecipeController {
            res.status(400).send(error.message)
         }
     }
+
+    getRecipe = async (req: Request, res: Response): Promise<void> => {
+        try {
+          const input: GetRecipeDTO = {
+            token: req.headers.authorization!,
+            id: req.params.id
+          }
+    
+          const recipe = await this.recipeBusiness.getRecipe(input)
+    
+          res.status(201).send(recipe)
+        } catch (error: any) {
+          res.status(400).send(error.message)
+        }
+      }
 } 

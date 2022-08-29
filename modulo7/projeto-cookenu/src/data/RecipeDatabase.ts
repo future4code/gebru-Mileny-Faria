@@ -20,4 +20,18 @@ export class RecipeDatabase extends BaseDatabase {
         throw new CustomError(400, error.sqlMessage)
     }
   }
+
+  selectRecipe = async (id: string): Promise<recipe> => {
+    try {
+      const result = await RecipeDatabase
+        .connection(RecipeDatabase.table_name)
+        .select()
+        .where('id', id)
+
+      return result[0]
+
+    } catch (error: any) {
+      throw new CustomError(400, error.sqlMessage)
+    }
+  }
 } 

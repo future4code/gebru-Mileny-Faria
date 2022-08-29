@@ -24,14 +24,14 @@ Content-Type: application/json
 // get profile
 GET http://localhost:3003/user/profile
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsImlhdCI6MTY2MTYxNTQzOCwiZXhwIjoxNjYxNjE5MDM4fQ.cWdDRlPuF1xfMadgXu1YwFPx6GJfHAQ1d1ywJEW1CQg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsImlhdCI6MTY2MTgxMDE1NywiZXhwIjoxNjYxODEzNzU3fQ.eubTTG12GxE1T3StkeHaFvP5UAScr_Z1KWgBNcHoNTQ
 
 ###
 
 // get profile by id
 GET http://localhost:3003/user/profile/39fb9da2-7a51-4c57-a8a9-db02c2e765d7
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjktNDJiYi1iN2FjLWIwNGY2OGUxNDIyMCIsImlhdCI6MTY2MTYxMzg1MSwiZXhwIjoxNjYxNjE3NDUxfQ.FqN-9pgRsH--pbw5xl_RHwz69Fs4NtCCeH_edAokWiU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsImlhdCI6MTY2MTgxMDE1NywiZXhwIjoxNjYxODEzNzU3fQ.eubTTG12GxE1T3StkeHaFvP5UAScr_Z1KWgBNcHoNTQ
 
 ###
 
@@ -44,5 +44,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFmZTdjNTI2LTFiMjkt
     "title": "RISOTO DE PALMITO",
     "preparationMode": "Numa panela grossa, aqueça 2 colheres de manteiga, refogue a cebola até ficar transparente. Junte o arroz, refogue rapidamente, coloque o vinho, mexa até evaporar. Adicione metade do caldo e mexa. Deixe cozinhar por uns 5 minutos, adicione o restante do caldo e mexa novamente, deixe reduzir o caldo. Desligue o fogo ou abaixe bem, junte o palmito, o creme de leite, o restante da manteiga e o queijo. Misture tudo, polvilhe com a salsa e sirva em seguida."
 }
+
+###
+
+// get recipe by id
+GET http://localhost:3003/recipe/9d408b88-eb46-4b3b-9d4d-96a012978aa4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsImlhdCI6MTY2MTgxMDA0NywiZXhwIjoxNjYxODEzNjQ3fQ.s2qQekZzbj57fHTV4kS2_snRkM2FkfoxNBgcmqnXrS8
 
 ###
