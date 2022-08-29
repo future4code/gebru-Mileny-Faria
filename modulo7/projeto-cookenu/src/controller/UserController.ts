@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { UserBusiness } from '../business/UserBusiness'
-import { SignupUserDTO, LoginInputDTO, GetProfileDTO, GetProfileByIdDTO } from '../models/User'
+import { SignupUserDTO, LoginInputDTO, GetProfileDTO, GetProfileByIdDTO, FriendsDTO } from '../models/User'
 
 
 export class UserController {
@@ -72,6 +72,21 @@ export class UserController {
             
         } catch (error: any) {
             res.status(400).send(error.message)
+        }
+    }
+
+    makeFriendship = async (req: Request, res: Response): Promise<void> => {
+        try {
+          const input: FriendsDTO = {
+            friendId: req.body.friendId,
+            token: req.headers.authorization!
+          }
+    
+          await this.userBusiness.makeFriendship(input)
+          res.status(201).send({ message: "You follow your friend now" })
+
+        } catch (error: any) {
+          res.status(400).send(error.message)
         }
     }
 } 

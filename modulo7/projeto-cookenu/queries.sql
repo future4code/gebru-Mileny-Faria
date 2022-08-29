@@ -11,4 +11,10 @@
         title VARCHAR(255) NOT NULL,
         preparation_mode TEXT NOT NULL,
         creation_date DATE NOT NULL
+      );
+
+        CREATE TABLE IF NOT EXISTS cookenu_friendships(
+        id VARCHAR(255) PRIMARY KEY,
+        friend_id VARCHAR(255) UNIQUE NOT NULL,
+        FOREIGN KEY (friend_id) REFERENCES cookenu_users(id)
       )

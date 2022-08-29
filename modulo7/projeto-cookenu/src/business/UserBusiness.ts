@@ -1,14 +1,18 @@
+import { FriendsDatabase } from '../data/FriendsDatabase'
 import { UserDatabase } from '../data/UserDatabase'
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, Unauthorized, UserNotFound } from '../error/CustomError'
-import { GetProfileByIdDTO, GetProfileDTO, LoginInputDTO, SignupUserDTO, user, userProfile } from '../models/User'
+import { FriendsDTO, friendship, GetProfileByIdDTO, GetProfileDTO, LoginInputDTO, SignupUserDTO, user, userProfile } from '../models/User'
 import Authorization from '../services/Authorization'
 import HashManager from '../services/HashManager'
 import IdGenerator from '../services/IdGenerator'
 
 export class UserBusiness {
     private userDatabase: UserDatabase
+    private friendsDatabase: FriendsDatabase
+
     constructor() {
         this.userDatabase = new UserDatabase()
+        this.friendsDatabase = new FriendsDatabase()
     }
 
     createUser = async (input: SignupUserDTO): Promise<string> => {
@@ -30,7 +34,7 @@ export class UserBusiness {
             throw new InvalidPassword()
         }
 
-        const id = IdGenerator.generateId()
+        const id: string = IdGenerator.generateId()
         const hashPassword = await HashManager.generateHash(password)
 
         const user: user = {
@@ -106,5 +110,28 @@ export class UserBusiness {
         const profile = await this.userDatabase.selectProfile(id)
 
         return profile
+    }
+
+    makeFriendship = async (input: FriendsDTO): Promise<void> => {
+        const { friendId, token } = input
+    
+        if (!friendId || !token) {
+          throw new CustomError(400, 'Fill in the email and password fields')
+        }
+    
+        const data = Authorization.getTokenData(token)
+    
+        if (!data.id) {
+          throw new Unauthorized()
+        }
+
+        const id: string = IdGenerator.generateId()
+       
+        const makeFriends: friendship = {
+            id, 
+            friendId
+        }
+    
+        await this.friendsDatabase.makeFriendship(makeFriends)
     }
 } 

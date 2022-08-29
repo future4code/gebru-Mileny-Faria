@@ -9,4 +9,5 @@ userRouter.get('/profile', userController.getProfile)
 userRouter.get('/profile/:id', userController.getProfileById)
 userRouter.post('/signup', userController.signup)
 userRouter.post('/login', userController.login)
+userRouter.post('/follow', userController.makeFriendship)
 

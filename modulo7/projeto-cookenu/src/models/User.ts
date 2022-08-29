@@ -11,6 +11,11 @@ export type userProfile = {
    email: string
 }
 
+export type friendship = {
+    id: string,
+    friendId: string
+}
+
 export interface SignupUserDTO {
     email: string,
     name: string,
@@ -34,6 +39,10 @@ export interface GetProfileByIdDTO {
     id: string,
     token: string
 }
- 
+
+export interface FriendsDTO {
+    friendId: string;
+    token: string;
+  }
 
  
