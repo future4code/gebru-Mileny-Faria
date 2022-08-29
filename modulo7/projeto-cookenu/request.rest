@@ -64,3 +64,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzct
 }
 
 ###
+
+// unfollow
+POST http://localhost:3003/user/unfollow
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YTgzYTA4LTQxNzctNGQyOS04ZjA4LTk2OTAwMjk2ZDdhNSIsImlhdCI6MTY2MTgxMjg0MCwiZXhwIjoxNjYxODE2NDQwfQ.DSUT_3yU-fHvMzOvdH2PoytExbonVuF4OA6IBit74C0
+
+{
+"friendId": "39fb9da2-7a51-4c57-a8a9-db02c2e765d7"
+}
+
+###

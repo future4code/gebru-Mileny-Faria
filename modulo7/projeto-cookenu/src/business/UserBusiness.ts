@@ -134,4 +134,20 @@ export class UserBusiness {
     
         await this.friendsDatabase.makeFriendship(makeFriends)
     }
+
+    unfriend = async (input: FriendsDTO): Promise<void> => {
+        const { friendId, token } = input
+    
+        if (!friendId || !token) {
+          throw new CustomError(400, 'Fill in the email and password fields')
+        }
+    
+        const data = Authorization.getTokenData(token)
+    
+        if (!data.id) {
+          throw new Unauthorized()
+        }
+    
+        this.friendsDatabase.unfriend(friendId)
+    }
 } 

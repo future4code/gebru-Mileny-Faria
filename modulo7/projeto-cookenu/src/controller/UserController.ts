@@ -89,4 +89,19 @@ export class UserController {
           res.status(400).send(error.message)
         }
     }
+
+    unfriend = async (req: Request, res: Response): Promise<void> => {
+        try {
+          const input: FriendsDTO = {
+            friendId: req.body.friendId,
+            token: req.headers.authorization!
+          }
+    
+          await this.userBusiness.unfriend(input)
+          res.status(201).send({ message: "You unfollowed" })
+
+        } catch (error: any) {
+          res.status(400).send(error.message)
+        }
+    }
 } 
