@@ -1,9 +1,9 @@
-import { CustomError } from "../errors/CustomError";
-import { User, stringToUserRole } from "../model/User";
-import userDatabase from "../data/UserDatabase";
-import hashGenerator from "../services/hashGenerator";
-import idGenerator from "../services/idGenerator";
-import tokenGenerator from "../services/tokenGenerator";
+import { CustomError } from '../errors/CustomError'
+import { User, stringToUserRole } from '../model/User'
+import userDatabase from '../data/UserDatabase'
+import hashGenerator from '../services/hashGenerator'
+import idGenerator from '../services/idGenerator'
+import tokenGenerator from '../services/tokenGenerator'
 
 export class UserBusiness {
 
@@ -26,15 +26,15 @@ export class UserBusiness {
             throw new CustomError(422, "Invalid password");
          }
 
-         const id = idGenerator.generate();
+         const id = idGenerator.generateId();
 
-         const cypherPassword = await hashGenerator.hash(password);
+         const cypherPassword = await hashGenerator.generateHash(password);
 
          await userDatabase.createUser(
             new User(id, name, email, cypherPassword, stringToUserRole(role))
          );
 
-         const accessToken = tokenGenerator.generate({
+         const accessToken = tokenGenerator.generateToken({
             id,
             role,
          });
@@ -71,7 +71,7 @@ export class UserBusiness {
             throw new CustomError(401, "Invalid credentials");
          }
 
-         const accessToken = tokenGenerator.generate({
+         const accessToken = tokenGenerator.generateToken({
             id: user.getId(),
             role: user.getRole(),
          });

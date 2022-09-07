@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-import userBusiness from "../business/UserBusiness";
+import { Request, Response } from 'express'
+import userBusiness from '../business/UserBusiness'
 
 export class UserController {
 
-   public async signup(req: Request, res: Response) {
+   signup = async (req: Request, res: Response) => {
       try {
          const { name, role, email, password } = req.body
          const result = await userBusiness.signup(

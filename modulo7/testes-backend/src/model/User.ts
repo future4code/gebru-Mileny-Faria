@@ -1,4 +1,4 @@
-import { CustomError } from "../errors/CustomError";
+import { CustomError } from '../errors/CustomError'
 
 export class User {
    constructor(
@@ -10,36 +10,36 @@ export class User {
    ) { }
 
    public getId(): string {
-      return this.id;
+      return this.id
    }
 
    public getName(): string {
-      return this.name;
+      return this.name
    }
 
    public getEmail(): string {
-      return this.email;
+      return this.email
    }
 
    public getPassword(): string {
-      return this.password;
+      return this.password
    }
 
    public getRole(): USER_ROLES {
-      return this.role;
+      return this.role
    }
 }
 
 export const stringToUserRole = (input: string): USER_ROLES => {
    switch (input) {
       case "NORMAL":
-         return USER_ROLES.NORMAL;
+         return USER_ROLES.NORMAL
       case "ADMIN":
-         return USER_ROLES.ADMIN;
+         return USER_ROLES.ADMIN
       default:
-         throw new CustomError(422, "Invalid user role");
+         throw new CustomError(422, 'Invalid user role')
    }
-};
+}
 
 export enum USER_ROLES {
    NORMAL = "NORMAL",
