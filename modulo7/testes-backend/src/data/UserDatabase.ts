@@ -1,72 +1,66 @@
 import { BaseDatabase } from './BaseDatabase'
-import { User } from '../model/User'
+import { user } from '../model/User'
+import { CustomError } from '../errors/CustomError'
 
 export class UserDatabase extends BaseDatabase {
 
-   protected tableName: string = "INSIRA AQUI O NOME DA SUA TABELA DE USUÁRIOS"
+   private static table_name = 'users'
 
-   private toModel(dbModel?: any): User | undefined {
-      return (
-         dbModel &&
-         new User(
-            dbModel.id,
-            dbModel.name,
-            dbModel.email,
-            dbModel.password,
-            dbModel.role
-         )
-      )
-   }
-
-   createUser = async (user: User): Promise<void> => {
+   createUser = async (user: user): Promise<void> => {
       try {
-         await BaseDatabase.connection.raw(`
-            INSERT INTO ${this.tableName} (id, name, email, password, role)
-            VALUES (
-            '${user.getId()}', 
-            '${user.getName()}', 
-            '${user.getEmail()}',
-            '${user.getPassword()}', 
-            '${user.getRole()}'
-            )`
-         )
-      } catch (error: any) {
-         throw new Error(error.sqlMessage || error.message)
-      }
-   }
-
-   getUserByEmail = async (email: string): Promise<User | undefined> => {
-      try {
-         const result = await BaseDatabase.connection.raw(`
-            SELECT * from ${this.tableName} WHERE email = '${email}'
-         `)
-         return this.toModel(result[0][0])
-      } catch (error:any) {
-         throw new Error(error.sqlMessage || error.message)
-      }
-   }
-
-   getUserById = async (id: string): Promise<User | undefined> => {
-      try {
-         const result = await BaseDatabase.connection.raw(`
-            SELECT * from ${this.tableName} WHERE id = '${id}'
-         `)
-         return this.toModel(result[0][0])
-      } catch (error:any) {
-         throw new Error(error.sqlMessage || error.message)
-      }
-   }
-
-   getAllUsers = async (): Promise<User[]> => {
-      try {
-         const result = await BaseDatabase.connection.raw(`
-            SELECT * from ${this.tableName}
-         `)
-         return result[0].map((res: any) => {
-            return this.toModel(res)
+         await UserDatabase
+         .connection(UserDatabase.table_name)
+         .insert({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            role: user.role
          })
+
+      } catch (error: any) {
+         throw new CustomError(400, error.sqlMessage)
+      }
+   }
+
+   getUserByEmail = async (email: string): Promise<user> => {
+      try {
+         const result  = await UserDatabase
+            .connection(UserDatabase.table_name)
+            .select()
+            .where({email})
+
+         return result[0]
+
+      } catch (error: any) {
+         throw new CustomError(400, error.sqlMessage)
+      }
+   }
+
+   getUserById = async (id: string): Promise<user | undefined> => {
+      try {
+         const result = await BaseDatabase
+            .connection(UserDatabase.table_name)
+            .select()
+            .where('id', id)
+         
+         return result[0]
+
       } catch (error:any) {
-         throw new Error(error.sqlMessage || error.message)
+         throw new CustomError(400, error.sqlMessage)
+      }
+   }
+
+   getAllUsers = async (): Promise<user[]> => {
+      try {
+         const result = await BaseDatabase
+            .connection(UserDatabase.table_name)
+            .select()
+           
+         return result
+
+      } catch (error:any) {
+         throw new CustomError(400, error.sqlMessage)
       }
    }
 }

@@ -1,34 +1,50 @@
 import { Request, Response } from 'express'
-import userBusiness from '../business/UserBusiness'
+import { UserBusiness } from '../business/UserBusiness'
+import { SignupUserDTO, LoginInputDTO } from '../model/User'
 
 export class UserController {
 
-   signup = async (req: Request, res: Response) => {
-      try {
-         const { name, role, email, password } = req.body
-         const result = await userBusiness.signup(
-            name,
-            email,
-            password,
-            role
-         );
-         res.status(200).send(result);
-      } catch (error:any) {
-         const { statusCode, message } = error
-         res.status(statusCode || 400).send({ message });
-      }
-   }
+   private userBusiness: UserBusiness
 
-   public async login(req: Request, res: Response) {
-      try {
-         const { email, password } = req.body
-         const result = await userBusiness.login(email, password);
-         res.status(200).send(result);
-      } catch (error:any) {
-         const { statusCode, message } = error
-         res.status(statusCode || 400).send({ message });
-      }
-   }
+    constructor() {
+        this.userBusiness = new UserBusiness()
+    }
+
+    signup = async (req: Request, res: Response): Promise<void> => {
+        try {       
+            const input: SignupUserDTO = {
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                role: req.body.role
+            }     
+
+           const token = await this.userBusiness.createUser(input)
+
+           res.status(201).send({message: 'Created user!', token})
+
+        } catch (error: any) {
+           res.status(400).send(error.message)
+        }
+    }
+
+    login = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const { email, password } = req.body
+
+            const input: LoginInputDTO = {
+                email,
+                password
+            }
+
+            const token = await this.userBusiness.login(input)
+
+            res.status(200).send({message: 'Logged in user', token})
+
+        } catch (error: any) {
+            res.status(400).send(error.message)
+        }
+    }
 }
 
 export default new UserController()

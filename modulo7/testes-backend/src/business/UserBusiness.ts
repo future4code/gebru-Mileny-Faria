@@ -1,85 +1,84 @@
-import { CustomError } from '../errors/CustomError'
-import { User, stringToUserRole } from '../model/User'
-import userDatabase from '../data/UserDatabase'
-import hashGenerator from '../services/hashGenerator'
-import idGenerator from '../services/idGenerator'
-import tokenGenerator from '../services/tokenGenerator'
+import { UserDatabase } from '../data/UserDatabase'
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from '../errors/CustomError'
+import { AuthenticationData, LoginInputDTO, SignupUserDTO, user } from '../model/User'
+import Authorization from '../services/tokenGenerator'
+import HashManager from '../services/hashGenerator'
+import IdGenerator from '../services/idGenerator'
 
 export class UserBusiness {
+   private userDatabase: UserDatabase
 
-   public async signup(
-      name: string,
-      email: string,
-      password: string,
-      role: string
-   ) {
-      try {
-         if (!name || !email || !password || !role) {
-            throw new CustomError(422, "Missing input");
-         }
+   constructor() {
+      this.userDatabase = new UserDatabase()
+  }
+   
+   createUser = async (input: SignupUserDTO): Promise<string> => {
+      const { name, email, password, role } = input
 
-         if (email.indexOf("@") === -1) {
-            throw new CustomError(422, "Invalid email");
-         }
-
-         if (password.length < 6) {
-            throw new CustomError(422, "Invalid password");
-         }
-
-         const id = idGenerator.generateId();
-
-         const cypherPassword = await hashGenerator.generateHash(password);
-
-         await userDatabase.createUser(
-            new User(id, name, email, cypherPassword, stringToUserRole(role))
-         );
-
-         const accessToken = tokenGenerator.generateToken({
-            id,
-            role,
-         });
-         return { accessToken };
-      } catch (error:any) {
-         if (error.message.includes("key 'email'")) {
-            throw new CustomError(409, "Email already in use")
-         }
-
-         throw new CustomError(error.statusCode, error.message)
+      if(!name || !email || !password) {
+          throw new CustomError(400, 'Fill in the name, email and password fields')
       }
 
-   }
-
-   public async login(email: string, password: string) {
-
-      try {
-         if (!email || !password) {
-            throw new CustomError(422, "Missing input");
-         }
-
-         const user = await userDatabase.getUserByEmail(email);
-
-         if (!user) {
-            throw new CustomError(401, "Invalid credentials");
-         }
-
-         const isPasswordCorrect = await hashGenerator.compareHash(
-            password,
-            user.getPassword()
-         );
-
-         if (!isPasswordCorrect) {
-            throw new CustomError(401, "Invalid credentials");
-         }
-
-         const accessToken = tokenGenerator.generateToken({
-            id: user.getId(),
-            role: user.getRole(),
-         });
-
-         return { accessToken };
-      } catch (error:any) {
-         throw new CustomError(error.statusCode, error.message)
+      if(!email.includes('@')) {
+          throw new InvalidEmail()
       }
+
+      if(name.length < 3) {
+          throw new InvalidName()
+      }
+
+      if(password.length < 6) {
+          throw new InvalidPassword()
+      }
+
+      const id: string = IdGenerator.generateId()
+      const hashPassword = await HashManager.generateHash(password)
+
+      const user: user = {
+          id, 
+          name,
+          email,
+          password: hashPassword,
+          role
+      }
+      
+      await this.userDatabase.createUser(user)
+      const token = Authorization.generateToken({id, role})
+
+      return token
+  }
+
+  login = async (input: LoginInputDTO): Promise<string> => {
+      const { email, password } = input
+
+      if(!email || !password) {
+         throw new CustomError(400, 'Fill in the email and password fields')
+      }
+
+      if(!email.includes('@')) {
+         throw new InvalidEmail()
+      }
+
+      const user = await this.userDatabase.getUserByEmail(email)
+
+      if(!user) {
+         throw new UserNotFound()
+      }
+
+      const hashCompare = await HashManager.compareHash(password, user.password)
+
+      if(!hashCompare) {
+         throw new InvalidPassword()
+      }
+
+      const payload: AuthenticationData = {
+         id: user.id,
+         role: user.role
+      }
+
+      const token = Authorization.generateToken(payload)
+
+      return token
    }
 }
 
