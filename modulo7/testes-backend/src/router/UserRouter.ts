@@ -5,5 +5,6 @@ export const userRouter = express.Router()
 
 const userController = new UserController()
 
+userRouter.get('/profile/:id', userController.getProfileById)
 userRouter.post('/signup', userController.signup)
 userRouter.post('/login', userController.login)

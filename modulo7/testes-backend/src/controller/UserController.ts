@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { UserBusiness } from '../business/UserBusiness'
-import { SignupUserDTO, LoginInputDTO } from '../model/User'
+import { SignupUserDTO, LoginInputDTO, GetUserByIdDTO } from '../model/User'
 
 export class UserController {
 
@@ -41,6 +41,22 @@ export class UserController {
 
             res.status(200).send({message: 'Logged in user', token})
 
+        } catch (error: any) {
+            res.status(400).send(error.message)
+        }
+    }
+
+    getProfileById = async (req: Request, res: Response): Promise<void> => {
+        try {
+            const input: GetUserByIdDTO = {
+                id: req.params.id,
+                token: req.headers.authorization!
+            }
+
+            const profile = await this.userBusiness.getUserById(input)
+
+            res.status(201).send(profile)
+            
         } catch (error: any) {
             res.status(400).send(error.message)
         }

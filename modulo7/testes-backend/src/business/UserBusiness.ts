@@ -1,6 +1,6 @@
 import { UserDatabase } from '../data/UserDatabase'
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from '../errors/CustomError'
-import { AuthenticationData, LoginInputDTO, SignupUserDTO, user } from '../model/User'
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, Unauthorized, UserNotFound } from '../errors/CustomError'
+import { AuthenticationData, GetUserByIdDTO, LoginInputDTO, SignupUserDTO, user, userById } from '../model/User'
 import Authorization from '../services/tokenGenerator'
 import HashManager from '../services/hashGenerator'
 import IdGenerator from '../services/idGenerator'
@@ -79,6 +79,24 @@ export class UserBusiness {
       const token = Authorization.generateToken(payload)
 
       return token
+   }
+
+   getUserById = async (input: GetUserByIdDTO): Promise<userById> => {
+      const { id, token } = input
+
+      if (!id || !token) {
+         throw new CustomError(400, 'Fill in the id and token fields')
+      }
+
+      const data = Authorization.verify(token)
+
+      if (!data.id) {
+         throw new Unauthorized()
+      }
+
+      const user = await this.userDatabase.getUserById(id)
+      
+      return user
    }
 }
 

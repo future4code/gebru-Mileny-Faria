@@ -27,3 +27,15 @@ export interface LoginInputDTO {
    email: string
    password: string
 }
+
+export interface GetUserByIdDTO {
+   id: string
+   token: string
+}
+
+export type userById = {
+   id: string
+   name: string
+   email: string
+   role: ROLE_TYPES
+}

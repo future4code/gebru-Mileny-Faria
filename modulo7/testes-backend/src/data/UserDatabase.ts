@@ -1,5 +1,5 @@
 import { BaseDatabase } from './BaseDatabase'
-import { user } from '../model/User'
+import { user, userById } from '../model/User'
 import { CustomError } from '../errors/CustomError'
 
 export class UserDatabase extends BaseDatabase {
@@ -37,11 +37,11 @@ export class UserDatabase extends BaseDatabase {
       }
    }
 
-   getUserById = async (id: string): Promise<user | undefined> => {
+   getUserById = async (id: string): Promise<userById> => {
       try {
          const result = await BaseDatabase
             .connection(UserDatabase.table_name)
-            .select()
+            .select('id', 'name', 'email', 'role')
             .where('id', id)
          
          return result[0]

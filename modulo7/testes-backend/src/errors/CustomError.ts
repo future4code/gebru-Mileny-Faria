@@ -27,3 +27,9 @@ export class UserNotFound extends CustomError{
         super(404, "User not found")
     }
 }
+
+export class Unauthorized extends CustomError{ 
+    constructor(){
+        super(401, "Unauthorized user")
+    }
+} 
