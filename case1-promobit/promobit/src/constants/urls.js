@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.themoviedb.org/3/'
+export const BASE_URL = 'https://api.themoviedb.org/3'
 
 
 // https://api.themoviedb.org/3/genre/movie/list
