@@ -18,3 +18,17 @@ export const Text = styled.h1`
     text-align: center;
     color: ${neutralColor};
 `
+
+export const CardsContainer = styled.div`
+    position: relative;
+    top: 460px;
+    width: 100%;
+    height: 100vh;
+`
+
+export const MovieContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+`
