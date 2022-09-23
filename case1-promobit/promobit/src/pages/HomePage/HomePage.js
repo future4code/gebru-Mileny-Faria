@@ -8,6 +8,8 @@ export const HomePage = () => {
     const apiKey = '0b14b275632acd0fc1cf3dedac88afaa'
     const [ movies, isLoading ] = useRequestData([], `${BASE_URL}/movie/popular?api_key=${apiKey}`)
 
+    // console.log(movies)
+
     // base_url: http://image.tmdb.org/t/p/
     // size: "w45" "w92" "w154" "w185" "w300" "w500" "original"
     // file_path:
@@ -19,6 +21,7 @@ export const HomePage = () => {
 
         return (
             <MovieCard
+                key={movie.id}
                 id={movie.id}
                 img={`${baseUrl}${size}${movie.poster_path}`}
                 title={movie.title}

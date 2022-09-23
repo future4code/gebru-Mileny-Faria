@@ -8,7 +8,7 @@ export const MovieCard = (props) => {
 
   return (
     <MovieCardContainer
-      onClick={() => goToDetailsMoviePage(navigate)}
+      onClick={() => goToDetailsMoviePage(navigate, props.id)}
       key={props.id}>
         <img src={props.img} />
         <TextContainer>
