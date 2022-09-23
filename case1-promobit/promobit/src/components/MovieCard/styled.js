@@ -17,5 +17,12 @@ export const TextContainer = styled.div`
 `
 
 export const Title = styled.p`
-    /* font-size: 16px; */
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+`
+
+export const Date = styled.p`
+    margin: 0;
+    font-size: 14px;
 `
