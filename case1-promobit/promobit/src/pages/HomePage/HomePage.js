@@ -6,7 +6,7 @@ import { BASE_URL } from '../../constants/urls'
 
 export const HomePage = () => {
     const apiKey = '0b14b275632acd0fc1cf3dedac88afaa'
-    const [ movies, isLoading ] = useRequestData([], `${BASE_URL}/movie/popular?api_key=${apiKey}`)
+    const [ movies, isLoading ] = useRequestData([], `${BASE_URL}/movie/popular?api_key=${apiKey}&language=pt-BR`)
 
     // console.log(movies)
 

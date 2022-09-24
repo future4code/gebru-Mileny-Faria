@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { secondaryColor, neutralColor } from '../../constants/colors'
+import { secondaryColor, neutralColor, textColor } from '../../constants/colors'
 
 export const NavBarContainer = styled.nav`
     position: absolute;
@@ -24,6 +24,15 @@ export const Title = styled.p`
     left: 400px;
     color: ${neutralColor};
     font-size: 32px;
+`
+
+export const Title2 = styled.p`
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    color: ${textColor};
+    font-size: 28px;
+    font-weight: bold;
 `
 
 export const Text1 = styled.p`
@@ -56,9 +65,27 @@ export const Text3 = styled.p`
     letter-spacing: -0.005em;
 `
 
-export const ContainerCast = styled.div`
-    display: flex;
-    flex-direction: row;
+export const ContainerListCast = styled.div`
     position: relative;
-    top: 650px;
+    top: 700px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+`
+
+export const ListCast = styled.div`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: auto;
+        ::-webkit-scrollbar {
+        height: 8px;
+        background: #DDDDDD;
+        }
+        ::-webkit-scrollbar-thumb {
+        height: 8px;
+        background: #ADADAD;
+        }
 `
