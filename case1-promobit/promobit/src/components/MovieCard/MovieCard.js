@@ -6,6 +6,8 @@ import { goToDetailsMoviePage } from '../../routes/coordinator'
 export const MovieCard = (props) => {
   const navigate = useNavigate()
 
+  const date = props.date.split('-').reverse().join(' ')
+
   return (
     <MovieCardContainer
       onClick={() => goToDetailsMoviePage(navigate, props.id)}
@@ -13,7 +15,7 @@ export const MovieCard = (props) => {
         <img src={props.img} />
         <TextContainer>
           <Title>{props.title}</Title>
-          <Date>{props.date}</Date>
+          <Date>{date}</Date>
         </TextContainer>
     </MovieCardContainer>
   )
