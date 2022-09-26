@@ -4,11 +4,10 @@ import { useRequestData } from '../../hooks/useRequestData'
 import { MovieCard } from '../../components/MovieCard/MovieCard'
 import { BASE_URL } from '../../constants/urls'
 
+
 export const HomePage = () => {
     const apiKey = '0b14b275632acd0fc1cf3dedac88afaa'
     const [ movies, isLoading ] = useRequestData([], `${BASE_URL}/movie/popular?api_key=${apiKey}&language=pt-BR`)
-
-    // console.log(movies)
 
     // base_url: http://image.tmdb.org/t/p/
     // size: "w45" "w92" "w154" "w185" "w300" "w500" "original"

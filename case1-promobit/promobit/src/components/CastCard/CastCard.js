@@ -1,5 +1,5 @@
 import React from 'react'
-import { CastContainer, Image, Name } from './styled'
+import { CastContainer, Image, Name, Character } from './styled'
 import { baseImage } from '../../constants/urls'
 
 export const CastCard = (props) => {
@@ -9,6 +9,7 @@ export const CastCard = (props) => {
         <CastContainer key={props.id}>
             <Image src={`${baseImage}${size}${props.img}`}/>
             <Name>{props.name}</Name>
+            <Character>{props.character}</Character>
         </CastContainer>
     )
 }

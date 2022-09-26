@@ -12,8 +12,11 @@ export const DetailsMoviePage = () => {
     const apiKey = '0b14b275632acd0fc1cf3dedac88afaa'
     const [ detailsMovie ] = useRequestData({}, `${BASE_URL}/movie/${params.id}?api_key=${apiKey}&language=pt-BR`)
     const [ cast ] = useRequestData({}, `${BASE_URL}/movie/${params.id}/credits?api_key=${apiKey}&language=pt-BR`)
+    const [ video ] = useRequestData({}, 'https://api.themoviedb.org/3/movie/616037/videos?api_key=0b14b275632acd0fc1cf3dedac88afaa&language=en-US')
 
     const size1 = 'w300'
+
+    // console.log(video)
   
     // const year = detailsMovie.release_date.split('-', 1)
     // const date = detailsMovie.release_date.split('-').reverse().join('/')
@@ -23,10 +26,16 @@ export const DetailsMoviePage = () => {
             <CastCard
                 img={actor.profile_path}
                 name={actor.name}
+                character={actor.character}
                 id={actor.id}
             />
         )
     })
+
+    // const trailer = video.results[1].key
+
+    
+    // console.log(trailer)
 
     return (
         <div>
@@ -40,6 +49,10 @@ export const DetailsMoviePage = () => {
             <ContainerListCast>
                 <Title2>Elenco Original</Title2>
                 <ListCast>{listCast}</ListCast>
+            </ContainerListCast>
+            <ContainerListCast>
+                <Title2>Trailer</Title2>
+                {/* <video src={`https://www.youtube.com/watch?v=${trailer}`}></video> */}
             </ContainerListCast>
             {/* <button onClick={() => goToHomePage(navigate)}>Voltar para a home</button> */}
             

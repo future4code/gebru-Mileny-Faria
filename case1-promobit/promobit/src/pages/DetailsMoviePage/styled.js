@@ -21,25 +21,16 @@ export const Title = styled.p`
     position: absolute;
     margin-top: 0;
     top: 50px;
-    left: 400px;
+    left: 430px;
     color: ${neutralColor};
     font-size: 32px;
-`
-
-export const Title2 = styled.p`
-    position: absolute;
-    top: -100px;
-    left: 20px;
-    color: ${textColor};
-    font-size: 28px;
-    font-weight: bold;
 `
 
 export const Text1 = styled.p`
     position: absolute;
     margin-top: 0;
     top: 100px;
-    left: 400px;
+    left: 430px;
     color: ${neutralColor};
     font-size: 18px;
 `
@@ -48,7 +39,7 @@ export const Text2 = styled.p`
     position: absolute;
     margin-top: 0;
     top: 200px;
-    left: 400px;
+    left: 430px;
     color: ${neutralColor};
     font-size: 20px;
     font-weight: bold;
@@ -58,7 +49,8 @@ export const Text3 = styled.p`
     position: absolute;
     margin-top: 0;
     top: 230px;
-    left: 400px;
+    left: 430px;
+    right: 100px;
     color: ${neutralColor};
     font-size: 18px;
     line-height: 24px;
@@ -74,10 +66,22 @@ export const ContainerListCast = styled.div`
     width: 100%;
 `
 
+export const Title2 = styled.p`
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    margin: 0;
+    color: ${textColor};
+    font-size: 28px;
+    font-weight: bold;
+`
+
 export const ListCast = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
+    position: relative;
+    top: -50px;
     overflow-y: hidden;
     overflow-x: auto;
         ::-webkit-scrollbar {

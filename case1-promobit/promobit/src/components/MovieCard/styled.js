@@ -9,6 +9,10 @@ export const MovieCardContainer = styled.div`
     height: 320px;
 `
 
+export const Image = styled.img`
+    border-radius: 5px;
+`
+
 export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
