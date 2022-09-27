@@ -1,0 +1,11 @@
+### GET MOVIES POPULAR
+GET https://api.themoviedb.org/3/movie/popular?api_key=0b14b275632acd0fc1cf3dedac88afaa&language=pt-BR
+
+### GET DETAILS MOVIE
+GET https://api.themoviedb.org/3/movie/616037?api_key=0b14b275632acd0fc1cf3dedac88afaa&language=pt-BR
+
+### GET CREDITS
+GET https://api.themoviedb.org/3/movie/616037/credits?api_key=0b14b275632acd0fc1cf3dedac88afaa
+
+### GET MOVIES
+GET https://api.themoviedb.org/3/movie/616037/videos?api_key=0b14b275632acd0fc1cf3dedac88afaa&language=pt-BR
