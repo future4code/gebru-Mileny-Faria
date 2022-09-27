@@ -5,14 +5,12 @@ export const CastContainer = styled.div`
     width: 200px;
     height: 400px;
     border-radius: 4px;
-    margin: 15px;
+    margin: 5px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
 
 export const Image = styled.img`
     width: 180px;
-    margin-left: 5px;
-    margin-top: 5px;
     border-radius: 4px;
 `
 
